@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Магия праздника — Дед Мороз и Снегурочка на дом, корпоративы и шоу</title>
+  <meta name="description" content="Настоящий Дед Мороз и Снегурочка придут к вашему ребёнку: поздравления на дому, утренники и корпоративы. Вручим ваш подарок, назовём ребёнка по имени. При заказе до 1 декабря 2026 года — скидка 10% от цены формата.">
+  <meta name="theme-color" content="#0E2A3F">
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/playfair-display/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/manrope/index.css">
+
+  <style>
+    /* ===== ПЕРЕМЕННЫЕ ===== */
+    :root{
+      --bg-dark:#0E2A3F; --bg-teal:#17505F;
+      --gold:#F0B24A; --gold-light:#FFD27A; --red:#C8352E;
+      --text:#FFF8EC; --text-muted:#C9D6DE;
+      --line:rgba(255,255,255,.12); --glass:rgba(255,255,255,.06);
+      --shadow:0 20px 55px rgba(3,15,24,.50); --shadow-sm:0 10px 28px rgba(3,15,24,.35);
+      --radius:20px; --radius-sm:14px; --radius-lg:28px;
+      --font-head:"Playfair Display Variable","Playfair Display","Lora",Georgia,serif;
+      --font-body:"Manrope Variable","Manrope","Nunito",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      --header-h:62px; --container:1200px;
+      --ease:cubic-bezier(.22,.61,.36,1); --t:.35s var(--ease);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px)}
+    body{margin:0;font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--text);background:var(--bg-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body.is-locked{overflow:hidden}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    button,input,select,textarea{font:inherit;color:inherit}
+    h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.18;margin:0;letter-spacing:.2px}
+    h2{font-size:clamp(28px,7vw,44px)}
+    h3{font-size:clamp(20px,4.6vw,24px)}
+    p{margin:0}
+    ul{margin:0;padding:0;list-style:none}
+    :focus-visible{outline:3px solid var(--gold-light);outline-offset:3px;border-radius:6px}
+    .skip-link{position:absolute;left:12px;top:-100px;z-index:300;background:var(--gold);color:#0E2A3F;font-weight:800;padding:12px 18px;border-radius:0 0 12px 12px;transition:top .25s var(--ease);text-decoration:none}
+    .skip-link:focus{top:0}
+    .container{width:min(100% - 28px,var(--container));margin-inline:auto}
+    section[id],footer[id]{scroll-margin-top:calc(var(--header-h) + 16px)}
+    .section{padding:64px 0;position:relative}
+    .section--teal{background:linear-gradient(180deg,var(--bg-teal) 0%,#123F4C 100%)}
+    .section--dark{background:linear-gradient(180deg,var(--bg-dark) 0%,#0B2334 100%)}
+    .section__head{max-width:760px;margin-bottom:32px}
+    .section__eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    .section__eyebrow::before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px}
+    .section__lead{color:var(--text-muted);margin-top:14px;font-size:17px;max-width:64ch}
+
+    /* ===== КНОПКИ ===== */
+    .btn{--btn-h:52px;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:var(--btn-h);padding:14px 26px;border-radius:999px;border:2px solid transparent;font-weight:800;font-size:16px;text-decoration:none;cursor:pointer;position:relative;isolation:isolate;text-align:center;transition:transform var(--t),box-shadow var(--t),background var(--t),border-color var(--t),color var(--t)}
+    .btn:active{transform:translateY(1px) scale(.99)}
+    .btn--gold{background:linear-gradient(135deg,var(--gold-light) 0%,var(--gold) 55%,#E09A2C 100%);color:#152B3B;box-shadow:0 10px 26px rgba(240,178,74,.28)}
+    .btn--gold:hover{box-shadow:0 0 0 4px rgba(240,178,74,.20),0 14px 40px rgba(255,210,122,.45);transform:translateY(-2px)}
+    .btn--gold.is-pulse::after{content:"";position:absolute;inset:-2px;border-radius:999px;box-shadow:0 0 0 0 rgba(255,210,122,.55);animation:btnPulse 4s var(--ease) infinite;pointer-events:none;z-index:-1}
+    @keyframes btnPulse{0%{box-shadow:0 0 0 0 rgba(255,210,122,.5)}18%{box-shadow:0 0 0 16px rgba(255,210,122,0)}100%{box-shadow:0 0 0 0 rgba(255,210,122,0)}}
+    .btn--ghost{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.45);color:var(--text);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+    .btn--ghost:hover{border-color:var(--gold);color:var(--gold-light);background:rgba(240,178,74,.10);transform:translateY(-2px)}
+    .btn--vk{background:linear-gradient(135deg,#2E8BFF,#0066CC);border-color:transparent;color:#fff}
+    .btn--vk:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,119,255,.4)}
+    .btn--sm{--btn-h:48px;padding:11px 20px;font-size:15px}
+    .btn--xs{--btn-h:40px;padding:8px 16px;font-size:13.5px;border-width:1.5px}
+    .btn--block{width:100%}
+    .btn[disabled],.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed;box-shadow:none;transform:none}
+    .btn.is-loading{pointer-events:none;opacity:.9}
+    .btn.is-loading::before{content:"";width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(21,43,59,.35);border-top-color:#152B3B;animation:spin .8s linear infinite;flex:none}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .link-underline{color:var(--gold-light);text-decoration:underline;text-underline-offset:3px}
+    .link-underline:hover{color:var(--gold)}
+
+    /* ===== ПЛЕЙСХОЛДЕР ФОТО ===== */
+    .media{position:relative;width:100%;aspect-ratio:var(--ar,4/3);border-radius:var(--radius-sm);overflow:hidden;background:radial-gradient(120% 100% at 15% 0%,rgba(255,210,122,.28) 0%,rgba(255,210,122,0) 55%),linear-gradient(140deg,#1B4C5C 0%,#12384A 45%,#0C2434 100%);border:1px solid var(--line)}
+    .media__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s var(--ease),transform .6s var(--ease);z-index:2}
+    .media__img.is-loaded{opacity:1}
+    .media__ph{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:rgba(255,248,236,.72);text-align:center;padding:16px}
+    .media__ph svg{width:38px;height:38px;opacity:.85}
+    .media__ph span{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,248,236,.66)}
+    .media__ph::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 12px,transparent 12px 24px);pointer-events:none}
+    .card:hover .media__img.is-loaded{transform:scale(1.05)}
+
+    /* ===== ШАПКА ===== */
+    .header{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--header-h);display:flex;align-items:center;transition:background var(--t),box-shadow var(--t),border-color var(--t);border-bottom:1px solid transparent}
+    .header.is-scrolled{background:rgba(8,26,39,.82);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom-color:var(--line);box-shadow:0 10px 30px rgba(0,0,0,.28)}
+    .header__inner{display:flex;align-items:center;gap:10px;flex-wrap:nowrap;width:min(100% - 28px,var(--container));margin-inline:auto}
+    .logo{display:inline-flex;align-items:center;gap:9px;min-width:0;flex:0 1 auto;text-decoration:none}
+    .logo__mark{width:24px;height:24px;flex:none;filter:drop-shadow(0 2px 8px rgba(240,178,74,.45))}
+    .logo__text{font-family:var(--font-head);font-weight:700;font-size:15.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+    .logo__text b{color:var(--gold-light);font-weight:700}
+    .nav{display:none}
+    .nav__list{display:flex;align-items:center;gap:26px}
+    .nav__link{text-decoration:none;font-size:15px;font-weight:600;color:var(--text-muted);padding:8px 2px;position:relative;transition:color var(--t);white-space:nowrap}
+    .nav__link::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--gold-light),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform var(--t)}
+    .nav__link:hover,.nav__link.is-active{color:var(--text)}
+    .nav__link:hover::after,.nav__link.is-active::after{transform:scaleX(1)}
+    .header__actions{display:flex;align-items:center;gap:8px;margin-left:auto;flex:none}
+    .vk-btn{width:40px;height:40px;min-width:40px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);border:1px solid var(--line);transition:background var(--t),transform var(--t),border-color var(--t)}
+    .vk-btn:hover{background:#0077FF;border-color:#0077FF;transform:translateY(-2px)}
+    .vk-btn svg{width:22px;height:22px;fill:currentColor}
+    .header .btn--gold{display:none}
+    .burger{width:44px;height:44px;min-width:44px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid var(--line);display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0;flex:none}
+    .burger span{display:block;width:19px;height:2px;border-radius:2px;background:var(--text);transition:transform var(--t),opacity var(--t)}
+    .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+    .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
+    .mobile-panel{position:fixed;inset:0;z-index:120;background:rgba(8,26,39,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;padding:20px 20px 40px;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s;overflow-y:auto}
+    .mobile-panel.is-open{opacity:1;visibility:visible;transform:none}
+    .mobile-panel__top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px}
+    .mobile-panel__top .logo__mark{width:30px;height:30px}
+    .mobile-panel__top .logo__text{font-size:19px}
+    .mobile-panel__close{width:48px;height:48px;min-width:48px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid var(--line);cursor:pointer;font-size:22px;line-height:1;flex:none}
+    .mobile-panel__list{margin:26px 0;display:flex;flex-direction:column;gap:8px}
+    .mobile-panel__link{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:56px;padding:12px 14px;border-radius:var(--radius-sm);text-decoration:none;font-family:var(--font-head);font-size:21px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid var(--line);transition:background var(--t),color var(--t)}
+    .mobile-panel__link:hover{background:rgba(240,178,74,.14);color:var(--gold-light)}
+    .mobile-panel__link span{color:var(--gold);font-size:14px;font-family:var(--font-body)}
+    .mobile-panel__foot{margin-top:auto;display:grid;gap:12px}
+    .mobile-panel__contacts{color:var(--text-muted);font-size:14px;text-align:center}
+    .mobile-panel__contacts a{color:var(--gold-light);text-decoration:none}
+
+    /* ===== ПЕРВЫЙ ЭКРАН ===== */
+    .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+    .hero__bg{position:absolute;inset:0;z-index:-3}
+    .hero__img{width:100%;height:100%;object-fit:cover;object-position:70% center;opacity:0;transition:opacity 1s var(--ease)}
+    .hero__img.is-loaded{opacity:1}
+    .hero__fallback{position:absolute;inset:0;z-index:-4;background:linear-gradient(160deg,#0B2334 0%,#123A4B 45%,#17505F 100%)}
+    .hero__fallback svg{width:100%;height:100%;display:block}
+    .hero__scrim{position:absolute;inset:0;z-index:-2;background:linear-gradient(0deg,rgba(8,26,39,.95) 0%,rgba(14,42,63,.55) 45%,rgba(14,42,63,.15) 100%)}
+    .hero__inner{width:min(100% - 28px,var(--container));margin-inline:auto;padding:calc(var(--header-h) + 90px) 0 110px;position:relative}
+    .hero__kicker{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:rgba(14,42,63,.55);border:1px solid rgba(255,210,122,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-light);margin-bottom:18px;max-width:100%}
+    .hero h1{font-size:clamp(32px,9.2vw,64px);max-width:16ch;text-shadow:0 6px 30px rgba(4,18,28,.55)}
+    .hero h1 em{font-style:normal;color:var(--gold-light)}
+    .hero__lead{margin-top:18px;max-width:56ch;font-size:clamp(15px,4.2vw,19px);color:#E8F0F5;text-shadow:0 2px 16px rgba(4,18,28,.6)}
+    .hero__cta{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+    .hero__trust{display:grid;grid-template-columns:1fr;gap:8px;margin-top:26px;padding:14px 16px;border-radius:var(--radius);background:rgba(14,42,63,.55);border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);max-width:560px}
+    .hero__trust li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
+    .hero__trust li b{color:var(--text);font-weight:700;min-width:0;overflow-wrap:anywhere;line-height:1.45}
+    .hero__badge{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,rgba(200,53,46,.95),rgba(160,38,32,.95));border:1px solid rgba(255,210,122,.55);font-size:13px;font-weight:800;color:#FFF8EC;box-shadow:0 10px 26px rgba(200,53,46,.35)}
+    .hero__scroll{position:absolute;left:50%;bottom:88px;transform:translateX(-50%);color:rgba(255,248,236,.6);font-size:12px;letter-spacing:.18em;text-transform:uppercase;display:none;align-items:center;gap:8px;text-decoration:none}
+    .hero__scroll::after{content:"";width:1px;height:34px;background:linear-gradient(180deg,var(--gold),transparent);animation:scrollLine 2.4s var(--ease) infinite}
+    @keyframes scrollLine{0%,100%{opacity:.35;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+    /* ===== УСЛУГИ ===== */
+    .cards{display:grid;grid-template-columns:1fr;gap:20px}
+    .card{position:relative;display:flex;flex-direction:column;padding:16px;border-radius:var(--radius);background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow-sm);transition:transform var(--t),border-color var(--t),box-shadow var(--t);overflow:hidden}
+    .card:hover{transform:translateY(-6px);border-color:rgba(255,210,122,.45);box-shadow:var(--shadow)}
+    .card__body{padding:18px 6px 6px;display:flex;flex-direction:column;gap:12px;flex:1}
+    .card__title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .card__tag{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:rgba(240,178,74,.12);border:1px solid rgba(240,178,74,.32);border-radius:999px;padding:4px 10px;white-space:nowrap}
+    .card__text{color:var(--text-muted);font-size:15px}
+    .card__list{display:grid;gap:8px;margin-top:2px}
+    .card__list li{display:flex;gap:10px;font-size:14px;color:var(--text-muted)}
+    .card__list svg{flex:none;width:18px;height:18px;color:var(--gold);margin-top:3px}
+    .card__foot{margin-top:auto;padding-top:18px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    .card__price{font-family:var(--font-head);font-size:24px;color:var(--gold-light);white-space:nowrap}
+    .card__price small{display:block;font-family:var(--font-body);font-size:12px;color:var(--text-muted);white-space:normal;max-width:34ch;margin-top:4px;line-height:1.45}
+
+    /* ===== ПОЧЕМУ МЫ ===== */
+    .why-grid{display:grid;grid-template-columns:1fr;gap:14px}
+    .why-item{display:flex;gap:14px;padding:18px;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:transform var(--t),background var(--t),border-color var(--t)}
+    .why-item:hover{transform:translateY(-4px);background:rgba(255,255,255,.09);border-color:rgba(255,210,122,.4)}
+    .why-item__ico{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;color:#152B3B;background:linear-gradient(135deg,var(--gold-light),var(--gold));box-shadow:0 8px 22px rgba(240,178,74,.28)}
+    .why-item__ico svg{width:26px;height:26px}
+    .why-item h3{font-family:var(--font-body);font-size:17px;font-weight:800;margin-bottom:6px}
+    .why-item p{color:var(--text-muted);font-size:14.5px}
+    .about{margin-top:26px;padding:26px 22px;border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(240,178,74,.12),rgba(255,255,255,.04));border:1px solid rgba(255,210,122,.28);display:grid;gap:18px;align-items:center}
+    .about p{color:#F3E9DA;font-size:16.5px}
+    .about p em{color:var(--gold-light);font-style:normal;font-weight:800}
+    .about__btns{display:flex;flex-wrap:wrap;gap:12px}
+
+    /* ===== КАК ЗАКАЗАТЬ ===== */
+    .steps{display:grid;grid-template-columns:1fr;gap:14px;position:relative}
+    .step{position:relative;padding:20px;border-radius:var(--radius);background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start}
+    .step__num{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-head);font-size:22px;font-weight:700;color:#152B3B;background:linear-gradient(135deg,var(--gold-light),var(--gold));box-shadow:0 8px 22px rgba(240,178,74,.3)}
+    .step h3{font-family:var(--font-body);font-size:17px;font-weight:800;margin-bottom:6px}
+    .step p{color:var(--text-muted);font-size:14.5px}
+    .steps-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+    /* ===== ГАЛЕРЕЯ ===== */
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .gallery__item{position:relative;border:0;padding:0;background:none;cursor:pointer;border-radius:var(--radius-sm);overflow:hidden;display:block;width:100%;transition:transform var(--t),box-shadow var(--t)}
+    .gallery__item:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .gallery__item .media{aspect-ratio:1/1;border-radius:var(--radius-sm)}
+    .gallery__zoom{position:absolute;right:10px;bottom:10px;z-index:3;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(8,26,39,.65);border:1px solid var(--line);color:var(--gold-light);opacity:0;transform:scale(.85);transition:opacity var(--t),transform var(--t)}
+    .gallery__item:hover .gallery__zoom,.gallery__item:focus-visible .gallery__zoom{opacity:1;transform:none}
+    .gallery__note{margin-top:22px;text-align:center;color:var(--text-muted);font-size:15px}
+
+    /* ===== ЦЕНЫ ===== */
+    .plans{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
+    .plan{position:relative;padding:26px 22px;border-radius:var(--radius-lg);background:rgba(255,255,255,.05);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;gap:16px;transition:transform var(--t),box-shadow var(--t)}
+    .plan:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .plan--hit{border:2px solid transparent;background:linear-gradient(rgba(14,42,63,.92),rgba(14,42,63,.92)) padding-box,linear-gradient(135deg,var(--gold-light),var(--gold),#E09A2C) border-box;box-shadow:0 24px 60px rgba(240,178,74,.22)}
+    .plan__badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#152B3B;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:7px 18px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 22px rgba(240,178,74,.35)}
+    .plan__name{font-family:var(--font-head);font-size:26px}
+    .plan__dur{color:var(--text-muted);font-size:14px;margin-top:-8px}
+    .plan__price{font-family:var(--font-head);font-size:clamp(30px,9vw,40px);color:var(--gold-light);line-height:1}
+    .plan__price span{font-family:var(--font-body);font-size:15px;color:var(--text-muted);font-weight:600}
+    .plan__features{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:16px}
+    .plan__features li{display:flex;gap:10px;font-size:14.5px;color:#EAF1F5}
+    .plan__features svg{flex:none;width:18px;height:18px;color:var(--gold);margin-top:3px}
+    .plan .btn{margin-top:auto}
+    .scarcity{margin-top:26px;padding:20px 22px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(200,53,46,.22),rgba(255,255,255,.05));border:1px solid rgba(255,210,122,.35);display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+    .scarcity__text{font-size:15.5px;color:#FFF3E2;max-width:60ch}
+    .scarcity__slots{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:#152B3B;background:linear-gradient(135deg,var(--gold-light),var(--gold));padding:10px 18px;border-radius:999px;font-size:15px;white-space:nowrap}
+    .scarcity__slots::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--red);animation:blink 1.6s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+    /* ===== ОТЗЫВЫ ===== */
+    .slider{position:relative;overflow:hidden;border-radius:var(--radius-lg)}
+    .slider__track{display:flex;transition:transform .5s var(--ease);will-change:transform}
+    .slider__slide{flex:0 0 100%;min-width:0;padding:4px}
+    .review{height:100%;padding:24px 20px;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;gap:16px}
+    .review__top{display:flex;gap:14px;align-items:center}
+    .review__ava{flex:none;width:56px;height:56px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-family:var(--font-head);font-size:20px;font-weight:700;color:#152B3B;background:linear-gradient(135deg,var(--gold-light),var(--gold));border:2px solid rgba(255,210,122,.5);position:relative}
+    .review__ava img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+    .review__ava img.is-loaded{opacity:1}
+    .review__name{font-weight:800;font-size:16px}
+    .review__meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:4px}
+    .stars{display:inline-flex;gap:2px;color:var(--gold)}
+    .stars svg{width:16px;height:16px;fill:currentColor}
+    .review__date{font-size:12.5px;color:var(--text-muted)}
+    .review__service{font-size:12.5px;color:var(--text-muted);margin:-4px 0 10px}
+    .review__src{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9CC7FF;background:rgba(0,119,255,.16);border:1px solid rgba(0,119,255,.4);padding:3px 9px;border-radius:999px}
+    .review__text{color:#EDF3F7;font-size:15.5px}
+    .review__text::before{content:"«";color:var(--gold);font-family:var(--font-head);font-size:26px;margin-right:2px}
+    .review__text::after{content:"»";color:var(--gold);font-family:var(--font-head);font-size:26px;margin-left:2px}
+    .slider__ui{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:22px}
+    .slider__arrows{display:flex;gap:10px}
+    .slider__arrow{width:48px;height:48px;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.07);border:1px solid var(--line);color:var(--text);display:grid;place-items:center;transition:background var(--t),color var(--t),transform var(--t)}
+    .slider__arrow:hover{background:var(--gold);color:#152B3B;transform:translateY(-2px)}
+    .slider__arrow svg{width:20px;height:20px}
+    .slider__dots{display:flex;gap:8px;align-items:center}
+    .slider__dot{width:10px;height:10px;padding:0;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.28);border:0;transition:background var(--t),width var(--t)}
+    .slider__dot[aria-current="true"]{background:var(--gold);width:26px;border-radius:999px}
+    .reviews__cta{margin-top:24px;display:flex;justify-content:center}
+
+    /* ===== FAQ ===== */
+    .faq{display:grid;gap:12px;max-width:900px}
+    .faq__item{border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid var(--line);overflow:hidden;transition:border-color var(--t),background var(--t)}
+    .faq__item[open]{border-color:rgba(255,210,122,.45);background:rgba(240,178,74,.07)}
+    .faq__q{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;font-weight:700;font-size:16.5px;min-height:56px}
+    .faq__q::-webkit-details-marker{display:none}
+    .faq__q:hover{color:var(--gold-light)}
+    .faq__chev{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid var(--line);transition:transform var(--t),background var(--t),color var(--t);color:var(--gold-light)}
+    .faq__chev svg{width:18px;height:18px}
+    .faq__item[open] .faq__chev{transform:rotate(180deg);background:var(--gold);color:#152B3B}
+    .faq__a{padding:0 20px 20px;color:var(--text-muted);font-size:15px;max-width:80ch}
+
+    /* ===== ФОРМА ===== */
+    .form-wrap{display:grid;gap:26px}
+    .form-card{padding:24px 20px;border-radius:var(--radius-lg);background:rgba(8,26,39,.55);border:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:var(--shadow);transition:box-shadow var(--t),border-color var(--t)}
+    .form-card.is-flash{border-color:var(--gold);box-shadow:0 0 0 4px rgba(240,178,74,.25),var(--shadow)}
+    .form-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .field{display:grid;gap:7px}
+    .field label{font-size:13.5px;font-weight:800;letter-spacing:.04em;color:#EAF1F5}
+    .field label .req{color:var(--gold);margin-left:3px}
+    .field__control{width:100%;min-height:52px;padding:14px 16px;border-radius:var(--radius-sm);background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);color:var(--text);transition:border-color var(--t),background var(--t),box-shadow var(--t);appearance:none;-webkit-appearance:none}
+    .field__control::placeholder{color:rgba(201,214,222,.55)}
+    .field__control:hover{border-color:rgba(255,255,255,.32)}
+    .field__control:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.10);box-shadow:0 0 0 4px rgba(240,178,74,.18)}
+    .field__control[readonly]{background:rgba(240,178,74,.10);border-color:rgba(240,178,74,.38);color:var(--gold-light);font-weight:800;cursor:default}
+    textarea.field__control{min-height:110px;resize:vertical;line-height:1.55}
+    select.field__control{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23F0B24A' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;cursor:pointer}
+    select.field__control option{background:#0E2A3F;color:var(--text)}
+    .field.has-error .field__control{border-color:#FF8A80;background:rgba(255,90,80,.10)}
+    .field__error{font-size:13px;color:#FFC9C4;display:none;padding-left:2px}
+    .field.has-error .field__error{display:block;animation:shake .35s var(--ease)}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+    .field__hint{font-size:12.5px;color:var(--text-muted)}
+    .agree{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--text-muted);cursor:pointer;padding:4px 0}
+    .agree input{flex:none;width:24px;height:24px;margin:1px 0 0;border-radius:7px;cursor:pointer;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.3);appearance:none;-webkit-appearance:none;transition:background var(--t),border-color var(--t)}
+    .agree input:checked{background:var(--gold) url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='11' viewBox='0 0 14 11'%3E%3Cpath d='M1 5.5L5 9.5 13 1.5' fill='none' stroke='%230E2A3F' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat;border-color:var(--gold)}
+    .form-actions{display:grid;gap:12px;margin-top:18px}
+    .hp{position:absolute!important;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
+    .form-alert{display:none;margin-top:16px;padding:16px 18px;border-radius:var(--radius-sm);font-size:14.5px;line-height:1.55;border:1px solid}
+    .form-alert.is-shown{display:block;animation:pop .35s var(--ease)}
+    .form-alert--error{background:rgba(200,53,46,.20);border-color:rgba(255,138,128,.5);color:#FFD9D5}
+    .form-alert--info{background:rgba(240,178,74,.14);border-color:rgba(255,210,122,.4);color:#FFF0D6}
+    .form-alert a{color:var(--gold-light);font-weight:800}
+    .form-alert .btn{margin-top:12px}
+    .form-alert pre{white-space:pre-wrap;word-break:break-word;background:rgba(0,0,0,.3);padding:12px;border-radius:10px;font-size:12.5px;margin:12px 0 0;font-family:ui-monospace,Menlo,Consolas,monospace;color:#E6EEF3}
+    /* Предупреждение об окружении (file:// или iframe) */
+    .env-warn{display:none;margin-bottom:18px;padding:16px 18px;border-radius:var(--radius-sm);background:rgba(200,53,46,.20);border:1px solid rgba(255,138,128,.5);color:#FFD9D5;font-size:14px;line-height:1.55}
+    .env-warn.is-shown{display:block}
+    .env-warn b{color:#fff}
+    .env-warn code{background:rgba(0,0,0,.3);padding:2px 6px;border-radius:6px;font-size:12.5px}
+    .form-side{display:grid;gap:16px;align-content:start}
+    .form-side__card{padding:22px;border-radius:var(--radius);background:linear-gradient(150deg,rgba(240,178,74,.16),rgba(255,255,255,.04));border:1px solid rgba(255,210,122,.3)}
+    .form-side__card h3{font-family:var(--font-body);font-size:18px;font-weight:800;margin-bottom:10px}
+    .form-side__list{display:grid;gap:12px;margin-top:6px}
+    .form-side__list li{display:flex;gap:12px;font-size:14.5px;color:var(--text-muted)}
+    .form-side__list svg{flex:none;width:22px;height:22px;color:var(--gold);margin-top:2px}
+    .form-side__btns{display:grid;gap:10px}
+    .form-note{font-size:12.5px;color:var(--text-muted);text-align:center;margin-top:14px}
+    .noscript-note{margin:0 0 18px;padding:16px 18px;border-radius:var(--radius-sm);background:rgba(200,53,46,.22);border:1px solid rgba(255,138,128,.5);color:#FFD9D5;font-size:14.5px}
+
+    /* ===== ЭКРАН УСПЕХА ===== */
+    .success{display:none;text-align:center;padding:44px 24px;border-radius:var(--radius-lg);background:linear-gradient(150deg,rgba(240,178,74,.18),rgba(255,255,255,.04));border:1px solid rgba(255,210,122,.45)}
+    .success.is-shown{display:block;animation:pop .5s var(--ease)}
+    @keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+    .success__emoji{font-size:56px;line-height:1;margin-bottom:14px}
+    .success h3{font-size:clamp(22px,6vw,32px);margin-bottom:14px}
+    .success p{color:#F1E7D8;max-width:56ch;margin-inline:auto;font-size:17px}
+    .success__btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
+
+    /* ===== ПОДВАЛ ===== */
+    .footer{background:linear-gradient(180deg,#0B2334 0%,#071826 100%);border-top:1px solid var(--line);padding:44px 0 120px}
+    .footer__grid{display:grid;gap:24px}
+    .footer__logo{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-head);font-size:21px;margin-bottom:10px}
+    .footer__logo .logo__mark{width:28px;height:28px}
+    .footer__h{font-family:var(--font-head);font-size:18px;margin-bottom:12px;color:var(--gold-light)}
+    .footer__desc{color:var(--text-muted);font-size:14.5px;max-width:40ch}
+    .footer__contacts{display:grid;gap:10px;font-size:15px}
+    .footer__contacts a{text-decoration:none;color:var(--text);display:inline-flex;align-items:center;gap:10px;transition:color var(--t)}
+    .footer__contacts a:hover{color:var(--gold-light)}
+    .footer__contacts svg{width:20px;height:20px;color:var(--gold);flex:none}
+    .footer__bottom{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:13px}
+    .footer__bottom a{color:var(--text-muted);text-decoration:underline;text-underline-offset:3px}
+    .footer__bottom a:hover{color:var(--gold-light)}
+
+    /* ===== ПЛАВАЮЩАЯ ПАНЕЛЬ ===== */
+    .float-bar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:grid;grid-template-columns:1fr 1.2fr;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(8,26,39,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);transform:translateY(120%);transition:transform .4s var(--ease)}
+    .float-bar.is-visible{transform:none}
+    .no-phone .float-bar{grid-template-columns:1fr}
+    .float-bar .btn{min-height:48px;padding:12px 14px;font-size:15px}
+
+    /* ===== СНЕГ ===== */
+    #snow{position:fixed;inset:0;z-index:60;pointer-events:none;width:100%;height:100%}
+
+    /* ===== ЛАЙТБОКС ===== */
+    .lightbox{position:fixed;inset:0;z-index:200;display:none;background:rgba(4,14,22,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:16px}
+    .lightbox.is-open{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;animation:fade .3s var(--ease)}
+    @keyframes fade{from{opacity:0}to{opacity:1}}
+    .lightbox__stage{position:relative;width:min(100%,1000px);aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;background:linear-gradient(140deg,#1B4C5C,#0C2434);border:1px solid var(--line);display:grid;place-items:center}
+    .lightbox__stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s var(--ease)}
+    .lightbox__ph{display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,248,236,.7)}
+    .lightbox__ph svg{width:44px;height:44px}
+    .lightbox__ph span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}
+    .lightbox__caption{text-align:center;color:var(--text-muted);font-size:15px;max-width:64ch}
+    .lightbox__counter{color:var(--gold-light);font-size:13px;font-weight:800;letter-spacing:.1em}
+    .lightbox__close,.lightbox__nav{width:52px;height:52px;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.10);border:1px solid var(--line);color:var(--text);display:grid;place-items:center;transition:background var(--t),color var(--t)}
+    .lightbox__close:hover,.lightbox__nav:hover{background:var(--gold);color:#152B3B}
+    .lightbox__close{position:absolute;top:16px;right:16px;z-index:5}
+    .lightbox__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5}
+    .lightbox__nav--prev{left:8px}
+    .lightbox__nav--next{right:8px}
+    .lightbox__nav svg,.lightbox__close svg{width:22px;height:22px}
+
+    /* ===== МОДАЛКА ===== */
+    .modal{position:fixed;inset:0;z-index:210;display:none;background:rgba(4,14,22,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:16px;overflow-y:auto}
+    .modal.is-open{display:grid;place-items:center;animation:fade .3s var(--ease)}
+    .modal__box{width:min(100%,760px);max-height:86vh;overflow-y:auto;padding:26px 22px;border-radius:var(--radius-lg);background:#0F2C40;border:1px solid var(--line);box-shadow:var(--shadow);position:relative}
+    .modal__box h2{font-size:clamp(22px,6vw,30px);margin-bottom:14px;padding-right:52px}
+    .modal__box p,.modal__box li{color:var(--text-muted);font-size:14.5px;margin-bottom:10px}
+    .modal__box h3{font-family:var(--font-body);font-size:16px;font-weight:800;margin:18px 0 8px;color:var(--text)}
+    .modal__box ul{padding-left:18px;list-style:disc}
+    .modal__close{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.08);border:1px solid var(--line);color:var(--text);display:grid;place-items:center}
+    .modal__close:hover{background:var(--gold);color:#152B3B}
+
+    /* ===== УВЕДОМЛЕНИЕ ===== */
+    .toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(24px);z-index:245;padding:16px 20px;border-radius:18px;background:rgba(8,26,39,.97);border:1px solid var(--gold);color:var(--text);font-size:14.5px;max-width:min(92vw,460px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease),transform .35s var(--ease);box-shadow:var(--shadow);text-align:center;line-height:1.5}
+    .toast.is-shown{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+    .toast strong{display:block;font-size:16px;color:var(--gold-light);margin-bottom:4px}
+    .toast a{color:var(--gold-light);word-break:break-all}
+    .toast__close{margin-top:10px}
+
+    /* ===== ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ ===== */
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease),transform .75s var(--ease);transition-delay:var(--d,0s)}
+    .reveal.is-visible{opacity:1;transform:none}
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width:400px){
+      .logo__text{font-size:14px}
+      .logo__mark{width:22px;height:22px}
+      .header__inner{gap:8px}
+      .vk-btn{width:38px;height:38px;min-width:38px}
+      .vk-btn svg{width:20px;height:20px}
+      .hero__kicker{font-size:10px;letter-spacing:.12em;padding:7px 12px}
+    }
+    @media (min-width:600px){
+      .container{width:min(100% - 40px,var(--container))}
+      .hero__inner{width:min(100% - 40px,var(--container))}
+      .hero__cta{flex-direction:row;flex-wrap:wrap}
+      .hero__trust{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .why-grid{grid-template-columns:repeat(2,1fr)}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+      .gallery__item .media{aspect-ratio:4/3}
+      .form-grid{grid-template-columns:repeat(2,1fr)}
+      .form-grid .field--full{grid-column:1/-1}
+      .footer__grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (min-width:900px){
+      .hero__trust{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+    @media (max-width:599px){
+      .hero__trust{grid-template-columns:minmax(0,1fr);gap:10px}
+      .hero__trust li{min-width:0;align-items:flex-start}
+      .hero__trust li b{flex:1;min-width:0;white-space:normal;overflow-wrap:anywhere;line-height:1.45}
+      .hero__trust li svg{flex:none}
+    }
+    @media (min-width:768px){
+      :root{--header-h:76px}
+      .container{width:min(100% - 48px,var(--container))}
+      .hero__inner{width:min(100% - 48px,var(--container))}
+      .section{padding:88px 0}
+      .logo__mark{width:28px;height:28px}
+      .logo__text{font-size:18px}
+      .vk-btn{width:44px;height:44px;min-width:44px}
+      .vk-btn svg{width:24px;height:24px}
+      .nav{display:block;margin-left:auto}
+      .header__actions{margin-left:22px}
+      .burger{display:none}
+      .header .btn--gold{display:inline-flex}
+      .hero{align-items:center}
+      .hero__inner{padding:calc(var(--header-h) + 60px) 0 80px}
+      .hero__scrim{background:linear-gradient(90deg,rgba(8,26,39,.92) 0%,rgba(14,42,63,.72) 38%,rgba(14,42,63,.10) 72%,rgba(14,42,63,0) 100%)}
+      .hero__img{object-position:right center}
+      .hero__badge{position:absolute;top:calc(var(--header-h) + 34px);right:0;margin:0}
+      .hero__scroll{display:flex}
+      .cards{grid-template-columns:repeat(2,1fr);gap:24px}
+      .why-grid{grid-template-columns:repeat(2,1fr);gap:18px}
+      .steps{grid-template-columns:repeat(4,1fr);gap:16px}
+      .step{grid-template-columns:1fr}
+      .step::after{content:"";position:absolute;top:44px;left:calc(52px + 14px);right:-16px;height:2px;background:linear-gradient(90deg,rgba(255,210,122,.6),rgba(255,210,122,0))}
+      .step:last-child::after{display:none}
+      .plans{grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+      .plan--hit{padding-top:34px;transform:scale(1.03)}
+      .plan--hit:hover{transform:scale(1.03) translateY(-6px)}
+      .form-wrap{grid-template-columns:1.35fr .85fr;gap:32px;align-items:start}
+      .form-card{padding:34px}
+      .float-bar{display:none}
+      .footer{padding-bottom:44px}
+      .footer__grid{grid-template-columns:repeat(3,1fr)}
+      .footer__bottom{flex-direction:row;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    }
+    @media (min-width:1280px){
+      .container{width:min(100% - 64px,1240px)}
+      .hero__inner{width:min(100% - 64px,1240px)}
+      .section{padding:110px 0}
+      .cards{grid-template-columns:repeat(4,1fr);gap:20px}
+      .why-grid{grid-template-columns:repeat(3,1fr);gap:20px}
+      .hero h1{font-size:clamp(44px,4.4vw,68px)}
+      .gallery{gap:16px}
+    }
+    @media (min-width:1600px){
+      :root{--container:1400px}
+      body{font-size:17px}
+      .section{padding:130px 0}
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+      .reveal{opacity:1;transform:none}
+      #snow{display:none}
+      .btn--gold.is-pulse::after{animation:none;box-shadow:none}
+    }
+
+    /* Макет первого экрана и симметрия карточек */
+    .hero__scroll{display:none!important}
+    .hero__fallback svg{opacity:.34}
+    .hero__trust{position:relative;z-index:2}
+    .hero__badge{position:relative;top:auto;right:auto;max-width:100%;white-space:normal;margin-top:20px}
+    .cards,.why-grid{align-items:stretch}
+    .card--hit{border-color:rgba(255,210,122,.8);box-shadow:0 0 0 2px rgba(240,178,74,.17),var(--shadow)}
+    .card__hit{display:block;align-self:flex-start;margin:0 0 8px 4px;padding:6px 12px;border-radius:999px;background:rgba(240,178,74,.15);border:1px solid var(--gold);color:var(--gold-light);font-weight:800;font-size:12px;letter-spacing:.05em}
+    .card--corporate{width:100%}
+    .card--corporate .card__body{width:100%}
+    .card--corporate .card__list{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .form-wrap[hidden],.field[hidden],.suburb-fee[hidden]{display:none!important}
+    .order-complete .success{max-width:850px;margin-inline:auto}
+    .suburb-fee{grid-column:1/-1;padding:12px 16px;border:1px solid var(--gold);border-radius:12px;background:rgba(240,178,74,.12);color:var(--gold-light)}
+    @media(min-width:900px){
+      .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .card--corporate{grid-column:1/-1;display:grid;grid-template-columns:minmax(230px,.8fr) minmax(0,2fr);gap:22px;align-items:center}
+      .card--corporate .media{height:100%;min-height:260px;aspect-ratio:auto}
+      .why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:899px){
+      .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .card--corporate{grid-column:1/-1}
+      .hero__badge{margin-top:24px}
+    }
+    @media(max-width:599px){
+      .cards,.why-grid{grid-template-columns:1fr}
+      .card--corporate .card__list{grid-template-columns:1fr}
+      .hero__fallback svg{opacity:.20}
+      .hero__badge{position:relative;margin-top:20px}
+    }
+    .card__price-note{display:inline-block!important;font-family:var(--font-body);font-size:12px!important;line-height:1.5;font-weight:600;color:var(--text-muted);white-space:normal;margin-left:8px;vertical-align:middle;max-width:22ch}
+    .footer__qr{margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+    .footer__qr-title{font-family:var(--font-head);font-size:clamp(23px,4vw,32px);margin-bottom:16px}
+    .footer__qr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:850px}
+    .footer__qr-card{display:flex;align-items:center;gap:20px;padding:18px;background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:var(--radius)}
+    .footer__qr-card img{width:170px;height:170px;max-width:40%;flex:none;object-fit:contain;background:#fff;padding:8px;border-radius:12px}
+    .footer__qr-card h3{font-family:var(--font-body);font-size:18px;margin:0 0 8px}
+    .footer__qr-card p{font-size:13px;line-height:1.55;color:var(--text-muted)}
+    .footer__qr-card a{color:var(--gold-light);overflow-wrap:anywhere;text-underline-offset:3px}
+    @media(max-width:760px){.footer__qr-grid{grid-template-columns:1fr}.footer__qr-card img{width:148px;height:148px}}
+    @media(max-width:400px){.footer__qr-card{gap:13px;padding:12px}.footer__qr-card img{width:120px;height:120px}.footer__qr-card h3{font-size:16px}.footer__qr-card p{font-size:12px}}
+
+    .season-rates{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.035)}
+    .season-rates summary{color:var(--gold-light);font-weight:800;cursor:pointer}
+    .season-rates ul{list-style:disc;padding:7px 0 0 19px;display:grid;gap:5px}
+    .season-rates li{color:var(--text-muted);font-size:12.5px;line-height:1.55}
+    .season-rates>span{display:block;margin-top:7px;color:var(--text-muted);font-size:12px;line-height:1.5}
+    .season-price-hint{font-weight:700;color:var(--gold-light)!important}
+
+    .quiz-overlay{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:16px;background:rgba(3,12,20,.84);backdrop-filter:blur(8px);overflow-y:auto}
+    .quiz-overlay[hidden]{display:none}
+    .quiz-dialog{position:relative;width:min(100%,760px);max-height:min(92svh,960px);overflow-y:auto;padding:clamp(22px,5vw,42px);border-radius:var(--radius-lg);background:linear-gradient(160deg,#12384b,#081a27);border:1px solid rgba(255,210,122,.45);box-shadow:var(--shadow)}
+    .quiz-dialog h2{max-width:21ch;padding-right:32px}
+    .quiz-intro{margin:12px 0 22px;color:var(--text-muted)}
+    .quiz-close{position:absolute;right:15px;top:15px;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.07);font-size:27px;cursor:pointer}
+    .quiz-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:18px}
+    .quiz-grid .field--full{grid-column:1/-1}
+    .quiz-results{margin-top:22px;border-top:1px solid var(--line);padding-top:20px}
+    .quiz-results h3{margin-bottom:10px}
+    .quiz-results__list{display:grid;gap:10px;margin:14px 0}
+    .quiz-option{padding:15px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.045)}
+    .quiz-option.is-best{border-color:var(--gold);background:rgba(240,178,74,.09)}
+    .quiz-option__meta{color:var(--text-muted);font-size:13px;margin:5px 0 10px}
+    .quiz-warning,.quiz-error{color:#FFD27A;font-size:14px;margin-top:10px}
+    .quiz-dialog #quizSubmit{width:100%}
+    @media(max-width:560px){.quiz-overlay{padding:8px}.quiz-dialog{padding:22px 16px;border-radius:20px}.quiz-grid{grid-template-columns:1fr;gap:11px}.quiz-grid .field--full{grid-column:auto}.quiz-dialog h2{font-size:27px}}
+    .corp-guests-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+    .corp-guests-grid .field{min-width:0}
+    .quiz-format-info{padding:12px;border:1px solid rgba(240,178,74,.35);border-radius:12px;background:rgba(240,178,74,.08);font-size:13px;line-height:1.55;color:var(--text)}
+    .quiz-info-line{display:block}.quiz-info-line+.quiz-info-line{margin-top:7px}
+    .early-discount{color:var(--gold-light)!important;font-weight:700}
+    .hero__badge[hidden]{display:none!important}
+    @media(max-width:410px){.corp-guests-grid{grid-template-columns:1fr}}
+
+    .hero__quiz-spot{position:relative;z-index:3;max-width:620px;margin-top:32px;padding:17px;border:1px solid rgba(255,221,148,.6);border-radius:20px;background:linear-gradient(125deg,rgba(240,178,74,.18),rgba(17,75,82,.8));box-shadow:0 10px 34px rgba(0,0,0,.25)}
+    .hero__quiz-spot p{margin:10px 4px 0;color:var(--text);font-size:14px;line-height:1.45}
+    .hero__quiz-spot+.hero__cta{margin-top:18px}
+    .btn--quiz{display:flex;justify-content:center;align-items:center;gap:12px;width:100%;min-height:65px;padding:13px 20px;border:2px solid #fff1b6;border-radius:14px;background:linear-gradient(115deg,#ffd37f,#eaa534);color:#132a35!important;font-size:clamp(16px,2.4vw,20px);font-weight:900;text-align:center;box-shadow:0 7px 22px rgba(231,161,48,.25);white-space:normal;cursor:pointer;transition:transform .2s,box-shadow .2s}
+    .btn--quiz:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(231,161,48,.4)}
+    .btn--quiz:focus-visible{outline:3px solid #fff;outline-offset:3px}
+    .quiz-ornament{font-size:28px;line-height:1;flex:none}
+    .quiz-corporate-note{padding:12px 15px;border:1px solid rgba(240,178,74,.45);border-radius:12px;background:rgba(240,178,74,.1);line-height:1.55}
+    .footer__qr-grid{max-width:100%;width:100%;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+    .footer__qr-card{min-width:0;min-height:214px;height:100%;align-items:center;justify-content:flex-start}
+    .footer__qr-card img{width:170px;height:170px;max-width:none}
+    .footer__qr-card>div{min-width:0;flex:1}
+    @media(max-width:900px){.footer__qr-grid{grid-template-columns:1fr;max-width:540px;margin-inline:auto}.footer__qr-card{min-height:172px}.footer__qr-card img{width:148px;height:148px}}
+    @media(max-width:400px){.footer__qr-card{min-height:144px}.footer__qr-card img{width:120px;height:120px}.hero__quiz-spot{padding:12px}.btn--quiz{min-height:62px;padding:12px 10px}}
+    .sound-toggle{position:fixed;z-index:85;right:14px;bottom:84px;padding:8px 12px;border:1px solid rgba(255,221,148,.55);border-radius:999px;background:rgba(9,39,53,.95);color:#fff;font-size:13px;line-height:1.2;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.27)}
+    .sound-toggle:hover{border-color:#f0b24a}
+    .sound-toggle:focus-visible{outline:3px solid #f0b24a;outline-offset:3px}
+    @media(min-width:768px){.sound-toggle{bottom:20px}}
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FFEBC2"/><stop offset=".45" stop-color="#F0B24A"/><stop offset="1" stop-color="#D38B22"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ===== СЕКЦИЯ: Шапка ===== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#hero" class="logo" aria-label="Магия праздника — на главную">
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <g stroke="url(#goldGrad)" stroke-width="1.7" stroke-linecap="round" fill="none">
+            <path d="M16 3.2v25.6M4.9 9.6l22.2 12.8M27.1 9.6L4.9 22.4"/>
+            <path d="M16 8.4l-2.7-2.7M16 8.4l2.7-2.7M16 23.6l-2.7 2.7M16 23.6l2.7 2.7"/>
+            <path d="M9.6 12.1l-3.7-.7M9.6 12.1l-.9-3.6M22.4 19.9l3.7.7M22.4 19.9l.9 3.6"/>
+            <path d="M22.4 12.1l3.7-.7M22.4 12.1l.9-3.6M9.6 19.9l-3.7.7M9.6 19.9l-.9 3.6"/>
+          </g>
+          <circle cx="16" cy="16" r="2.7" fill="url(#goldGrad)"/>
+        </svg>
+        <span class="logo__text"><b>Магия праздника</b></span>
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <ul class="nav__list" id="navList"></ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="vk-btn" id="headerVk" href="https://vk.ru/moroznt24" target="_blank" rel="noopener noreferrer" aria-label="Наша группа ВКонтакте (откроется в новой вкладке)">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.131-.427.131-.427s-.019-1.303.572-1.495c.582-.19 1.331 1.263 2.126 1.821.601.422 1.057.33 1.057.33l2.124-.03s1.113-.071.585-.964c-.043-.073-.306-.661-1.579-1.876-1.333-1.272-1.153-1.065.452-3.256.978-1.334 1.369-2.148 1.247-2.496-.117-.332-.834-.244-.834-.244l-2.391.015s-.177-.025-.308.055c-.128.079-.21.262-.21.262s-.381 1.036-.889 1.92c-1.073 1.868-1.503 1.967-1.678 1.85-.409-.272-.307-1.093-.307-1.676 0-1.822.271-2.582-.532-2.779-.267-.065-.463-.108-1.143-.115-.872-.009-1.61.003-2.028.212-.278.139-.492.448-.362.465.161.021.526.099.719.368.25.345.241 1.119.241 1.119s.143 2.145-.335 2.41c-.328.182-.777-.189-1.742-1.895-.494-.873-.867-1.838-.867-1.838s-.072-.179-.2-.275c-.155-.116-.372-.152-.372-.152l-2.272.015s-.341.01-.467.161c-.112.134-.009.411-.009.411s1.782 4.234 3.803 6.378c1.852 1.965 3.955 1.836 3.955 1.836h.951z"/></svg>
+        </a>
+        <a href="#zayavka" class="btn btn--gold btn--sm is-pulse" data-order>Заказать</a>
+        <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobilePanel">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== СЕКЦИЯ: Мобильное меню ===== -->
+  <div class="mobile-panel" id="mobilePanel" role="dialog" aria-modal="true" aria-label="Меню сайта" hidden>
+    <div class="mobile-panel__top">
+      <a href="#hero" class="logo" data-mobile-link aria-label="Магия праздника — в начало">
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <g stroke="url(#goldGrad)" stroke-width="1.7" stroke-linecap="round" fill="none">
+            <path d="M16 3.2v25.6M4.9 9.6l22.2 12.8M27.1 9.6L4.9 22.4"/>
+            <path d="M16 8.4l-2.7-2.7M16 8.4l2.7-2.7M16 23.6l-2.7 2.7M16 23.6l2.7 2.7"/>
+            <path d="M9.6 12.1l-3.7-.7M9.6 12.1l-.9-3.6M22.4 19.9l3.7.7M22.4 19.9l.9 3.6"/>
+            <path d="M22.4 12.1l3.7-.7M22.4 12.1l.9-3.6M9.6 19.9l-3.7.7M9.6 19.9l-.9 3.6"/>
+          </g>
+          <circle cx="16" cy="16" r="2.7" fill="url(#goldGrad)"/>
+        </svg>
+        <span class="logo__text"><b>Магия праздника</b></span>
+      </a>
+      <button class="mobile-panel__close" id="mobileClose" type="button" aria-label="Закрыть меню">✕</button>
+    </div>
+    <ul class="mobile-panel__list" id="mobileNavList"></ul>
+    <div class="mobile-panel__foot">
+      <a href="#zayavka" class="btn btn--gold is-pulse" data-order>Забронировать дату</a>
+      <a class="btn btn--vk" id="mobileVk" href="https://vk.ru/moroznt24" target="_blank" rel="noopener noreferrer">Группа ВКонтакте</a>
+      <a class="btn btn--ghost" id="mobileQuestion" href="https://vk.me/moroznt24" target="_blank" rel="noopener noreferrer">Написать в чат группы</a>
+      <p class="mobile-panel__contacts" id="mobileContacts"></p>
+    </div>
+  </div>
+
+  <canvas id="snow" aria-hidden="true"></canvas>
+
+  <main id="main">
+
+    <!-- ===== СЕКЦИЯ: Первый экран ===== -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <div class="hero__fallback" aria-hidden="true">
+        <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMax slice" role="presentation" focusable="false">
+          <defs>
+            <radialGradient id="glowA" cx="78%" cy="62%" r="55%">
+              <stop offset="0%" stop-color="#FFD27A" stop-opacity=".55"/>
+              <stop offset="45%" stop-color="#F0B24A" stop-opacity=".18"/>
+              <stop offset="100%" stop-color="#0E2A3F" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="treeG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1E5F55"/><stop offset="100%" stop-color="#0B2B33"/>
+            </linearGradient>
+            <linearGradient id="giftR" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#D9483F"/><stop offset="100%" stop-color="#93251F"/>
+            </linearGradient>
+            <linearGradient id="giftG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FFD27A"/><stop offset="100%" stop-color="#D08F26"/>
+            </linearGradient>
+          </defs>
+          <rect width="1200" height="800" fill="#0B2334"/>
+          <rect width="1200" height="800" fill="url(#glowA)"/>
+          <g fill="#FFD27A" opacity=".5">
+            <circle cx="900" cy="120" r="4"/><circle cx="1080" cy="200" r="3"/><circle cx="760" cy="90" r="2.5"/>
+            <circle cx="1140" cy="380" r="3.5"/><circle cx="640" cy="180" r="2"/><circle cx="980" cy="60" r="2.5"/>
+            <circle cx="860" cy="260" r="2"/><circle cx="1100" cy="90" r="2"/>
+          </g>
+          <g fill="#FFF8EC" opacity=".22">
+            <circle cx="560" cy="320" r="2"/><circle cx="420" cy="180" r="1.6"/><circle cx="300" cy="420" r="1.8"/>
+            <circle cx="180" cy="240" r="1.4"/><circle cx="700" cy="440" r="1.6"/>
+          </g>
+          <g transform="translate(880,150)">
+            <rect x="-9" y="470" width="18" height="60" rx="6" fill="#5A3A22"/>
+            <polygon points="0,0 130,180 -130,180" fill="url(#treeG)"/>
+            <polygon points="0,110 170,320 -170,320" fill="url(#treeG)" opacity=".95"/>
+            <polygon points="0,230 210,470 -210,470" fill="url(#treeG)" opacity=".9"/>
+            <g fill="#FFD27A">
+              <circle cx="-40" cy="150" r="7"/><circle cx="45" cy="165" r="6"/><circle cx="0" cy="215" r="7"/>
+              <circle cx="-85" cy="300" r="7"/><circle cx="70" cy="290" r="6"/><circle cx="-15" cy="345" r="7"/>
+              <circle cx="-130" cy="430" r="7"/><circle cx="120" cy="420" r="6"/><circle cx="20" cy="450" r="7"/>
+            </g>
+            <g fill="#C8352E" opacity=".9">
+              <circle cx="15" cy="140" r="6"/><circle cx="-55" cy="250" r="6"/><circle cx="95" cy="360" r="6"/><circle cx="-95" cy="380" r="6"/>
+            </g>
+            <polygon points="0,-46 12,-14 46,-14 19,7 29,40 0,20 -29,40 -19,7 -46,-14 -12,-14" fill="#FFD27A"/>
+          </g>
+          <path d="M0 120 C 200 210, 420 40, 640 150 S 1000 60, 1200 170" fill="none" stroke="#FFD27A" stroke-opacity=".22" stroke-width="2"/>
+          <g fill="#FFD27A" opacity=".8">
+            <circle cx="120" cy="163" r="4"/><circle cx="300" cy="132" r="4"/><circle cx="480" cy="98" r="4"/>
+            <circle cx="640" cy="150" r="4"/><circle cx="830" cy="122" r="4"/><circle cx="1020" cy="96" r="4"/>
+          </g>
+          <g transform="translate(700,600)">
+            <rect x="0" y="40" width="130" height="100" rx="12" fill="url(#giftR)"/>
+            <rect x="52" y="40" width="26" height="100" fill="#FFD27A" opacity=".9"/>
+            <rect x="0" y="76" width="130" height="20" fill="#FFD27A" opacity=".9"/>
+            <path d="M65 40c-14-26-46-24-46-4 0 12 18 16 46 4zm0 0c14-26 46-24 46-4 0 12-18 16-46 4z" fill="#FFD27A"/>
+          </g>
+          <g transform="translate(860,650)">
+            <rect x="0" y="30" width="100" height="76" rx="10" fill="url(#giftG)"/>
+            <rect x="40" y="30" width="20" height="76" fill="#C8352E" opacity=".9"/>
+            <rect x="0" y="58" width="100" height="16" fill="#C8352E" opacity=".9"/>
+          </g>
+          <g transform="translate(1000,690)">
+            <rect x="0" y="20" width="80" height="60" rx="9" fill="#1D6A73"/>
+            <rect x="32" y="20" width="16" height="60" fill="#FFD27A" opacity=".85"/>
+          </g>
+          <rect y="740" width="1200" height="60" fill="#FFF8EC" opacity=".08"/>
+        </svg>
+      </div>
+
+      <div class="hero__bg">
+        <img class="hero__img" id="heroImg" src="images/hero-bg.jpg"
+             alt="Дед Мороз у новогодней ёлки с подарками — выездное поздравление от компании «Магия праздника»"
+             fetchpriority="high" decoding="async">
+      </div>
+      <div class="hero__scrim" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <p class="hero__kicker" id="heroKicker">МАГИЯ ПРАЗДНИКА · НОВЫЙ ГОД</p>
+        <h1 id="heroTitle">Настоящий Дед Мороз придёт к вашему <em>ребёнку</em></h1>
+        <p class="hero__lead" id="heroLead"></p>
+        <div class="hero__quiz-spot">
+          <button class="btn btn--quiz" id="openQuiz" type="button"><span class="quiz-ornament" aria-hidden="true">🎄</span> Подобрать праздник по бюджету</button>
+          <p>Ответьте на несколько вопросов — подскажем подходящий праздник и стоимость.</p>
+        </div>
+        <div class="hero__cta">
+          <a href="#zayavka" class="btn btn--gold is-pulse" data-order id="heroPrimary">Забронировать дату</a>
+          <a class="btn btn--vk" id="heroSecondary" href="https://vk.ru/moroznt24" target="_blank" rel="noopener noreferrer">Смотреть праздники ВКонтакте</a>
+        </div>
+        <ul class="hero__trust" id="heroTrust"></ul>
+        <p class="hero__badge" id="heroBadge"></p>
+      </div>
+    </section>
+
+    <!-- ===== СЕКЦИЯ: Услуги ===== -->
+    <section class="section section--dark" id="uslugi" aria-labelledby="uslugiTitle">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow">Услуги</p>
+          <h2 id="uslugiTitle">Выберите свой праздник</h2>
+          <p class="section__lead">Четыре формата поздравления: от короткого вручения подарка до большого корпоратива. Цены для детских форматов рассчитаны на компанию до трёх детей; за каждого следующего ребёнка +500 ₽. Подарок вы готовите сами, а Дед Мороз вручает его ребёнку. Нажмите «Заказать», и формат со стоимостью подставятся в заявку.</p>
+        </div>
+        <div class="cards" id="servicesGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===== СЕКЦИЯ: Почему мы ===== -->
+    <section class="section section--teal" id="pochemu" aria-labelledby="pochemuTitle">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow">Почему мы</p>
+          <h2 id="pochemuTitle">Почему родители выбирают «Магию праздника»</h2>
+        </div>
+        <div class="why-grid" id="whyGrid"></div>
+        <div class="about reveal" id="aboutBlock"></div>
+      </div>
+    </section>
+
+    <!-- ===== СЕКЦИЯ: Как заказать ===== -->
+    <section class="section section--dark" id="kak" aria-labelledby="kakTitle">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow">Как заказать</p>
+          <h2 id="kakTitle">Как заказать чудо</h2>
+          <p class="section__lead">Четыре простых шага — и ваш ребёнок встретится с настоящим Дедом Морозом.</p>
+        </div>
+        <ol class="steps" id="stepsList"></ol>
+        <div class="steps-cta reveal">
+          <a href="#zayavka" class="btn btn--gold is-pulse" data-order>Забронировать дату</a>
+          <a class="btn btn--vk" id="stepsQuestion" href="https://vk.me/moroznt24" target="_blank" rel="noopener noreferrer">Согласовать / задать вопрос</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== СЕКЦИЯ: Галерея ===== -->
+    <section class="section section--teal" id="galereya" aria-labelledby="galereyaTitle">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow">Галерея</p>
+          <h2 id="galereyaTitle">Как проходят наши праздники</h2>
+        </div>
+        <div class="gallery" id="galleryGrid"></div>
+        <p class="gallery__note reveal" id="galleryNote"></p>
+      </div>
+    </section>
+
+
+    <!-- ===== СЕКЦИЯ: Отзывы ===== -->
+    <section class="section section--teal" id="otzyvy" aria-labelledby="otzyvyTitle">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow">Отзывы</p>
+          <h2 id="otzyvyTitle">Что говорят родители</h2>
+        </div>
+        <div class="slider reveal" id="reviewsSlider">
+          <div class="slider__track" id="reviewsTrack" aria-live="polite"></div>
+        </div>
+        <div class="slider__ui reveal">
+          <div class="slider__dots" id="reviewsDots" role="tablist" aria-label="Выбор отзыва"></div>
+          <div class="slider__arrows">
+            <button class="slider__arrow" id="reviewPrev" type="button" aria-label="Предыдущий отзыв">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="slider__arrow" id="reviewNext" type="button" aria-label="Следующий отзыв">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="reviews__cta reveal">
+          <a class="btn btn--vk" id="reviewsVk" href="https://vk.ru/moroznt24" target="_blank" rel="noopener noreferrer">Наша группа ВКонтакте</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== СЕКЦИЯ: FAQ ===== -->
+    <section class="section section--dark" id="faq" aria-labelledby="faqTitle">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow">Вопросы</p>
+          <h2 id="faqTitle">Частые вопросы</h2>
+        </div>
+        <div class="faq" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- ===== СЕКЦИЯ: Форма заявки ===== -->
+    <section class="section section--teal" id="zayavka" aria-labelledby="zayavkaTitle">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow">Заявка</p>
+          <h2 id="zayavkaTitle">Забронируйте Деда Мороза</h2>
+          <p class="section__lead">Оставьте заявку — перезвоним за 15 минут и подберём удобное время.</p>
+        </div>
+
+        <div class="form-wrap">
+          <div class="form-card reveal" id="formCard">
+            <noscript>
+              <p class="noscript-note">У вас отключён JavaScript — форма не сможет отправить заявку.
+                Позвоните нам или напишите
+                <a class="link-underline" href="https://vk.me/moroznt24" target="_blank" rel="noopener noreferrer">в чат группы ВКонтакте</a>.
+              </p>
+            </noscript>
+
+            <!-- Показывается, если сайт открыт с диска или в песочнице предпросмотра -->
+
+            <form id="leadForm" novalidate>
+              <div class="form-grid">
+                <div class="field" data-field="name">
+                  <label for="f-name">Имя<span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" type="text" id="f-name" name="name" placeholder="Как к вам обращаться" autocomplete="name" required aria-describedby="err-name">
+                  <p class="field__error" id="err-name" aria-live="polite"></p>
+                </div>
+
+                <div class="field" data-field="phone">
+                  <label for="f-phone">Телефон<span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" type="tel" id="f-phone" name="phone" placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="tel" required aria-describedby="err-phone hint-phone">
+                  <p class="field__hint" id="hint-phone">Свяжемся в течение суток в рабочее время (9:00–21:00). Предпочтительнее писать нам в MAX.</p>
+                  <p class="field__error" id="err-phone" aria-live="polite"></p>
+                </div>
+
+                <div class="field" data-field="date">
+                  <label for="f-date">Дата праздника<span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" type="date" id="f-date" name="date" required aria-describedby="err-date hint-date">
+                  <p class="field__hint" id="hint-date">Принимаем заказы только с 20 по 31 декабря ближайшего сезона.</p>
+                  <p class="field__error" id="err-date" aria-live="polite"></p>
+                </div>
+
+                <div class="field" data-field="time">
+                  <label for="f-time">Время</label>
+                  <select class="field__control" id="f-time" name="time" required aria-describedby="err-time hint-time"><option value="">— Выберите время —</option><option value="10:00">10:00</option><option value="11:00">11:00</option><option value="12:00">12:00</option><option value="13:00">13:00</option><option value="14:00">14:00</option><option value="15:00">15:00</option><option value="16:00">16:00</option><option value="17:00">17:00</option><option value="18:00">18:00</option><option value="19:00">19:00</option><option value="20:00">20:00</option><option value="21:00">21:00</option><option value="22:00">22:00</option><option value="23:00">23:00</option></select>
+                  <p class="field__hint" id="hint-time">Выбирайте дату — покажем доступные часы. Время означает начало визита; в последний слот визит может завершиться в полночь.</p>
+                  <details class="season-rates field__hint" id="seasonRates">
+                    <summary>Расписание сезонных надбавок</summary>
+                    <ul>
+                      <li><b>20–29 декабря:</b> 10:00–18:00 — без сезонной надбавки; 19:00–21:00 — +600 ₽.</li>
+                      <li><b>30 декабря:</b> 10:00–15:00 — +500 ₽; с 16:00 до последнего старта в 22:00 — +1 100 ₽.</li>
+                      <li><b>31 декабря:</b> 10:00–15:00 — +1 200 ₽; 16:00–19:00 — +2 500 ₽; 20:00–21:00 — +3 700 ₽; 22:00 — +6 500 ₽; 23:00 — +7 500 ₽ (завершение — до полуночи).</li>
+                    </ul>
+                    <span>Сезонная надбавка складывается с доплатой за дополнительных детей и пригород.</span>
+                  </details>
+                  <p class="field__hint season-price-hint" id="seasonPriceHint" aria-live="polite">Выберите дату и время — сезонная надбавка автоматически войдёт в итоговую стоимость.</p>
+                  <p class="field__error" id="err-time" aria-live="polite"></p>
+                </div>
+
+                <div class="field" data-field="format">
+                  <label for="f-format">Формат<span class="req" aria-hidden="true">*</span></label>
+                  <select class="field__control" id="f-format" name="format" required aria-describedby="err-format"></select>
+                  <p class="field__error" id="err-format" aria-live="polite"></p>
+                </div>
+
+                <div class="field" data-field="price">
+                  <label for="f-price">Стоимость</label>
+                  <input class="field__control" type="text" id="f-price" name="price" readonly tabindex="-1" placeholder="Подставится автоматически" aria-describedby="hint-price">
+                  <p class="field__hint early-discount" id="earlyDiscountHint" aria-live="polite"></p>
+                  <p class="field__hint" id="hint-price">Выберите формат — стоимость подставится автоматически. При выезде за город добавляется 1 000 ₽. Итог подтверждаем по телефону.</p>
+                </div>
+
+                <div class="field field--full" data-field="child">
+                  <label for="f-child">Имя и возраст ребёнка</label>
+                  <input class="field__control" type="text" id="f-child" name="child" placeholder="Например: Маша, 5 лет">
+                </div>
+
+                <div class="field field--full" id="childCountField" data-field="childCount">
+                  <label for="f-child-count">Количество детей</label>
+                  <input class="field__control" id="f-child-count" name="childCount" type="number" min="1" max="50" step="1" value="1" inputmode="numeric" aria-describedby="hint-child-count err-childCount">
+                  <p class="field__hint" id="hint-child-count">Для 1–3 детей цена не меняется; каждый ребёнок сверх трёх: +500 ₽.</p>
+                  <p class="field__error" id="err-childCount" aria-live="polite"></p>
+                </div>
+
+                <div class="field field--full" id="corpGuestsField" hidden>
+                  <label for="f-corp-adults">Корпоратив: количество гостей</label>
+                  <p class="field__hint">От 8 до 30 гостей. До 12 взрослых или до 12 детей — базовая цена; сверх 12 взрослых +300 ₽/чел., сверх 12 детей +200 ₽/реб. В смешанной группе до 12 гостей суммарно — без доплаты, далее +500 ₽ за каждого. Максимум — 30 гостей.</p>
+                  <div class="corp-guests-grid">
+                    <div class="field" data-field="corpAdults"><label for="f-corp-adults">Взрослых</label><input class="field__control" id="f-corp-adults" type="number" min="0" max="30" step="1" value="8" inputmode="numeric"><p class="field__error" id="err-corpAdults" aria-live="polite"></p></div>
+                    <div class="field" data-field="corpChildren"><label for="f-corp-children">Детей</label><input class="field__control" id="f-corp-children" type="number" min="0" max="30" step="1" value="0" inputmode="numeric"><p class="field__error" id="err-corpChildren" aria-live="polite"></p></div>
+                  </div>
+                  <p class="field__error" id="err-corpGuests" aria-live="polite"></p>
+                </div>
+
+                <div class="field field--full" data-field="district">
+                  <label for="f-district">Район поздравления<span class="req" aria-hidden="true">*</span></label>
+                  <select class="field__control" id="f-district" name="district" required aria-describedby="err-district district-hint">
+                    <option value="">— Выберите район —</option>
+                    <option>ВМЗ</option><option>Лебяжка</option><option>Выя</option><option>Красный Камень</option>
+                    <option>Вагонка</option><option>Тагилстрой</option><option>Центр</option><option>ГГМ</option>
+                    <option>Старатель</option><option value="Пригород">Пригородный район</option>
+                  </select>
+                  <p class="field__hint" id="district-hint">Нижний Тагил и ближайший пригород.</p>
+                  <p class="field__error" id="err-district" aria-live="polite"></p>
+                </div>
+                <div class="field field--full" id="suburbField" data-field="suburb" hidden>
+                  <label for="f-suburb">Населённый пункт<span class="req" aria-hidden="true">*</span></label>
+                  <select class="field__control" id="f-suburb" name="suburb" aria-describedby="err-suburb">
+                    <option value="">— Выберите населённый пункт —</option>
+                    <option>Николо-Павловское</option><option>Черноисточинск</option><option>Евстюниха</option>
+                    <option value="Другой населённый пункт">Другой населённый пункт (укажите в комментарии)</option>
+                  </select>
+                  <p class="field__error" id="err-suburb" aria-live="polite"></p>
+                </div>
+                <p class="field__hint field--full suburb-fee" id="suburbFee" hidden>Выезд за черту города оплачивается дополнительно: +1 000 ₽ к стоимости заказа.</p>
+
+                <div class="field field--full" data-field="comment">
+                  <label for="f-comment">Комментарий</label>
+                  <textarea class="field__control" id="f-comment" name="comment" placeholder="Адрес, увлечения ребёнка, что подготовить, пожелания к программе"></textarea>
+                </div>
+
+                <div class="field field--full" data-field="agree">
+                  <label class="agree" for="f-agree">
+                    <input type="checkbox" id="f-agree" name="agree" required aria-describedby="err-agree">
+                    <span>Я согласен на <a href="#privacy" data-modal-link="privacy">обработку персональных данных</a><span class="req" aria-hidden="true">*</span></span>
+                  </label>
+                  <p class="field__error" id="err-agree" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="hp" aria-hidden="true">
+                <label for="f-company-fax">Компания (факс)</label>
+                <input type="text" id="f-company-fax" name="company_fax" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn--gold btn--block is-pulse" type="submit" id="submitBtn">Отправить заявку</button>
+                <a class="btn btn--vk btn--block" id="formQuestion" href="https://vk.me/moroznt24" target="_blank" rel="noopener noreferrer">Есть вопросы? Написать в чат группы</a>
+              </div>
+
+              <div class="form-alert" id="formAlert" role="alert" aria-live="assertive"></div>
+
+              <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных (152-ФЗ). Мы не передаём контакты третьим лицам.</p>
+            </form>
+          </div>
+
+          <aside class="form-side reveal" aria-label="Что будет после заявки">
+            <div class="form-side__card">
+              <h3>Что будет дальше</h3>
+              <ul class="form-side__list" id="formSide"></ul>
+            </div>
+            <div class="form-side__card">
+              <h3>Не любите формы?</h3>
+              <p style="color:var(--text-muted);font-size:14.5px;margin-bottom:14px">Предпочтительнее писать в MAX: найдите +7 (922) 114-65-32 по номеру. Также можно позвонить или написать в ВК.</p>
+              <div class="form-side__btns">
+                <a class="btn btn--ghost btn--sm btn--block" id="formPhone" href="tel:+79221146532">Позвонить: +7 (922) 114-65-32</a>
+                <a class="btn btn--vk btn--sm btn--block" id="formVk" href="https://vk.ru/moroznt24" target="_blank" rel="noopener noreferrer">Группа ВКонтакте</a>
+                <a class="btn btn--ghost btn--sm btn--block" id="formChat" href="https://vk.me/moroznt24" target="_blank" rel="noopener noreferrer">Написать в чат группы</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="success" id="successScreen" role="status" aria-live="polite" tabindex="-1">
+          <p class="success__emoji" id="successEmoji" aria-hidden="true">🎄</p>
+          <h3 id="successTitle">Заявка принята. Спасибо за заказ!</h3>
+          <p id="successText">С наступающим Новым годом! Ожидайте звонка от администратора.</p>
+          <div class="success__btns">
+            <a class="btn btn--vk" id="successVk" href="https://vk.ru/moroznt24" target="_blank" rel="noopener noreferrer">Пока ждёте — загляните к нам ВКонтакте</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="quiz-overlay" id="quizOverlay" hidden>
+      <section class="quiz-dialog" role="dialog" aria-modal="true" aria-labelledby="quizTitle" tabindex="-1">
+        <button class="quiz-close" id="quizClose" type="button" aria-label="Закрыть подбор">×</button>
+        <p class="section__eyebrow">Новогодняя магия начинается с выбора</p>
+        <h2 id="quizTitle">Подберём праздник под ваши пожелания и бюджет</h2>
+        <p class="quiz-intro">Ответьте на несколько вопросов. Мы покажем подходящий формат, дату, время и ориентировочную стоимость. Ответы можно будет изменить в заявке.</p>
+        <form id="quizForm">
+          <div class="quiz-grid">
+            <div class="field"><label for="quizAudience">Для кого праздник?</label><select class="field__control" id="quizAudience"><option value="child">Для ребёнка / детей</option><option value="corp">Корпоратив — взрослые</option><option value="corpChild">Детский праздник-утренник</option><option value="corpMixed">Корпоратив — взрослые и дети</option></select></div>
+            <p class="quiz-corporate-note field--full" id="quizCorporateNote" hidden>Корпоратив — уникальное праздничное мероприятие, программу которого мы согласуем с заказчиком. Это может быть праздник для взрослых, детский утренник или встреча взрослых и детей от 8 до 30 гостей.</p>
+            <div class="field"><label for="quizFormat">Какой формат ближе?</label><select class="field__control" id="quizFormat"></select></div>
+            <p class="quiz-format-info field--full" id="quizFormatInfo" aria-live="polite"></p>
+            <div class="field"><label for="quizDate">Желаемая дата</label><input class="field__control" id="quizDate" type="date" required></div>
+            <div class="field"><label for="quizPeriod">В какое время удобнее?</label><select class="field__control" id="quizPeriod"><option value="any">Рассмотрю любое время</option><option value="day">Днём — до 16:00</option><option value="evening">Вечером — с 16:00</option></select></div>
+            <div class="field" id="quizChildrenWrap"><label for="quizChildren">Количество детей</label><input class="field__control" id="quizChildren" type="number" min="1" max="50" value="1" inputmode="numeric"></div>
+            <div class="field" id="quizAdultsWrap" hidden><label for="quizAdults">Взрослых на корпоративе</label><input class="field__control" id="quizAdults" type="number" min="0" max="30" value="8" inputmode="numeric"></div>
+            <div class="field" id="quizCorpKidsWrap" hidden><label for="quizCorpKids">Детей на корпоративе</label><input class="field__control" id="quizCorpKids" type="number" min="0" max="30" value="0" inputmode="numeric"></div>
+            <div class="field"><label for="quizDistrict">Район или пригород</label><select class="field__control" id="quizDistrict"><option>ВМЗ</option><option>Лебяжка</option><option>Выя</option><option>Красный Камень</option><option>Вагонка</option><option>Тагилстрой</option><option>Центр</option><option>ГГМ</option><option>Старатель</option><option value="Пригород">Пригородный район (+1 000 ₽)</option></select></div>
+            <div class="field field--full" id="quizSuburbWrap" hidden><label for="quizSuburb">Населённый пункт</label><select class="field__control" id="quizSuburb"><option>Николо-Павловское</option><option>Черноисточинск</option><option>Евстюниха</option><option value="Другой населённый пункт">Другой населённый пункт (укажите в комментарии)</option></select></div>
+            <div class="field field--full"><label for="quizBudget">Комфортный бюджет</label><select class="field__control" id="quizBudget"><option value="5000">До 5 000 ₽</option><option value="7000">До 7 000 ₽</option><option value="10000">До 10 000 ₽</option><option value="15000">До 15 000 ₽</option><option value="any">Готовы рассмотреть варианты</option></select></div>
+          </div>
+          <button class="btn btn--gold is-pulse" type="submit" id="quizSubmit"><span aria-hidden="true">🎄</span> Показать подходящие варианты</button>
+          <p class="quiz-error" id="quizError" role="alert" hidden></p>
+        </form>
+        <div class="quiz-results" id="quizResults" aria-live="polite" hidden></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== СЕКЦИЯ: Подвал ===== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="reveal">
+          <p class="footer__logo">
+            <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <g stroke="url(#goldGrad)" stroke-width="1.7" stroke-linecap="round" fill="none">
+                <path d="M16 3.2v25.6M4.9 9.6l22.2 12.8M27.1 9.6L4.9 22.4"/>
+                <path d="M16 8.4l-2.7-2.7M16 8.4l2.7-2.7M16 23.6l-2.7 2.7M16 23.6l2.7 2.7"/>
+                <path d="M9.6 12.1l-3.7-.7M9.6 12.1l-.9-3.6M22.4 19.9l3.7.7M22.4 19.9l.9 3.6"/>
+                <path d="M22.4 12.1l3.7-.7M22.4 12.1l.9-3.6M9.6 19.9l-3.7.7M9.6 19.9l-.9 3.6"/>
+              </g>
+              <circle cx="16" cy="16" r="2.7" fill="url(#goldGrad)"/>
+            </svg>
+            <span>Магия праздника</span>
+          </p>
+          <p class="footer__desc" id="footerDesc"></p>
+        </div>
+        <div class="reveal" style="--d:.08s">
+          <p class="footer__h">Разделы</p>
+          <ul class="footer__contacts" id="footerNav"></ul>
+        </div>
+        <div class="reveal" style="--d:.16s">
+          <p class="footer__h">Контакты</p>
+          <div class="footer__contacts" id="footerContacts"></div>
+        </div>
+      </div>
+      <div class="footer__qr" aria-labelledby="qrTitle">
+        <h2 class="footer__qr-title" id="qrTitle">Остаёмся на связи</h2>
+        <div class="footer__qr-grid">
+          <div class="footer__qr-card">
+            <img src="images/qr-max-contact.png" alt="QR-код для сохранения контакта Магии праздника с номером +7 922 114-65-32" width="170" height="170" loading="lazy">
+            <div><h3>MAX — удобнее всего</h3><p>Сканируйте, сохраните номер <a href="tel:+79221146532">+7 (922) 114-65-32</a>, затем в MAX выберите «Найти по номеру». Это QR контакта, не прямая ссылка на чат.</p></div>
+          </div>
+          <div class="footer__qr-card">
+            <img src="images/qr-vk.png" alt="QR-код группы Магия праздника ВКонтакте" width="170" height="170" loading="lazy">
+            <div><h3>Наша группа ВКонтакте</h3><p>Сканируйте или перейдите в <a href="https://vk.ru/moroznt24" target="_blank" rel="noopener noreferrer">группу ВК</a>.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span id="footerCopy"></span>
+        <a href="#privacy" data-modal-link="privacy">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </footer>
+
+  <audio id="holidayAudio" src="assets/jingle-bells.mp3" preload="auto" loop autoplay playsinline aria-hidden="true"></audio>
+  <button type="button" class="sound-toggle" id="soundToggle" aria-label="Включить новогоднюю мелодию" aria-pressed="false">♪ Включить музыку</button>
+
+  <!-- ===== СЕКЦИЯ: Плавающая панель ===== -->
+  <div class="float-bar" id="floatBar">
+    <a class="btn btn--ghost" id="floatPhone" href="tel:+79221146532">📞 Позвонить</a>
+    <a class="btn btn--gold" href="#zayavka" data-order>Заказать</a>
+  </div>
+
+  <!-- ===== СЕКЦИЯ: Лайтбокс ===== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографий">
+    <button class="lightbox__close" id="lbClose" type="button" aria-label="Закрыть просмотр">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" type="button" aria-label="Предыдущее фото">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="lightbox__stage" id="lbStage">
+      <img id="lbImg" src="" alt="">
+      <div class="lightbox__ph" id="lbPh" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-6 6"/></svg>
+        <span>Фото скоро</span>
+      </div>
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" id="lbNext" type="button" aria-label="Следующее фото">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <p class="lightbox__caption" id="lbCaption"></p>
+    <p class="lightbox__counter" id="lbCounter"></p>
+  </div>
+
+  <!-- ===== СЕКЦИЯ: Политика конфиденциальности ===== -->
+  <div class="modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <div class="modal__box">
+      <button class="modal__close" id="privacyClose" type="button" aria-label="Закрыть окно">✕</button>
+      <h2 id="privacyTitle">Политика конфиденциальности</h2>
+      <div id="privacyText"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  /* =====================================================================
+     SITE_CONTENT — ЕДИНЫЙ ИСТОЧНИК КОНТЕНТА
+     ===================================================================== */
+  const SITE_CONTENT = {
+
+    meta: {
+      company: 'Магия праздника',
+      tagline: 'Дед Мороз и Снегурочка на дом, утренники и корпоративы',
+      season: 'Новый год',
+      city: 'Нижний Тагил',                                     // ЗАГЛУШКА
+      phone: '+7 (922) 114-65-32',
+      phoneHref: 'tel:+79221146532',
+      vk: 'https://vk.ru/moroznt24',                      // группа (vk.com — основной домен)
+      vkChat: 'https://vk.me/moroznt24',                   // прямой чат с сообществом
+      vkQuestions: 'https://vk.me/moroznt24',
+      maxSite: 'https://max.ru/', // Без персональной ссылки: MAX не создаёт чат по одному номеру
+      hours: 'Принимаем заявки ежедневно с 9:00 до 21:00',
+      copy: '© 2026 «Магия праздника». Все права защищены.'
+    },
+
+    success: {
+      emoji: '🎄',
+      title: 'Заявка принята. Спасибо за заказ!',
+      text: 'С наступающим Новым годом! Ожидайте звонка от администратора.',
+      shortToast: 'Заявка принята. Спасибо за заказ!',
+      vkBtn: 'Пока ждёте — загляните к нам ВКонтакте',
+      closeBtn: 'Вернуться на сайт'
+    },
+
+    menu: [
+      { label: 'Услуги',       href: '#uslugi' },
+      { label: 'Как заказать', href: '#kak'    },
+      { label: 'Галерея',      href: '#galereya' },
+      { label: 'Отзывы',       href: '#otzyvy' },
+      { label: 'Вопросы',      href: '#faq'    }
+    ],
+
+    hero: {
+      image: 'images/hero-bg.jpg',
+      kicker: 'МАГИЯ ПРАЗДНИКА · НОВЫЙ ГОД',
+      lead: 'Поздравления на дому, утренники и корпоративы. Вручим подарки и устроим шоу, которое ваши дети запомнят, а родители будут советовать друзьям.',
+      badge: 'При заказе до 1 декабря 2026 года — скидка 10% от цены формата',
+      trust: [
+        { icon: 'star',  text: 'Реальные отзывы на Авито' },
+        { icon: 'gift',  text: 'Вручим ваш подарок' },
+        { icon: 'clock', text: 'Приезжаем точно ко времени' }
+      ]
+    },
+
+    services: [
+      {
+        id: 'gift', formatId: 'gift',
+        quizInfo: 'Короткое поздравление от актёров: вручение подарка, общий хоровод, стишок или песня от ребёнка и фотографии.',
+        img: 'images/service-1.jpg',
+        alt: 'Дед Мороз лично вручает ребёнку подарок, переданный родителями',
+        title: 'Подарок от Деда Мороза', tag: '15–20 минут',
+        text: 'Короткое приветствие, знакомство, поздравление, вручение подарка и фото на память.',
+        points: ['Дед Мороз и Снегурочка', 'Короткое приветствие и знакомство', 'Вручение вашего подарка лично в руки', 'Фото на память'],
+        price: 2500
+      },
+      {
+        id: 'home', formatId: 'home',
+        quizInfo: 'Всё из формата «Подарок», а также игры и конкурсы.',
+        img: 'images/service-2.jpg',
+        alt: 'Дед Мороз и Снегурочка поздравляют ребёнка дома у ёлки',
+        title: 'Дед Мороз на дом', tag: '20–30 минут',
+        text: 'Полноценное поздравление дома, в привычной обстановке: интерактив, стихи, вручение подарков и фото на память.',
+        points: ['Дед Мороз и Снегурочка', 'Знакомство, стихи, хоровод и игры', 'Вручение подарков', 'Фото на память'],
+        price: 3500
+      },
+      {
+        id: 'show', formatId: 'show',
+        quizInfo: 'Всё из формата «Дед Мороз на дом» в форме интерактивного мини-спектакля.',
+        img: 'images/service-3.jpg',
+        alt: 'Интерактивное новогоднее шоу с мыльными пузырями и снежным шоу',
+        title: 'Интерактивное шоу', tag: '40–50 минут',
+        text: 'Мыльные пузыри, фокусы, снежное шоу, новогодний квест и мини-спектакль — дети участвуют, а не просто смотрят.',
+        points: ['Всё из формата «Дед Мороз на дом»', 'Шоу на выбор: мыльные пузыри, фокусы или снежное шоу', 'Новогодний квест или мини-спектакль', 'Видео поздравления в подарок', 'Можно выбрать вечер и 31 декабря'],
+        price: 4500
+      },
+      {
+        id: 'corp', formatId: 'corp',
+        quizInfo: 'Утренники в детсадах и школах, праздники на предприятиях, корпоративы и мероприятия для компаний взрослых и/или детей от 8 до 30 человек.',
+        img: 'images/service-4.jpg',
+        alt: 'Новогодний корпоратив: Дед Мороз поздравляет команду сотрудников',
+        title: 'Корпоратив', tag: 'от 30 минут',
+        text: 'Ведение праздника в офисе или на площадке: конкурсы, поздравление команды, уникальная программа и общий финал.',
+        points: ['Ведение праздника «под ключ»', 'Индивидуальный сценарий под вашу компанию', 'Программа для взрослых и детей', 'Музыка и реквизит привозим с собой'],
+        price: 5500, priceNote: 'до 12 взрослых или до 12 детей; далее +300 ₽ за каждого взрослого и +200 ₽ за каждого ребёнка. Для смешанной группы общие 12 гостей входят в базовую цену, далее +500 ₽ за каждого дополнительного участника.'
+      }
+    ],
+
+    why: [
+      { icon: 'award', title: 'Настоящие костюмы', text: 'Дед Мороз выглядит как в сказке: роскошная шуба, посох и борода — дети не сомневаются ни секунды.' },
+      { icon: 'chat',  title: 'Мы всегда на связи', text: 'Если у вас изменения, вы можете позвонить нам — и мы придумаем, как исправить ситуацию.' },
+      { icon: 'heart', title: 'Актёры, а не аниматоры на подхвате', text: 'Наши Дед Мороз и Снегурочка умеют найти подход к стеснительным детям и не пугают даже самых осторожных.' },
+      { icon: 'user',  title: 'Готовимся к вашему ребёнку', text: 'Заранее узнаём имя, увлечения и успехи года — поздравление звучит лично, а не по шаблону.' }
+    ],
+
+    about: {
+      text: '<em>«Магия праздника»</em> — команда актёров, которые каждый год дарят детям настоящее новогоднее чудо. Мы не просто приходим в костюмах — мы готовим поздравление под вашего ребёнка, чтобы он поверил в сказку.',
+      btn: 'Наша группа ВКонтакте',
+      chatBtn: 'Написать в чат группы'
+    },
+
+    steps: [
+      { title: 'Оставляете заявку', text: 'Заполняете форму на сайте — это занимает меньше минуты. Формат и цена уже подставлены автоматически.' },
+      { title: 'Перезваниваем в течение суток', text: 'После заявки мы свяжемся с вами в течение суток в рабочее время, подтвердим дату и уточним детали заказа. Если есть вопросы — нажмите «Согласовать / задать вопрос», обсудим детали в чате группы ВКонтакте.' },
+      { title: 'Передаёте подарок Деду Морозу', text: 'Незаметно отдаёте подарок Снегурочке у двери или в подъезде — ребёнок ничего не заметит.' },
+      { title: 'Чудо случается!', text: 'Стук в дверь, посох, хоровод и подарок лично в руки. Эмоции ребёнка — бесценны.' }
+    ],
+
+    gallery: [
+      { src: 'images/gallery-1.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-2.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-3.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-4.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-5.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-6.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-7.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-8.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-9.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-10.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-11.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-12.jpg', alt: 'Взрослый новогодний праздник с Дедом Морозом и Снегурочкой', caption: 'Взрослый новогодний праздник с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-13.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-14.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-15.jpg', alt: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой', caption: 'Новогоднее поздравление с Дедом Морозом и Снегурочкой' },
+      { src: 'images/gallery-16.jpg', alt: 'Радость от встречи со Снегурочкой', caption: 'Радость от встречи со Снегурочкой' }
+    ],
+    galleryNote: 'Больше фото и видео — в нашей группе ВКонтакте',
+
+    /* Реальные отзывы клиентов с Авито (тексты без изменений, кроме опечатки «Снегу чка»). */
+    reviews: [
+      { name: 'Роман', service: 'Дед Мороз и Снегурочка', text: 'Супер Дед Мороз и Снегурочка! Дети в восторге. Классные костюмы.', photo: '', rating: 5, date: '3 января 2025', source: 'avito' },
+      { name: 'Юлия', service: 'Дед Мороз и Снегурочка', text: 'Большое спасибо аниматорам, все прошло хорошо. Ребенок был очень счастлив', photo: '', rating: 5, date: '27 декабря 2025', source: 'avito' },
+      { name: 'Катерина', service: 'Дед Мороз и Снегурочка', text: 'Видеозвонок с дедушкой морозом состоялся в назначенный день и время! Рекомендую! Очень добрый интересный разговор! Ребёнок остался довольный!', photo: '', rating: 5, date: '4 января', source: 'avito' },
+      { name: 'МенеджерКа Стройка', service: 'Организация праздников', text: 'Благодарим Вас. Мы решили поздравить детей на улице (в лесу) и ребята охотно согласились. Наши детки поверили в сказку. Это было очень круто. А как радовались люди на улице. Еще раз большое спасибо 🙏🏻', photo: '', rating: 5, date: '5 января 2025', source: 'avito' }
+    ],
+
+    faq: [
+      { q: 'Что если ребёнок испугается?', a: 'Актёры обучены работать со стеснительными детьми: не настаивают, начинают издалека — со Снегурочкой, игрушкой или разговором через родителей. Если ребёнку нужно время, мы его даём: чудо никуда не убежит.' },
+      { q: 'Как передать подарок?', a: 'Вы незаметно отдаёте его Снегурочке у двери или в подъезде — до начала поздравления. Мы заранее согласуем, как это сделать, чтобы ребёнок ничего не увидел.' },
+      { q: 'На какие даты можно оформить заказ?', a: 'Принимаем заказы только с 20 по 31 декабря. Надбавка к цене зависит от даты и выбранного часа — итоговая стоимость автоматически показывается в заявке.' },
+      { q: 'Сколько длится визит?', a: 'От 15 до 50 минут в зависимости от формата: короткое вручение подарка — 15–20 минут, поздравление на дому — 20–30 минут, интерактивное шоу — 40–50 минут, корпоратив — от 30 минут.' },
+      { q: 'Как оплатить?', a: 'После отправки заявки мы перезвоним, уточним детали и расскажем о предоплате. Предоплата вносится в течение суток после подтверждения заявки; остаток — в день поздравления.' },
+      { q: 'У меня остались вопросы — куда написать?', a: 'Напишите в чат нашей группы ВКонтакте — кнопка «Согласовать / задать вопрос» есть рядом с формой заявки и в меню. Ответим и поможем выбрать формат.' }
+    ],
+
+    formats: [
+      { value: '',       label: '— Выберите формат —' },
+      { value: 'gift',   label: 'Подарок от Деда Мороза' },
+      { value: 'home',   label: 'Дед Мороз на дом' },
+      { value: 'show',   label: 'Интерактивное шоу' },
+      { value: 'corp',   label: 'Корпоратив' }
+    ],
+
+    formSide: [
+      { icon: 'phone',  text: 'Свяжемся с вами в течение суток в рабочее время (9:00–21:00).' },
+      { icon: 'chat',   text: 'Узнаём имя, возраст и увлечения ребёнка — готовим личный сценарий.' },
+      { icon: 'gift',   text: 'Договоримся, как незаметно передать подарок Деду Морозу.' },
+      { icon: 'shield', text: 'Фиксируем дату и время. Предоплата — гарантия, что праздник состоится.' }
+    ],
+
+    privacy: [
+      { h: '1. Общие положения', p: 'Настоящая политика описывает, как «Магия праздника» (далее — Оператор) обрабатывает и защищает персональные данные посетителей сайта. Текст является заглушкой — перед запуском замените его актуальной редакцией с указанием реквизитов Оператора.' },
+      { h: '2. Какие данные мы собираем', list: ['имя и контактный телефон, указанные в форме заявки;', 'желаемая дата, время и формат поздравления;', 'имя и возраст ребёнка, комментарий к заявке;', 'технические данные: IP-адрес, cookie, сведения о браузере.'] },
+      { h: '3. Цель обработки', p: 'Данные используются исключительно для связи с вами, согласования деталей поздравления и заключения договора. Мы не передаём данные третьим лицам и не используем их для рассылок без вашего согласия.' },
+      { h: '4. Правовые основания', p: 'Обработка осуществляется на основании вашего согласия (ст. 9 Федерального закона № 152-ФЗ «О персональных данных»), которое вы даёте, отмечая чекбокс в форме заявки.' },
+      { h: '5. Срок хранения и защита', p: 'Данные хранятся не более 1 года с момента обращения, после чего удаляются. Хранение организовано в закрытой Google Таблице с ограниченным доступом.' },
+      { h: '6. Ваши права', p: 'Вы вправе запросить сведения об обработке, потребовать уточнения, блокирования или уничтожения данных, отозвать согласие. Для этого напишите нам через форму на сайте или в чат группы ВКонтакте.' },
+      { h: '7. Контакты', p: 'Вопросы по обработке персональных данных: напишите в чат группы ВКонтакте vk.com/moroznt24.' }
+    ]
+  };
+
+  /* =====================================================================
+     ENDPOINT ПРИЁМА ЗАЯВОК (Google Apps Script → Google Таблица)
+     ===================================================================== */
+  const LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbysFYfoD3gxIcdPqG3dsB8YPPAIHOY8Q9g8Cy36nhRWppJ-OgZXRBSAyPe5IZB_MH4Q/exec";
+  const LEAD_TIMEOUT_MS  = 20000;
+  const MIN_TIME_ON_PAGE = 2500;
+
+  /* =====================================================================
+     ОКРУЖЕНИЕ: именно оно чаще всего ломает отправку и ссылки
+     ===================================================================== */
+  const ENV = {
+    protocol: location.protocol,
+    isFile: location.protocol === 'file:',
+    isInIframe: (function () { try { return window.self !== window.top; } catch (e) { return true; } })(),
+    online: navigator.onLine !== false
+  };
+  // Публичная страница не содержит панели тестирования или административных функций.
+
+  /* =====================================================================
+     ИКОНКИ
+     ===================================================================== */
+  const ICONS = {
+    star:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5L2.6 9.4l6.5-.9z"/></svg>',
+    gift:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12"/><path d="M12 8S10.5 3.5 8 4.2 8.6 8 12 8zm0 0s1.5-4.5 4-3.8S15.4 8 12 8z"/></svg>',
+    clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    award:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.2 14.2L7 22l5-2.8L17 22l-1.2-7.8"/></svg>',
+    heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 5.6a4.8 4.8 0 0 0-6.8 0L12 7.2l-1.6-1.6a4.8 4.8 0 1 0-6.8 6.8l8.4 8.4 8.4-8.4a4.8 4.8 0 0 0 0-6.4z"/></svg>',
+    user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/><path d="M17 8l1.6 1.6L22 6"/></svg>',
+    check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>',
+    phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v4a16 16 0 0 1-16-16z"/></svg>',
+    chat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3 1-5.5A8 8 0 1 1 21 12z"/></svg>',
+    shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+    pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>',
+    photo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-6 6"/></svg>',
+    chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+    vk:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.131-.427.131-.427s-.019-1.303.572-1.495c.582-.19 1.331 1.263 2.126 1.821.601.422 1.057.33 1.057.33l2.124-.03s1.113-.071.585-.964c-.043-.073-.306-.661-1.579-1.876-1.333-1.272-1.153-1.065.452-3.256.978-1.334 1.369-2.148 1.247-2.496-.117-.332-.834-.244-.834-.244l-2.391.015s-.177-.025-.308.055c-.128.079-.21.262-.21.262s-.381 1.036-.889 1.92c-1.073 1.868-1.503 1.967-1.678 1.85-.409-.272-.307-1.093-.307-1.676 0-1.822.271-2.582-.532-2.779-.267-.065-.463-.108-1.143-.115-.872-.009-1.61.003-2.028.212-.278.139-.492.448-.362.465.161.021.526.099.719.368.25.345.241 1.119.241 1.119s.143 2.145-.335 2.41c-.328.182-.777-.189-1.742-1.895-.494-.873-.867-1.838-.867-1.838s-.072-.179-.2-.275c-.155-.116-.372-.152-.372-.152l-2.272.015s-.341.01-.467.161c-.112.134-.009.411-.009.411s1.782 4.234 3.803 6.378c1.852 1.965 3.955 1.836 3.955 1.836h.951z"/></svg>'
+  };
+
+  /* =====================================================================
+     УТИЛИТЫ
+     ===================================================================== */
+  const $  = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const C = SITE_CONTENT;
+  const PAGE_OPENED_AT = Date.now();
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function priceFmt(v) { return (typeof v === 'number') ? v.toLocaleString('ru-RU').replace(/\u00A0/g, ' ') : v; }
+  function priceLabel(v, prefix) { return (prefix || 'от ') + priceFmt(v) + ' ₽'; }
+
+  function mediaHTML(src, alt, ratio) {
+    return '<div class="media" style="--ar:' + ratio + '">' +
+        '<img class="media__img" src="' + src + '" alt="' + alt + '" loading="lazy" decoding="async" ' +
+             'onload="this.classList.add(\'is-loaded\')" onerror="this.classList.add(\'is-error\')">' +
+        '<div class="media__ph" aria-hidden="true">' + ICONS.photo + '<span>Фото скоро</span></div></div>';
+  }
+  function initials(name) {
+    return String(name).trim().split(/[\s,]+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
+  }
+  function starsHTML(rating) {
+    let out = '<span class="stars" role="img" aria-label="Оценка ' + rating + ' из 5">';
+    for (let i = 1; i <= 5; i++) {
+      out += '<svg viewBox="0 0 24 24" aria-hidden="true" style="' + (i > rating ? 'opacity:.25' : '') + '"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5L2.6 9.4l6.5-.9z"/></svg>';
+    }
+    return out + '</span>';
+  }
+  function collectUtm() {
+    const p = new URLSearchParams(location.search), out = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid'].forEach(k => {
+      const v = p.get(k); if (v) out[k] = v.slice(0, 120);
+    });
+    return out;
+  }
+  function sourceLabel() {
+    const u = collectUtm(), keys = Object.keys(u);
+    return keys.length ? 'Сайт · ' + keys.map(k => k.replace('utm_','') + '=' + u[k]).join(', ') : 'Сайт (лендинг)';
+  }
+
+  /* --- Лог диагностики --- */
+  function debugLog(msg) {
+    console.log('[Магия праздника] ' + msg);
+  }
+
+  /* --- Уведомление --- */
+  let toastTimer = null;
+  function showToast(html, ms, closable) {
+    const t = $('#toast');
+    if (!t) return;
+    t.innerHTML = html + (closable ? '<br><button class="btn btn--xs btn--ghost toast__close" type="button" id="toastClose">Закрыть</button>' : '');
+    t.classList.add('is-shown');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('is-shown'), ms || 6000);
+    const cb = $('#toastClose');
+    if (cb) cb.addEventListener('click', () => t.classList.remove('is-shown'));
+  }
+
+  /* =====================================================================
+     ВНЕШНИЕ ССЫЛКИ (ВК)
+     ВАЖНО: клик НЕ перехватывается — используется штатное открытие браузера
+     (прежняя версия делала preventDefault и этим ломала переход в песочнице).
+     Если через 900 мс страница всё ещё видима — значит вкладка не открылась,
+     показываем уведомление с кликабельным адресом.
+     ===================================================================== */
+  function initExternalLinks() {
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[target="_blank"]');
+      if (!a || !a.href || !/^https?:/i.test(a.href)) return;
+      const url = a.href;
+      debugLog('Клик по внешней ссылке: ' + url);
+      setTimeout(() => {
+        if (document.visibilityState === 'hidden' || document.hidden) return;   // вкладка открылась
+        debugLog('Новая вкладка не открылась (блокировка песочницы/браузера). Показываю ссылку.');
+        showToast('<strong>Браузер заблокировал открытие новой вкладки</strong>' +
+                  'Откройте ссылку вручную: <a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + '</a>',
+                  14000, true);
+      }, 900);
+    }, true);
+  }
+
+  /* =====================================================================
+     JSONP — читает ответ Apps Script (fetch в режиме cors Google отклоняет)
+     Работает даже со страницы file://, потому что это тег <script>, а не XHR.
+     ===================================================================== */
+  function jsonp(url, timeoutMs) {
+    return new Promise((resolve, reject) => {
+      const cbName = '__mpCb' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+      const script = document.createElement('script');
+      let settled = false;
+      const timer = setTimeout(() => finish(new Error('timeout (скрипт не ответил за ' + (timeoutMs || 15000) + ' мс)')), timeoutMs || 15000);
+      function finish(err, data) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        try { delete window[cbName]; } catch (e) { window[cbName] = undefined; }
+        if (script.parentNode) script.parentNode.removeChild(script);
+        err ? reject(err) : resolve(data);
+      }
+      window[cbName] = data => finish(null, data);
+      script.onerror = () => finish(new Error('script-error (нет доступа к скрипту или он не развёрнут)'));
+      script.src = url + (url.indexOf('?') === -1 ? '?' : '&') + 'callback=' + cbName + '&_=' + Date.now();
+      document.head.appendChild(script);
+    });
+  }
+
+  async function pingEndpoint() {
+    if (!LEAD_ENDPOINT) return { ok: false, reason: 'LEAD_ENDPOINT пустой' };
+    try {
+      const r = await jsonp(LEAD_ENDPOINT + '?action=ping', 15000);
+      window.__mpVerify = !!(r && r.ok);
+      return r || { ok: false, reason: 'пустой ответ' };
+    } catch (err) {
+      window.__mpVerify = false;
+      return { ok: false, reason: String(err && err.message || err) };
+    }
+  }
+
+  async function checkLeadStored(leadId, tries) {
+    for (let i = 0; i < (tries || 3); i++) {
+      try {
+        const r = await jsonp(LEAD_ENDPOINT + '?action=check&leadId=' + encodeURIComponent(leadId), 15000);
+        if (r && r.found) return true;
+      } catch (err) { /* пробуем ещё раз */ }
+      await sleep(1200 + i * 900);
+    }
+    return false;
+  }
+
+  async function sendLead(data) {
+    if (!LEAD_ENDPOINT) return { ok: false, verified: false, reason: 'Адрес приёма заявок не задан' };
+
+    /* Apps Script принимает тело запроса как JSON-строку (e.postData.contents).
+       Отправляем только так: простой POST text/plain не вызывает CORS-preflight. */
+    const body = JSON.stringify(data);
+    let channel = 'fetch';
+    let sent = false;
+
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), LEAD_TIMEOUT_MS);
+    try {
+      await fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: body,
+        redirect: 'follow',
+        keepalive: true,
+        signal: ctrl.signal
+      });
+      sent = true;
+      debugLog('POST (fetch, no-cors) выполнен.');
+    } catch (err) {
+      debugLog('fetch не сработал: ' + (err && err.message) + ' — пробую sendBeacon.');
+    } finally {
+      clearTimeout(timer);
+    }
+
+    if (!sent && navigator.sendBeacon) {
+      channel = 'beacon';
+      try {
+        sent = navigator.sendBeacon(LEAD_ENDPOINT, new Blob([body], { type: 'text/plain;charset=utf-8' }));
+      } catch (err) { sent = false; }
+      debugLog('sendBeacon: ' + (sent ? 'поставлен в очередь' : 'не сработал'));
+    }
+
+    if (!sent) return { ok: false, verified: false, channel: channel };
+    // Если посетитель отправил форму до завершения проверки страницы, запускаем её здесь.
+    if (!window.__mpVerify) await pingEndpoint();
+
+    /* Подтверждение записи (работает, если в Apps Script есть doGet из apps-script/Code.gs).
+       Повторная отправка безопасна: скрипт не пишет дубли с тем же leadId. */
+    if (window.__mpVerify) {
+      let found = await checkLeadStored(data.leadId, 3);
+      if (!found && navigator.sendBeacon) {
+        debugLog('Строка не найдена — повторяю отправку через sendBeacon.');
+        try { navigator.sendBeacon(LEAD_ENDPOINT, new Blob([body], { type: 'text/plain;charset=utf-8' })); } catch (err) {}
+        found = await checkLeadStored(data.leadId, 3);
+      }
+      return { ok: found, verified: true, found: found, channel: channel };
+    }
+
+    return { ok: false, verified: false, reason: 'Подтверждение записи недоступно: обновите Apps Script', channel: channel };
+  }
+
+  /* =====================================================================
+     РЕНДЕР
+     ===================================================================== */
+  function renderMenu() {
+    $('#navList').innerHTML = C.menu.map(m => '<li><a class="nav__link" href="' + m.href + '">' + m.label + '</a></li>').join('');
+    $('#mobileNavList').innerHTML = C.menu.map((m, i) =>
+      '<li><a class="mobile-panel__link" href="' + m.href + '" data-mobile-link>' + m.label + '<span>0' + (i + 1) + '</span></a></li>').join('');
+    $('#footerNav').innerHTML = C.menu.map(m => '<a href="' + m.href + '">' + m.label + '</a>').join('');
+  }
+
+  function isReal(v) { return !!v && !/^\s*\[.*\]\s*$/.test(String(v)); }
+  function phoneLine() {
+    const m = C.meta;
+    return (isReal(m.phone) && !/0000000000/.test(m.phoneHref)) ? 'позвоните: <a href="' + m.phoneHref + '">' + m.phone + '</a> или ' : '';
+  }
+
+  function renderMeta() {
+    const m = C.meta;
+    ['#headerVk','#mobileVk','#heroSecondary','#reviewsVk','#successVk','#formVk','#aboutVk']
+      .forEach(s => { const el = $(s); if (el) { el.href = m.vk; el.target = '_blank'; el.rel = 'noopener noreferrer'; } });
+    ['#stepsQuestion','#mobileQuestion','#formQuestion','#formChat','#aboutChat']
+      .forEach(s => { const el = $(s); if (el) { el.href = m.vkChat; el.target = '_blank'; el.rel = 'noopener noreferrer'; } });
+    /* Телефон и город показываем, только если они заполнены (не заглушки вида [номер]) */
+    const hasPhone = isReal(m.phone) && !/0000000000/.test(m.phoneHref);
+    const hasCity = isReal(m.city);
+    ['#formPhone','#floatPhone'].forEach(s => {
+      const el = $(s); if (!el) return;
+      if (hasPhone) el.href = m.phoneHref; else el.remove();
+    });
+    if (!hasPhone) {
+      document.body.classList.add('no-phone');
+      const hint = $('#hint-phone'); if (hint) hint.textContent = 'Свяжемся с вами в течение суток в рабочее время (9:00–21:00).';
+    }
+
+    $('#mobileContacts').innerHTML = [hasCity ? m.city : '', hasPhone ? '<a href="' + m.phoneHref + '">' + m.phone + '</a>' : '']
+      .filter(Boolean).join(' · ') + (hasCity || hasPhone ? '<br>' : '') + m.hours;
+    $('#footerDesc').textContent = m.tagline + '. ' + (hasCity ? m.city + ' и пригород. ' : '') + m.hours + '.';
+    $('#footerContacts').innerHTML =
+      (hasPhone ? '<a href="' + m.phoneHref + '">' + ICONS.phone + '<span>' + m.phone + '</span></a>' : '') +
+      '<a href="' + m.vk + '" target="_blank" rel="noopener noreferrer">' + ICONS.vk + '<span>Группа ВКонтакте</span></a>' +
+      '<a href="https://max.ru/" target="_blank" rel="noopener noreferrer">' + ICONS.chat + '<span>MAX — основной канал: найдите ' + m.phone + ' по номеру</span></a>' +
+      '<a href="' + m.vkChat + '" target="_blank" rel="noopener noreferrer">' + ICONS.chat + '<span>Написать в чат группы</span></a>' +
+      '<a href="#privacy" data-modal-link="privacy">' + ICONS.shield + '<span>Политика конфиденциальности</span></a>' +
+      (hasCity ? '<span style="display:flex;gap:10px;color:var(--text-muted)">' + ICONS.pin + '<span>' + m.city + ' · пригород +1 000 ₽</span></span>' : '');
+    $('#footerCopy').textContent = m.copy;
+
+    $('#heroKicker').textContent = C.hero.kicker;
+    $('#heroLead').textContent = C.hero.lead;
+    $('#heroBadge').textContent = '🎁 ' + C.hero.badge;
+    $('#heroBadge').hidden = bookingTodayTagil() >= DISCOUNT_DEADLINE;
+    $('#heroTrust').innerHTML = C.hero.trust.map(t =>
+      '<li><span style="width:22px;height:22px;color:var(--gold);flex:none">' + ICONS[t.icon] + '</span><b>' + t.text + '</b></li>').join('');
+    $('#heroImg').src = C.hero.image;
+    $('#galleryNote').innerHTML = C.galleryNote + ' — <a class="link-underline" href="' + m.vk + '" target="_blank" rel="noopener noreferrer">vk.ru/moroznt24</a>';
+
+    const s = C.success;
+    $('#successEmoji').textContent = s.emoji;
+    $('#successTitle').textContent = s.title;
+    $('#successText').textContent = s.text;
+    $('#successVk').textContent = s.vkBtn;
+  }
+
+  function renderServices() {
+    $('#servicesGrid').innerHTML = C.services.map((s, i) =>
+      '<article class="card reveal' + (s.id === 'home' ? ' card--hit' : '') + (s.id === 'corp' ? ' card--corporate' : '') + '" style="--d:' + (i * 0.07) + 's">' +
+        (s.id === 'home' ? '<span class="card__hit" aria-label="Хит продаж">★ Хит продаж</span>' : '') +
+        mediaHTML(s.img, s.alt, '4/3') +
+        '<div class="card__body">' +
+          '<div class="card__title"><h3>' + s.title + '</h3><span class="card__tag">' + s.tag + '</span></div>' +
+          '<p class="card__text">' + s.text + '</p>' +
+          '<ul class="card__list">' + s.points.map(p => '<li>' + ICONS.check + '<span>' + p + '</span></li>').join('') + '</ul>' +
+          '<div class="card__foot">' +
+            '<p class="card__price">' + priceLabel(s.price) + (s.id === 'corp' ? '<small class="card__price-note">(только взрослые: сверх 12 +300 ₽/чел.; только дети: сверх 12 +200 ₽/реб.; смешанная группа: сверх 12 гостей суммарно +500 ₽/чел.; максимум 30 гостей)</small>' : '<small class="card__price-note">(до 3 детей; далее +500 ₽ за каждого)</small>') + '</p>' +
+            '<button class="btn btn--gold btn--sm" type="button" data-select-format="' + s.formatId + '">Заказать</button>' +
+          '</div>' +
+        '</div>' +
+      '</article>').join('');
+  }
+
+  function renderWhy() {
+    $('#whyGrid').innerHTML = C.why.map((w, i) =>
+      '<article class="why-item reveal" style="--d:' + (i * 0.06) + 's">' +
+        '<span class="why-item__ico">' + ICONS[w.icon] + '</span>' +
+        '<div><h3>' + w.title + '</h3><p>' + w.text + '</p></div>' +
+      '</article>').join('');
+    $('#aboutBlock').innerHTML =
+      '<p>' + C.about.text + '</p>' +
+      '<div class="about__btns">' +
+        '<a class="btn btn--vk" id="aboutVk" href="' + C.meta.vk + '" target="_blank" rel="noopener noreferrer">' + C.about.btn + '</a>' +
+        '<a class="btn btn--ghost" id="aboutChat" href="' + C.meta.vkChat + '" target="_blank" rel="noopener noreferrer">' + C.about.chatBtn + '</a>' +
+      '</div>';
+  }
+
+  function renderSteps() {
+    $('#stepsList').innerHTML = C.steps.map((s, i) =>
+      '<li class="step reveal" style="--d:' + (i * 0.08) + 's">' +
+        '<span class="step__num" aria-hidden="true">' + (i + 1) + '</span>' +
+        '<div><h3>' + s.title + '</h3><p>' + s.text + '</p></div>' +
+      '</li>').join('');
+  }
+
+  function renderGallery() {
+    $('#galleryGrid').innerHTML = C.gallery.map((g, i) =>
+      '<button class="gallery__item reveal" type="button" data-lb="' + i + '" ' +
+              'aria-label="Открыть фото ' + (i + 1) + ' из ' + C.gallery.length + ': ' + g.caption + '" style="--d:' + (i * 0.05) + 's">' +
+        mediaHTML(g.src, g.alt, '1/1') +
+        '<span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg></span>' +
+      '</button>').join('');
+
+    /* Если ни одной фотографии в папке images/ ещё нет — скрываем галерею, чтобы не показывать пустые заглушки */
+    const sec = $('#galereya');
+    if (sec) {
+      let loaded = 0, done = 0;
+      C.gallery.forEach(g => {
+        const im = new Image();
+        im.onload = () => { loaded++; done++; };
+        im.onerror = () => { done++; if (done === C.gallery.length && !loaded) sec.hidden = true; };
+        im.src = g.src;
+      });
+    }
+  }
+
+  function renderReviews() {
+    $('#reviewsTrack').innerHTML = C.reviews.map(r =>
+      '<div class="slider__slide"><article class="review">' +
+        '<div class="review__top">' +
+          '<div class="review__ava" aria-hidden="true">' + initials(r.name) +
+            (r.photo ? '<img src="' + r.photo + '" alt="" loading="lazy" decoding="async" onload="this.classList.add(\'is-loaded\')" onerror="this.remove()">' : '') +
+          '</div>' +
+          '<div><p class="review__name">' + r.name + '</p>' +
+            '<div class="review__meta">' + starsHTML(r.rating) +
+              (r.date ? '<span class="review__date">' + r.date + '</span>' : '') +
+              (r.source === 'avito' ? '<span class="review__src">Отзыв на Авито</span>' :
+                (r.source === 'vk' ? '<span class="review__src">Отзыв из ВКонтакте</span>' : '')) +
+            '</div></div>' +
+        '</div>' +
+        (r.service ? '<p class="review__service">Сделка состоялась · ' + r.service + '</p>' : '') +
+        '<p class="review__text">' + r.text + '</p>' +
+      '</article></div>').join('');
+    $('#reviewsDots').innerHTML = C.reviews.map((r, i) =>
+      '<button class="slider__dot" type="button" role="tab" data-dot="' + i + '" aria-current="' + (i === 0) + '" aria-label="Отзыв ' + (i + 1) + ' из ' + C.reviews.length + '"></button>').join('');
+  }
+
+  function renderFaq() {
+    $('#faqList').innerHTML = C.faq.map((f, i) =>
+      '<details class="faq__item reveal" style="--d:' + (i * 0.05) + 's">' +
+        '<summary class="faq__q"><span>' + f.q + '</span><span class="faq__chev" aria-hidden="true">' + ICONS.chev + '</span></summary>' +
+        '<div class="faq__a"><p>' + f.a + '</p></div>' +
+      '</details>').join('');
+  }
+
+  function renderFormOptions() {
+    $('#f-format').innerHTML = C.formats.map(o => '<option value="' + o.value + '">' + o.label + '</option>').join('');
+    $('#formSide').innerHTML = C.formSide.map(s =>
+      '<li><span style="width:22px;height:22px;flex:none">' + ICONS[s.icon] + '</span><span>' + s.text + '</span></li>').join('');
+  }
+
+  function renderPrivacy() {
+    $('#privacyText').innerHTML = C.privacy.map(b =>
+      '<h3>' + b.h + '</h3>' + (b.p ? '<p>' + b.p + '</p>' : '') +
+      (b.list ? '<ul>' + b.list.map(li => '<li>' + li + '</li>').join('') + '</ul>' : '')).join('');
+  }
+
+  /* =====================================================================
+     ШАПКА, МЕНЮ, ПАНЕЛЬ, АНИМАЦИИ
+     ===================================================================== */
+  function initHeader() {
+    const header = $('#header');
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const burger = $('#burger'), panel = $('#mobilePanel');
+    let lastFocus = null;
+    function openPanel() {
+      lastFocus = document.activeElement;
+      panel.hidden = false;
+      requestAnimationFrame(() => panel.classList.add('is-open'));
+      burger.setAttribute('aria-expanded', 'true');
+      burger.setAttribute('aria-label', 'Закрыть меню');
+      document.body.classList.add('is-locked');
+      $('#mobileClose').focus();
+    }
+    function closePanel() {
+      panel.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Открыть меню');
+      document.body.classList.remove('is-locked');
+      setTimeout(() => { panel.hidden = true; }, 300);
+      if (lastFocus) lastFocus.focus();
+    }
+    burger.addEventListener('click', () => panel.classList.contains('is-open') ? closePanel() : openPanel());
+    $('#mobileClose').addEventListener('click', closePanel);
+    $$('[data-mobile-link], .mobile-panel .btn').forEach(a => a.addEventListener('click', closePanel));
+    panel.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closePanel();
+      if (e.key === 'Tab') trapFocus(panel, e);
+    });
+
+    const links = $$('.nav__link');
+    const sections = links.map(a => $(a.getAttribute('href'))).filter(Boolean);
+    if ('IntersectionObserver' in window && sections.length) {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (en.isIntersecting) links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + en.target.id));
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      sections.forEach(s => obs.observe(s));
+    }
+  }
+
+  function initFloatBar() {
+    const bar = $('#floatBar'), hero = $('#hero'), form = $('#zayavka');
+    let afterHero = false, formVisible = false;
+    const update = () => bar.classList.toggle('is-visible', afterHero && !formVisible);
+    new IntersectionObserver(e => { afterHero = !e[0].isIntersecting; update(); }, { threshold: 0.12 }).observe(hero);
+    new IntersectionObserver(e => { formVisible = e[0].isIntersecting; update(); }, { threshold: 0.18 }).observe(form);
+  }
+
+  function initReveal() {
+    const items = $$('.reveal');
+    if (!('IntersectionObserver' in window) || REDUCED) { items.forEach(el => el.classList.add('is-visible')); return; }
+    const obs = new IntersectionObserver((entries, o) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-visible'); o.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(el => obs.observe(el));
+  }
+
+  function initSnow() {
+    if (REDUCED) return;
+    const canvas = $('#snow');
+    if (!canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w = 0, h = 0, flakes = [], raf = null;
+    function spawn(any) {
+      return { x: Math.random() * w, y: any ? Math.random() * h : -12, r: 1 + Math.random() * 2.6,
+               vy: .25 + Math.random() * .85, vx: -.25 + Math.random() * .5,
+               a: .25 + Math.random() * .55, sw: Math.random() * Math.PI * 2, ss: .008 + Math.random() * .02 };
+    }
+    function resize() {
+      w = canvas.clientWidth; h = canvas.clientHeight;
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const target = Math.min(60, Math.max(22, Math.round(w / 26)));
+      flakes = Array.from({ length: target }, () => spawn(true));
+    }
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < flakes.length; i++) {
+        const f = flakes[i];
+        f.sw += f.ss; f.y += f.vy; f.x += f.vx + Math.sin(f.sw) * .35;
+        if (f.y - f.r > h) { flakes[i] = spawn(false); continue; }
+        if (f.x < -10) f.x = w + 8; else if (f.x > w + 10) f.x = -8;
+        ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,248,236,' + f.a.toFixed(3) + ')'; ctx.fill();
+      }
+      raf = requestAnimationFrame(tick);
+    }
+    const start = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    const stop  = () => { if (raf) { cancelAnimationFrame(raf); raf = null; } };
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+    document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+    start();
+  }
+
+  function initLightbox() {
+    const lb = $('#lightbox'), img = $('#lbImg'), ph = $('#lbPh'), cap = $('#lbCaption'), cnt = $('#lbCounter');
+    let idx = 0, lastFocus = null, touchX = 0;
+    function show(i) {
+      idx = (i + C.gallery.length) % C.gallery.length;
+      const g = C.gallery[idx];
+      ph.hidden = true; img.style.opacity = '0'; img.alt = g.alt;
+      img.onerror = () => { img.style.opacity = '0'; ph.hidden = false; };
+      img.onload  = () => { img.style.opacity = '1'; ph.hidden = true; };
+      img.src = g.src;
+      cap.textContent = g.caption;
+      cnt.textContent = (idx + 1) + ' / ' + C.gallery.length;
+    }
+    function open(i, trigger) {
+      lastFocus = trigger || document.activeElement;
+      show(i); lb.classList.add('is-open'); document.body.classList.add('is-locked'); $('#lbClose').focus();
+    }
+    function close() {
+      lb.classList.remove('is-open'); document.body.classList.remove('is-locked');
+      if (lastFocus) lastFocus.focus();
+    }
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('[data-lb]');
+      if (btn) open(parseInt(btn.dataset.lb, 10), btn);
+    });
+    $('#lbClose').addEventListener('click', close);
+    $('#lbPrev').addEventListener('click', () => show(idx - 1));
+    $('#lbNext').addEventListener('click', () => show(idx + 1));
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    lb.addEventListener('keydown', e => {
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
+      if (e.key === 'Tab') trapFocus(lb, e);
+    });
+    lb.addEventListener('touchstart', e => { touchX = e.changedTouches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 45) show(dx < 0 ? idx + 1 : idx - 1);
+    }, { passive: true });
+  }
+
+  function initPrivacyModal() {
+    const modal = $('#privacyModal');
+    let lastFocus = null;
+    function open() { lastFocus = document.activeElement; modal.classList.add('is-open'); document.body.classList.add('is-locked'); $('#privacyClose').focus(); }
+    function close() { modal.classList.remove('is-open'); document.body.classList.remove('is-locked'); if (lastFocus) lastFocus.focus(); }
+    document.addEventListener('click', e => {
+      const link = e.target.closest('[data-modal-link="privacy"]');
+      if (link) { e.preventDefault(); open(); }
+    });
+    $('#privacyClose').addEventListener('click', close);
+    modal.addEventListener('click', e => { if (e.target === modal) close(); });
+    modal.addEventListener('keydown', e => {
+      if (e.key === 'Escape') close();
+      if (e.key === 'Tab') trapFocus(modal, e);
+    });
+  }
+
+  function trapFocus(container, e) {
+    if (e.key !== 'Tab') return;
+    const list = $$('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])', container)
+      .filter(el => el.offsetParent !== null);
+    if (!list.length) return;
+    const first = list[0], last = list[list.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
+  function initReviewsSlider() {
+    const track = $('#reviewsTrack'), dotsBox = $('#reviewsDots');
+    const total = C.reviews.length;
+    let idx = 0, startX = 0, dragging = false;
+    function go(i) {
+      idx = (i + total) % total;
+      track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+      $$('.slider__dot', dotsBox).forEach((d, di) => d.setAttribute('aria-current', String(di === idx)));
+    }
+    $('#reviewPrev').addEventListener('click', () => go(idx - 1));
+    $('#reviewNext').addEventListener('click', () => go(idx + 1));
+    dotsBox.addEventListener('click', e => {
+      const d = e.target.closest('[data-dot]');
+      if (d) go(parseInt(d.dataset.dot, 10));
+    });
+    const slider = $('#reviewsSlider');
+    slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
+    slider.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      const dx = e.touches[0].clientX - startX;
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(calc(' + (-idx * 100) + '% + ' + dx + 'px))';
+    }, { passive: true });
+    slider.addEventListener('touchend', e => {
+      dragging = false; track.style.transition = '';
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 45) go(idx + (dx < 0 ? 1 : -1)); else go(idx);
+    }, { passive: true });
+    slider.setAttribute('tabindex', '0');
+    slider.setAttribute('aria-roledescription', 'карусель');
+    slider.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); }
+    });
+    go(0);
+  }
+
+  /* =====================================================================
+     ФОРМА ЗАЯВКИ
+     ===================================================================== */
+  const STORAGE_KEY = 'magia_prazdnika_lead_v6';
+  function bookingWindow(now) {
+    const d = now || new Date(), pad = n => String(n).padStart(2, '0');
+    const today = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+    let year = d.getFullYear();
+    let start = year + '-12-20', end = year + '-12-31';
+    if (today > end) { year += 1; start = year + '-12-20'; end = year + '-12-31'; }
+    return { min: today > start ? today : start, max: end, year: year };
+  }
+  const BOOKING_WINDOW = bookingWindow();
+  const DATE_MIN = BOOKING_WINDOW.min;
+  const DATE_MAX = BOOKING_WINDOW.max;
+
+  function getSeasonSurcharge(dateISO, time) {
+    if (!dateISO || !time) return 0;
+    const parts = dateISO.split('-').map(Number);
+    const month = parts[1], day = parts[2], hour = Number(String(time).slice(0, 2));
+    if (month !== 12 || !Number.isFinite(hour)) return 0;
+    if (day >= 20 && day <= 29) return hour >= 19 && hour < 22 ? 600 : 0;
+    if (day === 30) return hour >= 16 && hour <= 22 ? 1100 : (hour >= 10 && hour < 16 ? 500 : 0);
+    if (day === 31) {
+      if (hour >= 23) return 7500;
+      if (hour >= 22) return 6500;
+      if (hour >= 20 && hour < 22) return 3700;
+      if (hour >= 16 && hour < 20) return 2500;
+      if (hour >= 10 && hour < 16) return 1200;
+    }
+    return 0;
+  }
+
+  const DISCOUNT_DEADLINE = '2026-12-01';
+  function bookingTodayTagil() {
+    const parts = new Intl.DateTimeFormat('en-GB', {timeZone:'Asia/Yekaterinburg',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+    const byType=Object.fromEntries(parts.map(p=>[p.type,p.value]));
+    return byType.year+'-'+byType.month+'-'+byType.day;
+  }
+  function discountForFormat(base) { return bookingTodayTagil()<DISCOUNT_DEADLINE?Math.round(base*.1):0; }
+  function priceBreakdown(formatId, date, time, district, count, adults, corpKids) {
+    const item=C.services.find(x=>x.formatId===formatId);
+    if(!item) return null;
+    const adultN=Number(adults)||0, kidN=Number(corpKids)||0;
+    const guests=formatId==='corp'?(adultN>0&&kidN>0?Math.max(0,adultN+kidN-12)*500:adultN>0?Math.max(0,adultN-12)*300:Math.max(0,kidN-12)*200):Math.max(0,(Number(count)||1)-3)*500;
+    const travel=district==='Пригород'?1000:0, season=getSeasonSurcharge(date,time), discount=discountForFormat(item.price);
+    return {base:item.price,guests,travel,season,discount,beforeDiscount:item.price+guests+travel+season,total:item.price+guests+travel+season-discount};
+  }
+
+  function availableHours(dateISO) {
+    const [year, month, day] = (dateISO || '').split('-').map(Number);
+    if (month !== 12 || !day) return [];
+    let last = 21;
+    if (day === 30) last = 22;
+    if (day === 31) last = 23;
+    if (day < 20 || day > 31) return [];
+    return Array.from({length: last - 9}, (_, i) => String(i + 10).padStart(2, '0') + ':00');
+  }
+
+  function todayISO() {
+    const d = new Date(), p = n => String(n).padStart(2, '0');
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  }
+  function formatPhone(value) {
+    let d = value.replace(/\D/g, '');
+    if (!d) return '';
+    if (d[0] === '8') d = '7' + d.slice(1);
+    if (d[0] !== '7') d = '7' + d;
+    d = d.slice(0, 11);
+    const p = d.slice(1);
+    let out = '+7';
+    if (p.length) out += ' (' + p.slice(0, 3);
+    if (p.length >= 3) out += ') ' + p.slice(3, 6);
+    if (p.length >= 6) out += '-' + p.slice(6, 8);
+    if (p.length >= 8) out += '-' + p.slice(8, 10);
+    return out;
+  }
+
+  const PRICE_BY_FORMAT = {};
+  C.services.forEach(s => { PRICE_BY_FORMAT[s.formatId] = priceLabel(s.price); });
+
+  function initForm() {
+    const form = $('#leadForm'), submitBtn = $('#submitBtn'), alertBox = $('#formAlert');
+    const f = {
+      name: $('#f-name'), phone: $('#f-phone'), date: $('#f-date'), time: $('#f-time'),
+      format: $('#f-format'), price: $('#f-price'), child: $('#f-child'), childCount: $('#f-child-count'), corpAdults: $('#f-corp-adults'), corpChildren: $('#f-corp-children'),
+      district: $('#f-district'), suburb: $('#f-suburb'),
+      comment: $('#f-comment'), agree: $('#f-agree'), honey: $('#f-company-fax')
+    };
+    const SUBMIT_LABEL = 'Отправить заявку';
+    function applyBookingWindow() {
+      const window = bookingWindow();
+      f.date.min = window.min;
+      f.date.max = window.max;
+      $('#hint-date').textContent = 'Принимаем заказы только с 20 по 31 декабря ' + window.year + '.';
+      if (f.date.value && (f.date.value < window.min || f.date.value > window.max)) {
+        f.date.value = ''; f.time.value = '';
+        refreshTimeOptions();
+      }
+    }
+    applyBookingWindow();
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) applyBookingWindow(); });
+
+    function showAlert(type, html) {
+      alertBox.className = 'form-alert form-alert--' + type + ' is-shown';
+      alertBox.innerHTML = html;
+    }
+    function hideAlert() { alertBox.className = 'form-alert'; alertBox.innerHTML = ''; }
+
+    alertBox.addEventListener('click', e => {
+      if (e.target.closest('#retrySend')) {
+        hideAlert();
+        if (typeof form.requestSubmit === 'function') form.requestSubmit();
+        else form.dispatchEvent(new Event('submit', { cancelable: true }));
+      }
+      const copyBtn = e.target.closest('#copyLead');
+      if (copyBtn) {
+        const txt = copyBtn.dataset.lead || '';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(() => { copyBtn.textContent = 'Скопировано ✓'; });
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = txt; document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); copyBtn.textContent = 'Скопировано ✓'; } catch (err) {}
+          ta.remove();
+        }
+      }
+    });
+
+    /* --- Черновик --- */
+    const DRAFT_FIELDS = ['name','phone','date','time','format','price','child','childCount','corpAdults','corpChildren','district','suburb','comment'];
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null');
+      if (saved) {
+        DRAFT_FIELDS.forEach(k => { if (saved[k] != null) f[k].value = saved[k]; });
+        f.agree.checked = !!saved.agree;
+      }
+    } catch (err) {}
+    function saveDraft() {
+      const data = {};
+      DRAFT_FIELDS.forEach(k => { data[k] = f[k].value; });
+      data.agree = f.agree.checked;
+      try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (err) {}
+    }
+
+    /* --- Маска телефона --- */
+    f.phone.addEventListener('input', () => {
+      f.phone.value = formatPhone(f.phone.value);
+      try { f.phone.setSelectionRange(f.phone.value.length, f.phone.value.length); } catch (e) {}
+      validateField('phone', true); saveDraft();
+    });
+    f.phone.addEventListener('focus', () => { if (!f.phone.value) f.phone.value = '+7 ('; });
+    f.phone.addEventListener('blur', () => {
+      if (f.phone.value.replace(/\D/g, '').length <= 1) f.phone.value = '';
+      saveDraft();
+    });
+
+    /* --- Валидация --- */
+    const rules = {
+      name:  v => v.trim().length >= 2 ? '' : 'Укажите имя — так мы сможем к вам обратиться.',
+      phone: v => v.replace(/\D/g, '').length === 11 ? '' : 'Введите телефон полностью: +7 (___) ___-__-__.',
+      date:  v => {
+        if (!v) return 'Выберите дату праздника.';
+        if (v < f.date.min || v > f.date.max) return 'Дед Мороз принимает заказы только с 20 по 31 декабря.';
+        return '';
+      },
+      format: v => v ? '' : 'Выберите формат поздравления.',
+      time: v => !v ? 'Выберите время начала визита (целый час).' : (availableHours(f.date.value).includes(v) ? '' : 'Для выбранной даты это время недоступно.'),
+      district: v => v ? '' : 'Выберите район поздравления.',
+      childCount: v => f.format.value === 'corp' || (/^\d+$/.test(v) && Number(v) >= 1 && Number(v) <= 50) ? '' : 'Укажите от 1 до 50 детей.',
+      corpAdults: v => f.format.value !== 'corp' || (/^\d+$/.test(v) && Number(v)>=0 && Number(v)<=30) ? '' : 'Укажите количество взрослых от 0 до 30.',
+      corpChildren: v => f.format.value !== 'corp' || (/^\d+$/.test(v) && Number(v)>=0 && Number(v)<=30 && Number(f.corpAdults.value)+Number(v)>=8 && Number(f.corpAdults.value)+Number(v)<=30) ? '' : 'Для корпоратива укажите от 8 до 30 гостей суммарно.',
+      suburb: v => f.district.value !== 'Пригород' || v ? '' : 'Выберите населённый пункт пригорода.',
+      agree:  v => v ? '' : 'Без согласия на обработку данных мы не сможем принять заявку.'
+    };
+    function setError(field, msg) {
+      const wrap = form.querySelector('[data-field="' + field + '"]');
+      const errEl = $('#err-' + field);
+      if (wrap) wrap.classList.toggle('has-error', !!msg);
+      if (errEl) errEl.textContent = msg || '';
+      if (f[field] && f[field].setAttribute) f[field].setAttribute('aria-invalid', msg ? 'true' : 'false');
+      return !msg;
+    }
+    function validateField(field, silent) {
+      const value = field === 'agree' ? f.agree.checked : f[field].value;
+      const msg = rules[field] ? rules[field](value) : '';
+      if (!msg || !silent) return setError(field, msg);
+      const wrap = form.querySelector('[data-field="' + field + '"]');
+      if (wrap && wrap.classList.contains('has-error')) setError(field, msg);
+      return true;
+    }
+    function validateAll() {
+      let ok = true;
+      Object.keys(rules).forEach(k => { if (!validateField(k, false)) ok = false; });
+      return ok;
+    }
+    ['name','date','time','format','district','suburb','childCount','corpAdults','corpChildren'].forEach(k => {
+      f[k].addEventListener('blur',   () => { validateField(k, false); saveDraft(); });
+      f[k].addEventListener('input',  () => { validateField(k, true);  saveDraft(); });
+      f[k].addEventListener('change', () => { validateField(k, true);  saveDraft(); });
+    });
+    ['child','comment','time'].forEach(k => f[k].addEventListener('input', saveDraft));
+    f.time.addEventListener('change', saveDraft);
+
+    /* --- Автоподстановка стоимости --- */
+    function setPrice() {
+      const corporate=f.format.value==='corp';
+      $('#childCountField').hidden=corporate;
+      $('#corpGuestsField').hidden=!corporate;
+      f.childCount.disabled=corporate;
+      f.corpAdults.disabled=!corporate;f.corpChildren.disabled=!corporate;
+      if(corporate) setError('childCount','');
+      else {setError('corpAdults','');setError('corpChildren','');}
+      const totalGuests=Number(f.corpAdults.value)+Number(f.corpChildren.value);
+      const guestsValid=!corporate||(Number.isInteger(totalGuests)&&totalGuests>=8&&totalGuests<=30&&f.corpAdults.value!==''&&f.corpChildren.value!=='');
+      const quote=guestsValid?priceBreakdown(f.format.value,f.date.value,f.time.value,f.district.value,f.childCount.value,f.corpAdults.value,f.corpChildren.value):null;
+      f.price.value=quote?priceLabel(quote.total):'';
+      const discountEl=$('#earlyDiscountHint');
+      discountEl.textContent=quote?(quote.discount?'Скидка за заказ до 1 декабря 2026 года: −'+priceFmt(quote.discount)+' ₽ (10% от '+priceFmt(quote.base)+' ₽). Она уже вычтена из конечной стоимости.':'Акционная скидка 10% действовала на заявки до 1 декабря 2026 года; доплаты рассчитываются отдельно.'):'Скидка 10% от базовой цены формата действует при заказе до 1 декабря 2026 года.';
+      const seasonHint=$('#seasonPriceHint');
+      if(seasonHint) seasonHint.textContent=!quote||!f.date.value||!f.time.value?'Выберите дату и время — сезонная надбавка автоматически войдёт в итоговую стоимость.':quote.season?'Для выбранного времени сезонная надбавка составит +'+priceFmt(quote.season)+' ₽; она уже включена в итог.':'Для выбранных даты и времени сезонной надбавки нет.';
+      saveDraft();
+    }
+    function updateDistrict() {
+      const suburb = f.district.value === 'Пригород';
+      $('#suburbField').hidden = !suburb;
+      $('#suburbFee').hidden = !suburb;
+      f.suburb.required = suburb;
+      if (!suburb) { f.suburb.value = ''; setError('suburb', ''); }
+      setPrice();
+    }
+    function refreshTimeOptions() {
+      const previous = f.time.value;
+      const allowed = availableHours(f.date.value);
+      f.time.disabled = allowed.length === 0;
+      const emptyLabel = allowed.length ? '— Выберите время —' : '— Сначала выберите дату —';
+      f.time.innerHTML = '<option value="">' + emptyLabel + '</option>' + allowed.map(h => '<option value="' + h + '">' + h + '</option>').join('');
+      if (allowed.includes(previous)) f.time.value = previous;
+      else if (previous) f.time.value = '';
+      setPrice();
+    }
+    f.format.addEventListener('change', setPrice);
+    f.childCount.addEventListener('input', setPrice);
+    f.corpAdults.addEventListener('input',()=>{validateField('corpChildren',true);setPrice();});
+    f.corpChildren.addEventListener('input',()=>{validateField('corpChildren',true);setPrice();});
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden){setPrice();$('#heroBadge').hidden=bookingTodayTagil()>=DISCOUNT_DEADLINE;}});
+    f.time.addEventListener('change', setPrice);
+    f.date.addEventListener('change', refreshTimeOptions);
+    refreshTimeOptions();
+    f.district.addEventListener('change', updateDistrict);
+    f.suburb.addEventListener('change', saveDraft);
+    updateDistrict();
+
+    /* --- 152-ФЗ --- */
+    function syncSubmit() {
+      const on = f.agree.checked;
+      submitBtn.disabled = !on;
+      submitBtn.setAttribute('aria-disabled', String(!on));
+      validateField('agree', true);
+    }
+    f.agree.addEventListener('change', () => { syncSubmit(); saveDraft(); });
+    syncSubmit();
+
+    /* --- Клик по «Заказать» / «Выбрать» --- */
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('[data-select-format]');
+      if (!btn) return;
+      e.preventDefault();
+      const fmt = btn.dataset.selectFormat;
+      if (fmt && C.formats.some(o => o.value === fmt)) { f.format.value = fmt; validateField('format', true); }
+      setPrice();
+
+      const target = $('#zayavka');
+      const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 62;
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - headerH - 16, behavior: REDUCED ? 'auto' : 'smooth' });
+      const card = $('#formCard');
+      card.classList.add('is-flash');
+      setTimeout(() => card.classList.remove('is-flash'), 1600);
+      setTimeout(() => (f.name.value.trim() ? f.date : f.name).focus({ preventScroll: true }), REDUCED ? 0 : 520);
+    });
+
+    function showSuccess() {
+      const wrap = $('.form-wrap'); if (wrap) wrap.hidden = true;
+      const success = $('#successScreen');
+      success.classList.add('is-shown');
+      success.focus();
+      $('#zayavka').classList.add('order-complete');
+      success.scrollIntoView({ behavior: REDUCED ? 'instant' : 'smooth', block: 'center' });
+      try { sessionStorage.removeItem(STORAGE_KEY); } catch (err) {}
+      resetBtn();
+    }
+
+    function resetBtn() {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('is-loading');
+      submitBtn.textContent = SUBMIT_LABEL;
+    }
+
+    /* Текст заявки — чтобы её можно было скопировать и отправить вручную */
+    function leadAsText(d) {
+      return 'ЗАЯВКА ' + d.leadId +
+        '\nИмя: ' + d.name +
+        '\nТелефон: ' + d.phone +
+        '\nДата праздника: ' + d.date + (d.time ? ' ' + d.time : '') +
+        '\nФормат: ' + d.format +
+        '\nСтоимость: ' + d.price +
+        '\nРебёнок: ' + (d.child || '—') +
+        (d.childCount ? '\nКоличество детей: ' + d.childCount : '') +
+        '\nРайон: ' + d.district + (d.suburb ? ', ' + d.suburb : '') +
+        '\nДоплата за выезд: ' + (d.travelFee || 0) + ' ₽' +
+        '\nНадбавка по дате/времени: ' + (d.dateTimeSurcharge || 0) + ' ₽' +
+        '\nКомментарий: ' + (d.comment || '—');
+    }
+
+    /* --- Отправка --- */
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      hideAlert();
+
+      if (f.honey && f.honey.value.trim() !== '') {
+        debugLog('Отправка отклонена: заполнено поле-ловушка (бот).');
+        showSuccess();
+        return;
+      }
+      if ((Date.now() - PAGE_OPENED_AT) < MIN_TIME_ON_PAGE) {
+        debugLog('Очень быстрая отправка — помечаем, но НЕ отбрасываем.');
+      }
+      if (!f.agree.checked) { setError('agree', rules.agree(false)); f.agree.focus(); return; }
+      if (!validateAll()) {
+        const firstErr = form.querySelector('.field.has-error .field__control');
+        if (firstErr) firstErr.focus();
+        return;
+      }
+
+      const quote = priceBreakdown(f.format.value,f.date.value,f.time.value,f.district.value,f.childCount.value,f.corpAdults.value,f.corpChildren.value);
+      const data = {
+        leadId: 'mp-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8),
+        name: f.name.value.trim().slice(0, 80),
+        phone: f.phone.value.trim(),
+        date: f.date.value,
+        time: f.time.value,
+        format: f.format.options[f.format.selectedIndex].text,
+        price: f.price.value || '—',
+        child: f.child.value.trim().slice(0, 120),
+        childCount: f.format.value === 'corp' ? '' : parseInt(f.childCount.value, 10),
+        formatId: f.format.value,
+        corpAdults: f.format.value === 'corp' ? Number(f.corpAdults.value) : 0,
+        corpChildren: f.format.value === 'corp' ? Number(f.corpChildren.value) : 0,
+        guestFee: quote?.guests || 0,
+        formatDiscount: quote?.discount || 0,
+        beforeDiscount: quote?.beforeDiscount || 0,
+        basePrice: quote?.base || 0,
+        childFee: f.format.value==='corp'?0:(quote?.guests || 0),
+        totalNumeric: quote?.total || 0,
+        district: f.district.value,
+        suburb: f.district.value === 'Пригород' ? f.suburb.value : '',
+        travelFee: f.district.value === 'Пригород' ? 1000 : 0,
+        dateTimeSurcharge: getSeasonSurcharge(f.date.value, f.time.value),
+        comment: f.comment.value.trim().slice(0, 1000),
+        source: sourceLabel(),
+        consent: f.agree.checked,
+        page: location.href.split('?')[0],
+        secondsOnPage: Math.round((Date.now() - PAGE_OPENED_AT) / 1000),
+        sentAt: new Date().toISOString()
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-loading');
+      submitBtn.textContent = 'Отправляем…';
+      debugLog('Отправляю заявку ' + data.leadId + ' → ' + LEAD_ENDPOINT);
+
+      try {
+        const result = await sendLead(data);
+        debugLog('Результат: ' + JSON.stringify(result));
+
+        if (result.ok && result.verified) {
+          console.log('%c[Магия праздника] Заявка записана в таблицу (подтверждено)', 'color:#F0B24A;font-weight:bold', data);
+          showSuccess();
+
+        } else {
+          resetBtn();
+          const leadText = leadAsText(data).replace(/"/g, '&quot;');
+          showAlert('info',
+            '<strong>Не удалось подтвердить запись заявки в таблицу.</strong><br>' +
+            'Чтобы заказ не потерялся, сделайте одно из двух:<br>' +
+            '· скопируйте заявку и отправьте нам в <a href="' + C.meta.vkChat + '" target="_blank" rel="noopener noreferrer">чат группы ВКонтакте</a>;<br>' +
+            (phoneLine() ? '· или ' + phoneLine().replace(/ или $/, '') + '.' : '') +
+            '<pre>' + leadText + '</pre>' +
+            '<button class="btn btn--xs btn--ghost" type="button" id="copyLead" data-lead="' + leadText + '">Скопировать заявку</button> ' +
+            '<button class="btn btn--xs btn--ghost" type="button" id="retrySend">Отправить повторно</button>');
+        }
+      } catch (err) {
+        resetBtn();
+        console.error('[Магия праздника] Ошибка отправки:', err);
+        debugLog('ОШИБКА отправки: ' + String(err && err.message || err));
+        const leadText = leadAsText(data).replace(/"/g, '&quot;');
+        showAlert('error',
+          '<strong>Не удалось отправить заявку.</strong><br>' +
+          (ENV.isFile ? 'Сайт открыт с диска (file://) — браузер блокирует отправку. Откройте сайт по адресу https://…<br>' : '') +
+          'Свяжитесь с нами напрямую: ' + phoneLine() +
+          '<a href="' + C.meta.vkChat + '" target="_blank" rel="noopener noreferrer">чат группы ВКонтакте</a>.<br>' +
+          'Данные сохранены — их можно скопировать и переслать нам.' +
+          '<pre>' + leadText + '</pre>' +
+          '<button class="btn btn--xs btn--ghost" type="button" id="copyLead" data-lead="' + leadText + '">Скопировать заявку</button> ' +
+          '<button class="btn btn--xs btn--ghost" type="button" id="retrySend">Попробовать снова</button>');
+      }
+    });
+  }
+
+  function initHolidaySound(){
+    const button=$('#soundToggle'),audio=$('#holidayAudio');
+    if(!button||!audio)return;
+    let enabled=false,userStopped=false;
+    audio.volume=0.12;
+    function update(){
+      button.setAttribute('aria-pressed',String(enabled));
+      button.textContent=enabled?'♪ Выключить музыку':'♪ Включить музыку';
+      button.setAttribute('aria-label',enabled?'Выключить новогоднюю музыку':'Включить новогоднюю музыку');
+    }
+    async function start(){
+      try{audio.volume=0.12;await audio.play();enabled=true;update();return true;}
+      catch(err){enabled=false;update();return false;}
+    }
+    function stop(){userStopped=true;audio.pause();enabled=false;update();}
+    button.addEventListener('click',()=>{
+      if(enabled){stop();}else{userStopped=false;start();}
+    });
+    audio.addEventListener('play',()=>{enabled=true;update();});
+    audio.addEventListener('pause',()=>{enabled=false;update();});
+    // Attempt autoplay immediately; if the browser blocks audible autoplay, retry after the first user gesture.
+    start().then(ok=>{
+      if(ok)return;
+      const resume=event=>{
+        if(event.target.closest?.('#soundToggle')||userStopped)return;
+        document.removeEventListener('pointerdown',resume,true);
+        document.removeEventListener('keydown',resume,true);
+        start();
+      };
+      document.addEventListener('pointerdown',resume,true);
+      document.addEventListener('keydown',resume,true);
+    });
+    document.addEventListener('visibilitychange',()=>{
+      if(document.hidden&&enabled)audio.pause();
+      else if(!document.hidden&&enabled)start();
+    });
+  }
+
+  function initQuiz() {
+    const overlay=$('#quizOverlay'), form=$('#quizForm'), open=$('#openQuiz');
+    if(!overlay||!form||!open) return;
+    const byId=id=>document.getElementById(id), audience=byId('quizAudience'), pref=byId('quizFormat'), adults=byId('quizAdults'), corpKids=byId('quizCorpKids'), date=byId('quizDate'), period=byId('quizPeriod'), kids=byId('quizChildren'), district=byId('quizDistrict'), suburb=byId('quizSuburb'), budget=byId('quizBudget'), results=byId('quizResults'), error=byId('quizError');
+    let lastFocus=null, recommendations=[];
+    function close(){overlay.hidden=true;document.body.classList.remove('is-locked');if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+    function show(){lastFocus=document.activeElement;overlay.hidden=false;document.body.classList.add('is-locked');results.hidden=true;error.hidden=true;const w=bookingWindow();date.min=w.min;date.max=w.max;date.value='';refreshFormats();byId('quizClose').focus();}
+    function refreshQuizInfo(){
+      const selected=pref.value;
+      const packages=C.services.filter(x=>selected==='any'?x.formatId!=='corp':x.formatId===selected);
+      byId('quizFormatInfo').innerHTML=packages.map(x=>'<span class="quiz-info-line"><b>'+x.title+':</b> '+x.quizInfo+'</span>').join('');
+    }
+    function refreshFormats(){
+      const corp=audience.value!=='child';
+      byId('quizChildrenWrap').hidden=corp;byId('quizCorporateNote').hidden=!corp;
+      byId('quizAdultsWrap').hidden=!corp||audience.value==='corpChild';
+      byId('quizCorpKidsWrap').hidden=!corp||audience.value==='corp';
+      byId('quizSuburbWrap').hidden=district.value!=='Пригород';
+      const options=corp?[['corp','Корпоратив']]:[['any','Подберите формат под мои пожелания'],['gift','Подарок от Деда Мороза'],['home','Дед Мороз на дом'],['show','Интерактивное шоу']];
+      pref.innerHTML=options.map(x=>'<option value="'+x[0]+'">'+x[1]+'</option>').join('');
+      if(audience.value==='corp') { adults.value='8';corpKids.value='0'; }
+      if(audience.value==='corpChild') { adults.value='0';corpKids.value='8'; }
+      if(audience.value==='corpMixed') { adults.value='8';corpKids.value='8'; }
+      refreshQuizInfo();
+    }
+    function setError(message){error.textContent=message||'';error.hidden=!message;}
+    function apply(rec){
+      if(!rec||!availableHours(rec.date).includes(rec.time)){setError('Это время уже недоступно. Измените ответы и попробуйте снова.');return;}
+      const fdate=$('#f-date'),ftime=$('#f-time'),fformat=$('#f-format'),fdistrict=$('#f-district'),fsuburb=$('#f-suburb'),fchild=$('#f-child-count'),fadults=$('#f-corp-adults'),fcorpkids=$('#f-corp-children'),fcomment=$('#f-comment');
+      close();fdate.value=rec.date;fdate.dispatchEvent(new Event('change',{bubbles:true}));
+      fformat.value=rec.format;fformat.dispatchEvent(new Event('change',{bubbles:true}));
+      fdistrict.value=rec.district;fdistrict.dispatchEvent(new Event('change',{bubbles:true}));
+      if(rec.district==='Пригород'){fsuburb.value=rec.suburb;fsuburb.dispatchEvent(new Event('change',{bubbles:true}));}
+      if(rec.format!=='corp'){fchild.value=String(rec.children);fchild.dispatchEvent(new Event('input',{bubbles:true}));}
+      else {fadults.value=String(rec.adults);fcorpkids.value=String(rec.corpKids);fadults.dispatchEvent(new Event('input',{bubbles:true}));fcorpkids.dispatchEvent(new Event('input',{bubbles:true}));}
+      ftime.value=rec.time;ftime.dispatchEvent(new Event('change',{bubbles:true}));
+      const note='Квиз: бюджет '+rec.budgetLabel+'; предпочтение по времени — '+rec.periodLabel+'.';
+      if(fcomment&&!fcomment.value.trim())fcomment.value=note;
+      if(fcomment)fcomment.dispatchEvent(new Event('input',{bubbles:true}));
+      const section=$('#zayavka'),headerH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'),10)||62;
+      window.scrollTo({top:section.getBoundingClientRect().top+window.scrollY-headerH-12,behavior:REDUCED?'auto':'smooth'});
+      setTimeout(()=>$('#f-name').focus({preventScroll:true}),REDUCED?0:450);
+    }
+    function buildMatches(services,hours,corporate,count,travel){
+      const cap=budget.value==='any'?Infinity:Number(budget.value),matches=[];
+      services.forEach(service=>hours.forEach(time=>{
+        const quote=priceBreakdown(service.formatId,date.value,time,district.value,count,corporate?adults.value:0,corporate?corpKids.value:0);
+        matches.push({format:service.formatId,name:service.title,date:date.value,time,children:count,adults:corporate?Number(adults.value):0,corpKids:corporate?Number(corpKids.value):0,district:district.value,suburb:district.value==='Пригород'?suburb.value:'',price:quote.total,childExtra:quote.guests,seasonal:quote.season,travel:quote.travel,discount:quote.discount,within:quote.total<=cap,budgetLabel:budget.options[budget.selectedIndex].text,periodLabel:period.options[period.selectedIndex].text});
+      }));
+      return matches;
+    }
+    function findMatches(){
+      setError('');
+      const w=bookingWindow();
+      if(!date.value||date.value<w.min||date.value>w.max){setError('Выберите дату с 20 по 31 декабря.');return;}
+      if(district.value==='Пригород'&&!suburb.value){setError('Выберите населённый пункт.');return;}
+      const corporate=audience.value!=='child';
+      if(corporate){
+        const a=Number(adults.value),k=Number(corpKids.value);
+        if(!Number.isInteger(a)||!Number.isInteger(k)||a<0||k<0||a>30||k>30||a+k<8||a+k>30||(audience.value==='corpMixed'&&(a===0||k===0))){setError('Для корпоратива укажите от 8 до 30 гостей; в смешанной группе должен быть минимум один взрослый и один ребёнок.');return;}
+      }
+      const count=corporate?0:Math.max(1,Math.min(50,parseInt(kids.value,10)||1));
+      const allServices=C.services.filter(x=>corporate?x.formatId==='corp':x.formatId!=='corp');
+      // The format selector is a strict filter, unless the user explicitly chooses the all-formats option.
+      const selectedServices=pref.value==='any'?allServices:allServices.filter(x=>x.formatId===pref.value);
+      const hours=availableHours(date.value).filter(h=>period.value==='day'?Number(h.slice(0,2))<16:period.value==='evening'?Number(h.slice(0,2))>=16:true);
+      if(!hours.length){setError('На эту дату нет времени в выбранном интервале. Попробуйте другой период дня.');return;}
+      const travel=district.value==='Пригород'?1000:0;
+      const allMatches=buildMatches(selectedServices,hours,corporate,count,travel);
+      const matches=budget.value==='any'?allMatches:allMatches.filter(x=>x.within);
+      // No silent switch to another package: show only the selected format, or clearly report no match.
+      matches.sort((a,b)=>(a.price-b.price)||a.time.localeCompare(b.time));
+      recommendations=matches;
+      const options=recommendations.map((r,i)=>'<article class="quiz-option '+(i===0?'is-best':'')+'"><b>'+r.name+'</b><div class="quiz-option__meta">'+r.date.split('-').reverse().join('.')+' в '+r.time+' · '+(r.format==='corp'?r.adults+' взрослых, '+r.corpKids+' детей · ':(r.children?r.children+' '+(r.children===1?'ребёнок':r.children<5?'ребёнка':'детей')+' · ':''))+r.district+(r.suburb?' — '+r.suburb:'')+' · доплаты '+priceFmt(r.childExtra+r.travel+r.seasonal)+' ₽'+(r.discount?' · скидка −'+priceFmt(r.discount)+' ₽':'')+'</div><strong>Ориентировочно: '+priceFmt(r.price)+' ₽</strong><p><button class="btn btn--gold btn--sm" type="button" data-quiz-pick="'+i+'">Подставить в заявку</button></p></article>').join('');
+      const formatLabel=pref.value==='any'?'все выбранные для подбора форматы':(selectedServices[0]?.title||'выбранный формат');
+      let note;
+      if(matches.length&&budget.value==='any') note='Показаны все доступные часы для формата «'+formatLabel+'» на выбранную дату и период дня.';
+      else if(matches.length) note='Показаны все часы формата «'+formatLabel+'» в пределах вашего бюджета ('+matches.length+' вариантов).';
+      else note='Для формата «'+formatLabel+'» на выбранную дату и время нет вариантов в этом бюджете. Измените бюджет, дату или период дня либо сами выберите другой формат.';
+      results.innerHTML='<h3>Варианты праздника ('+matches.length+')</h3><p class="quiz-intro">'+note+'</p>'+(options?'<div class="quiz-results__list">'+options+'</div>':'')+'<button class="btn btn--ghost btn--sm" type="button" id="quizEdit">Изменить ответы</button>';
+      results.hidden=false;
+      results.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'nearest'});
+    }
+    open.addEventListener('click',show);byId('quizClose').addEventListener('click',close);
+    overlay.addEventListener('click',e=>{if(e.target===overlay)close();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!overlay.hidden)close();});
+    audience.addEventListener('change',refreshFormats);pref.addEventListener('change',refreshQuizInfo);district.addEventListener('change',()=>{byId('quizSuburbWrap').hidden=district.value!=='Пригород';});
+    form.addEventListener('submit',e=>{e.preventDefault();findMatches();});
+    results.addEventListener('click',e=>{if(e.target.closest('#quizEdit')){results.hidden=true;return;}const btn=e.target.closest('[data-quiz-pick]');if(btn)apply(recommendations[Number(btn.dataset.quizPick)]);});
+  }
+
+  function safeRun(name, fn) {
+    try { fn(); }
+    catch (err) {
+      console.error('[Магия праздника] Ошибка в модуле "' + name + '":', err);
+      debugLog('Сбой модуля «' + name + '»: ' + err.message);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    safeRun('renderMenu',        renderMenu);
+    safeRun('renderMeta',        renderMeta);
+    safeRun('renderServices',    renderServices);
+    safeRun('renderWhy',         renderWhy);
+    safeRun('renderSteps',       renderSteps);
+    safeRun('renderGallery',     renderGallery);
+    safeRun('renderReviews',     renderReviews);
+    safeRun('renderFaq',         renderFaq);
+    safeRun('renderFormOptions', renderFormOptions);
+    safeRun('renderPrivacy',     renderPrivacy);
+
+    safeRun('header',        initHeader);
+    safeRun('floatBar',      initFloatBar);
+    safeRun('slider',        initReviewsSlider);
+    safeRun('lightbox',      initLightbox);
+    safeRun('privacy',       initPrivacyModal);
+    safeRun('form',          initForm);
+    safeRun('externalLinks', initExternalLinks);
+    safeRun('quiz', initQuiz);
+    safeRun('holidaySound', initHolidaySound);
+    // Уведомление о file:// не показываем в рабочем интерфейсе.
+    safeRun('reveal',        initReveal);
+    safeRun('snow',          initSnow);
+
+    /* Плавный скролл по якорям */
+    document.addEventListener('click', e => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (!href || href === '#' || link.dataset.modalLink) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 62;
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - headerH - 16, behavior: REDUCED ? 'auto' : 'smooth' });
+      history.replaceState(null, '', href);
+    });
+
+    /* Фоновое изображение первого экрана */
+    const heroImg = $('#heroImg');
+    heroImg.addEventListener('load', () => heroImg.classList.add('is-loaded'));
+    heroImg.addEventListener('error', () => { heroImg.style.display = 'none'; });
+    if (heroImg.complete && heroImg.naturalWidth === 0) heroImg.style.display = 'none';
+
+    window.__mpMainReady = true;
+
+    // Соединение проверяется без видимых элементов управления; заявку подтверждаем по её leadId.
+    pingEndpoint().then(r => { if (!r || !r.ok) console.warn('Apps Script: недоступна проверка записи.'); });
+  });
+  </script>
+</body>
+</html>
