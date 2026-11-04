@@ -18,7 +18,7 @@ var NOTIFY_EMAIL = '';   // почта для уведомлений о новы
 // Порядок столбцов совпадает с прежней версией скрипта, чтобы старые строки не съехали.
 // «Тариф» оставлен для совместимости: блок тарифов с сайта убран, столбец будет пустым.
 var HEADERS = ['Дата заявки', 'Имя', 'Телефон', 'Дата праздника', 'Время', 'Формат',
-               'Тариф', 'Стоимость', 'Ребёнок', 'Комментарий', 'Источник', 'Согласие', 'leadId', 'Район', 'Населённый пункт', 'Доплата за выезд', 'Количество детей', 'Надбавка за дату и время', 'Взрослых (корпоратив)', 'Детей (корпоратив)', 'Доплата за гостей', 'Скидка за ранний заказ', 'Стоимость до скидки', 'Базовая цена формата', 'Доплата за детей в детском формате', 'Итог числом', 'Правило тарифа'];
+               'Тариф', 'Стоимость', 'Ребёнок', 'Комментарий', 'Источник', 'Согласие', 'leadId', 'Район', 'Населённый пункт', 'Доплата за выезд', 'Количество детей', 'Надбавка за дату и время', 'Взрослых (корпоратив)', 'Детей (корпоратив)', 'Доплата за гостей', 'Скидка за ранний заказ', 'Стоимость до скидки', 'Базовая цена формата', 'Доплата за детей в детском формате', 'Итог числом', 'Правило тарифа', 'Промокод', 'Скидка по промокоду'];
 var LEAD_ID_COL = HEADERS.indexOf('leadId') + 1;
 
 function sheet_(name, headers) {
@@ -72,6 +72,62 @@ function clean_(v) {
   return /^[=+\-@]/.test(str) ? "'" + str : str;
 }
 
+// ===== Availability: normalize Sheets cells and use the same district rule as the site =====
+var CLOSE_GROUP_={'Центр':1,'Красный Камень':1,'Вые':1,'Лебяжка':1,'ВМЗ':1};
+var FAR_PAIRS_={
+ 'Вагонка|ВМЗ':1,'Вагонка|Тагилстрой':1,'Вагонка|ГГМ':1,'Вагонка|Старатель':1,'Вагонка|Пригород':1,
+ 'ГГМ|Тагилстрой':1,'ГГМ|ВМЗ':1,'ГГМ|Пригород':1,'Тагилстрой|ВМЗ':1,'Тагилстрой|Центр':1,'Тагилстрой|Пригород':1
+};
+function canonicalDistrict_(v){
+ var x=String(v||'').trim();
+ var a={'Центральный':'Центр','Красный':'Красный Камень','Верхняя Салда':'ВМЗ','В. Салда':'ВМЗ','Тагилстройский':'Тагилстрой','Гагарский':'ГГМ'};
+ return a[x]||x;
+}
+function districtKey_(date,time,district,suburb){var d=canonicalDistrict_(district),s=canonicalDistrict_(suburb);return d==='Пригород'?(s||'Пригород'):d;}
+function conflictDistrict_(a,b){
+ a=canonicalDistrict_(a);b=canonicalDistrict_(b);if(!a||!b)return false;if(a===b)return false;
+ var cityA=!!CLOSE_GROUP_[a]||['Вагонка','Тагилстрой','ГГМ','Старатель'].indexOf(a)>=0;
+ var cityB=!!CLOSE_GROUP_[b]||['Вагонка','Тагилстрой','ГГМ','Старатель'].indexOf(b)>=0;
+ if(!cityA||!cityB)return true; // suburb/unknown: require extra travel margin
+ if(CLOSE_GROUP_[a]&&CLOSE_GROUP_[b])return false;
+ return !!FAR_PAIRS_[a+'|'+b]||!!FAR_PAIRS_[b+'|'+a];
+}
+function busyDate_(v){
+ if(v instanceof Date)return Utilities.formatDate(v,'Asia/Yekaterinburg','yyyy-MM-dd');
+ var s=String(v||'').trim();if(/^\d{4}-\d{2}-\d{2}$/.test(s))return s;
+ var m=s.match(/^(\d{1,2})[.\/-](\d{1,2})[.\/-](\d{4})$/);
+ return m?m[3]+'-'+('0'+m[2]).slice(-2)+'-'+('0'+m[1]).slice(-2):s;
+}
+function busyTime_(v){
+ if(v instanceof Date)return Utilities.formatDate(v,'Asia/Yekaterinburg','HH:mm');
+ if(typeof v==='number'&&isFinite(v)){var minutes=Math.round(v*24*60);return ('0'+Math.floor(minutes/60)).slice(-2)+':'+('0'+(minutes%60)).slice(-2);}
+ var s=String(v||'').trim();var m=s.match(/(\d{1,2}):(\d{2})/);return m?('0'+m[1]).slice(-2)+':'+m[2]:s;
+}
+function busyItems_(){
+ var sh=sheet_(SHEET_NAME,HEADERS),last=sh.getLastRow();if(last<2)return [];
+ var dc=HEADERS.indexOf('Дата праздника')+1,tc=HEADERS.indexOf('Время')+1,rc=HEADERS.indexOf('Район')+1,sc=HEADERS.indexOf('Населённый пункт')+1;
+ var first=Math.min(dc,tc,rc,sc),width=Math.max(dc,tc,rc,sc)-first+1;
+ var values=sh.getRange(2,first,last-1,width).getValues(),out=[];
+ for(var i=0;i<values.length;i++){
+  var date=busyDate_(values[i][dc-first]),time=busyTime_(values[i][tc-first]),district=canonicalDistrict_(values[i][rc-first]),suburb=canonicalDistrict_(values[i][sc-first]);
+  if(date&&time&&district)out.push({date:date,time:time,district:district,suburb:suburb});
+ }
+ return out;
+}
+function busyBlocks_(date,time,district,suburb){
+ var cur=districtKey_(date,time,district,suburb),out=[],hour=parseInt(String(time||'').slice(0,2),10);
+ if(!date||!time||!district||!isFinite(hour))return out;
+ var items=busyItems_();
+ for(var i=0;i<items.length;i++){
+  var it=items[i];if(it.date!==busyDate_(date))continue;
+  var busyHour=parseInt(String(it.time||'').slice(0,2),10);if(!isFinite(busyHour)||Math.abs(busyHour-hour)>1)continue;
+  var booked=districtKey_(it.date,it.time,it.district,it.suburb);
+  if(conflictDistrict_(cur,booked))out.push({date:it.date,time:it.time,district:it.district,suburb:it.suburb,key:booked});
+ }
+ return out;
+}
+function timeAllowedByBusy_(date,time,district,suburb){return busyBlocks_(date,time,district,suburb).length===0;}
+
 // Recalculate on the server: a client cannot claim the early-booking discount after the deadline.
 function quote_(d) {
   var base = {gift:2500, home:3500, show:4500, corp:5500}[d.formatId];
@@ -88,7 +144,11 @@ function quote_(d) {
   var travel=d.district==='Пригород'?1000:0;
   var today=Utilities.formatDate(new Date(),'Asia/Yekaterinburg','yyyy-MM-dd');
   var discount=today<'2026-12-01'?Math.round(base*0.1):0;
-  var before=base+guests+seasonal+travel, total=before-discount;
+  var before=base+guests+seasonal+travel;
+  var promoCode=String(d.promoCode || '');
+  var promoDiscount=promoCode==='GODNAZAD'?Math.round(before*0.1):0;
+  var total=before-discount-promoDiscount;
+  d.promoCode=promoCode;d.promoDiscount=promoDiscount;
   d.corpAdults=d.formatId==='corp'?adults:0;d.corpChildren=d.formatId==='corp'?children:0;
   d.childCount=d.formatId==='corp'?'':childCount;
   d.travelFee=travel;d.dateTimeSurcharge=seasonal;d.guestFee=guests;d.formatDiscount=discount;d.beforeDiscount=before;d.basePrice=base;d.childFee=d.formatId==='corp'?0:guests;d.totalNumeric=total;d.pricingRule=d.formatId==='corp'?(adults>0&&children>0?'смешанная группа: общий порог 12, далее +500 ₽/гость':adults>0?'только взрослые: сверх 12 +300 ₽':'только дети: сверх 12 +200 ₽'):'детский формат: сверх 3 детей +500 ₽';
@@ -96,12 +156,12 @@ function quote_(d) {
   return d;
 }
 
-var RATES_HEADERS=['Формат','База, ₽','Входит','Сверх лимита','Сезон 20–29 декабря','Сезон 30 декабря','Сезон 31 декабря','Выезд в пригород','Ранняя скидка','Формула'];
+var RATES_HEADERS=['Формат','База, ₽','Входит','Сверх лимита','Сезон 20–29 декабря','Сезон 30 декабря','Сезон 31 декабря','Выезд в пригород','Ранняя скидка','Формула','Дополнительная скидка по промокоду'];
 var RATES_ROWS=[
- ['Подарок от Деда Мороза',2500,'до 3 детей','+500 ₽/ребёнок','10–18: +0; 19–21: +600','10–15: +500; 16–22: +1100','10–15: +1200; 16–19: +2500; 20–21: +3700; 22: +6500; 23: +7500',1000,'−250 ₽ до 01.12.2026','База + дети + выезд + сезон − скидка'],
- ['Дед Мороз на дом',3500,'до 3 детей','+500 ₽/ребёнок','10–18: +0; 19–21: +600','10–15: +500; 16–22: +1100','10–15: +1200; 16–19: +2500; 20–21: +3700; 22: +6500; 23: +7500',1000,'−350 ₽ до 01.12.2026','База + дети + выезд + сезон − скидка'],
- ['Интерактивное шоу',4500,'до 3 детей','+500 ₽/ребёнок','10–18: +0; 19–21: +600','10–15: +500; 16–22: +1100','10–15: +1200; 16–19: +2500; 20–21: +3700; 22: +6500; 23: +7500',1000,'−450 ₽ до 01.12.2026','База + дети + выезд + сезон − скидка'],
- ['Корпоратив',5500,'8–30 гостей; база до 12','только взрослые: +300 ₽ после 12; только дети: +200 ₽ после 12; смешанная группа: +500 ₽ после 12 общих гостей','10–18: +0; 19–21: +600','10–15: +500; 16–22: +1100','10–15: +1200; 16–19: +2500; 20–21: +3700; 22: +6500; 23: +7500',1000,'−550 ₽ до 01.12.2026','База + гости + выезд + сезон − скидка']
+ ['Подарок от Деда Мороза',2500,'до 3 детей','+500 ₽/ребёнок','10–18: +0; 19–21: +600','10–15: +500; 16–22: +1100','10–15: +1200; 16–19: +2500; 20–21: +3700; 22: +6500; 23: +7500',1000,'−250 ₽ до 01.12.2026','База + дети + выезд + сезон − ранняя скидка − скидка по промокоду','GODNAZAD: −10% от базы + гостей/детей + выезда + сезонной надбавки'],
+ ['Дед Мороз на дом',3500,'до 3 детей','+500 ₽/ребёнок','10–18: +0; 19–21: +600','10–15: +500; 16–22: +1100','10–15: +1200; 16–19: +2500; 20–21: +3700; 22: +6500; 23: +7500',1000,'−350 ₽ до 01.12.2026','База + дети + выезд + сезон − ранняя скидка − скидка по промокоду','GODNAZAD: −10% от базы + гостей/детей + выезда + сезонной надбавки'],
+ ['Интерактивное шоу',4500,'до 3 детей','+500 ₽/ребёнок','10–18: +0; 19–21: +600','10–15: +500; 16–22: +1100','10–15: +1200; 16–19: +2500; 20–21: +3700; 22: +6500; 23: +7500',1000,'−450 ₽ до 01.12.2026','База + дети + выезд + сезон − ранняя скидка − скидка по промокоду','GODNAZAD: −10% от базы + гостей/детей + выезда + сезонной надбавки'],
+ ['Корпоратив',5500,'8–30 гостей; база до 12','только взрослые: +300 ₽ после 12; только дети: +200 ₽ после 12; смешанная группа: +500 ₽ после 12 общих гостей','10–18: +0; 19–21: +600','10–15: +500; 16–22: +1100','10–15: +1200; 16–19: +2500; 20–21: +3700; 22: +6500; 23: +7500',1000,'−550 ₽ до 01.12.2026','База + гости + выезд + сезон − ранняя скидка − скидка по промокоду','GODNAZAD: −10% от базы + гостей/детей + выезда + сезонной надбавки']
 ];
 function ensureRates_(){
  var sh=sheet_('Стоимость форматов',RATES_HEADERS);
@@ -125,11 +185,12 @@ function doPost(e) {
     var sh = sheet_(SHEET_NAME, HEADERS);
     ensureRates_();
     if (hasLead_(sh, d.leadId)) return out_({ ok: true, duplicate: true }, e);
+    if (d.date && d.time && d.district && !timeAllowedByBusy_(d.date,d.time,d.district,d.suburb)) return out_({ ok:false, reason:'busy', error:'busy' }, e);
 
     sh.appendRow([
       new Date(), clean_(d.name), clean_(d.phone), clean_(d.date), clean_(d.time),
       clean_(d.format), clean_(d.tariff || ''), clean_(d.price), clean_(d.child), clean_(d.comment),
-      clean_(d.source), (d.consent === false || d.consent === 'false') ? 'нет' : 'да', clean_(d.leadId), clean_(d.district), clean_(d.suburb), d.travelFee === 1000 ? 1000 : 0, d.format === 'Корпоратив' ? '' : (Number(d.childCount) || 1), Number(d.dateTimeSurcharge) || 0, Number(d.corpAdults) || 0, Number(d.corpChildren) || 0, Number(d.guestFee) || 0, Number(d.formatDiscount) || 0, Number(d.beforeDiscount) || 0, Number(d.basePrice) || 0, Number(d.childFee) || 0, Number(d.totalNumeric) || 0, clean_(d.pricingRule || '')
+      clean_(d.source), (d.consent === false || d.consent === 'false') ? 'нет' : 'да', clean_(d.leadId), clean_(d.district), clean_(d.suburb), d.travelFee === 1000 ? 1000 : 0, d.format === 'Корпоратив' ? '' : (Number(d.childCount) || 1), Number(d.dateTimeSurcharge) || 0, Number(d.corpAdults) || 0, Number(d.corpChildren) || 0, Number(d.guestFee) || 0, Number(d.formatDiscount) || 0, Number(d.beforeDiscount) || 0, Number(d.basePrice) || 0, Number(d.childFee) || 0, Number(d.totalNumeric) || 0, clean_(d.pricingRule || ''), clean_(d.promoCode || ''), Number(d.promoDiscount) || 0
     ]);
 
     if (NOTIFY_EMAIL) {
@@ -137,7 +198,7 @@ function doPost(e) {
         'Имя: ' + (d.name || '') + '\nТелефон: ' + (d.phone || '') +
         '\nДата: ' + (d.date || '') + ' ' + (d.time || '') +
         '\nФормат: ' + (d.format || '') + '\nСтоимость: ' + (d.price || '') +
-        '\nРебёнок: ' + (d.child || '') + '\nРайон: ' + (d.district || '') + (d.suburb ? ', ' + d.suburb : '') + '\nДоплата за выезд: ' + (d.travelFee || 0) + ' ₽' + '\nНадбавка за дату и время: ' + (d.dateTimeSurcharge || 0) + ' ₽' + '\nВзрослых: ' + (d.corpAdults || 0) + '; детей на корпоративе: ' + (d.corpChildren || 0) + '\nДоплата за гостей: ' + (d.guestFee || 0) + ' ₽; скидка за ранний заказ: ' + (d.formatDiscount || 0) + ' ₽' + '\nКоличество детей: ' + (d.childCount || '—') + '\nКомментарий: ' + (d.comment || ''));
+        '\nРебёнок: ' + (d.child || '') + '\nРайон: ' + (d.district || '') + (d.suburb ? ', ' + d.suburb : '') + '\nДоплата за выезд: ' + (d.travelFee || 0) + ' ₽' + '\nНадбавка за дату и время: ' + (d.dateTimeSurcharge || 0) + ' ₽' + '\nВзрослых: ' + (d.corpAdults || 0) + '; детей на корпоративе: ' + (d.corpChildren || 0) + '\nДоплата за гостей: ' + (d.guestFee || 0) + ' ₽; скидка за ранний заказ: ' + (d.formatDiscount || 0) + ' ₽' + '\nПромокод: ' + (d.promoCode || '—') + '; скидка по промокоду: ' + (d.promoDiscount || 0) + ' ₽' + '\nКоличество детей: ' + (d.childCount || '—') + '\nКомментарий: ' + (d.comment || ''));
     }
     return out_({ ok: true }, e);
   } catch (err) {
@@ -156,6 +217,14 @@ function doGet(e) {
     ensureRates_();
     if (p.action === 'check') {
       return out_({ ok: true, found: hasLead_(sh, p.leadId), rows: sh.getLastRow() }, e);
+    }
+    if (p.action === 'busy') {
+      return out_({ ok: true, items: busyItems_() }, e);
+    }
+    if (p.action === 'checkbusy') {
+      var blocks=busyBlocks_(String(p.date||''),String(p.time||''),String(p.district||''),String(p.suburb||''));
+      if(blocks.length) return out_({ ok:false, reason:'busy', blocks: blocks.slice(0,5) }, e);
+      return out_({ ok:true, allowed:true }, e);
     }
     return out_({ ok: true, sheet: sh.getName(), rows: sh.getLastRow(),
                   note: 'Приём заявок работает.' }, e);

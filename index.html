@@ -6,8 +6,7 @@
   <title>Магия праздника — Дед Мороз и Снегурочка на дом, корпоративы и шоу</title>
   <meta name="description" content="Настоящий Дед Мороз и Снегурочка придут к вашему ребёнку: поздравления на дому, утренники и корпоративы. Вручим ваш подарок, назовём ребёнка по имени. При заказе до 1 декабря 2026 года — скидка 10% от цены формата.">
   <meta name="theme-color" content="#0E2A3F">
-  
-  <link rel="icon" type="image/png" href="favicon.png">
+
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/playfair-display/index.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/manrope/index.css">
@@ -554,7 +553,25 @@
     .sound-toggle:hover{border-color:#f0b24a}
     .sound-toggle:focus-visible{outline:3px solid #f0b24a;outline-offset:3px}
     @media(min-width:768px){.sound-toggle{bottom:20px}}
+
+    /* Compact booking form: preserve all guidance while reducing vertical bulk. */
+    .form-card{padding:18px 16px}
+    .form-grid{gap:11px}
+    .form-grid .field{gap:5px}
+    .form-grid .field__control{min-height:46px;padding:10px 13px}
+    .form-grid textarea.field__control{min-height:76px}
+    .form-grid .field__hint{font-size:12px;line-height:1.4;margin:0}
+    .form-grid .field__error{margin:0;font-size:12px;line-height:1.35}
+    .form-grid .agree{padding:2px 0}
+    .form-grid [data-field="price"]{padding:12px 14px;border:1px solid rgba(240,178,74,.4);border-radius:12px;background:rgba(240,178,74,.07)}
+    .form-grid [data-field="price"] input{font-size:18px;font-weight:800}
+    @media(min-width:760px){.form-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.form-grid .field--full{grid-column:1/-1}}
   </style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="shortcut icon" href="favicon.ico?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2">
+  <meta name="theme-color" content="#0b2234">
 </head>
 
 <body>
@@ -821,7 +838,7 @@
         <div class="section__head reveal">
           <p class="section__eyebrow">Заявка</p>
           <h2 id="zayavkaTitle">Забронируйте Деда Мороза</h2>
-          <p class="section__lead">Оставьте заявку — перезвоним за 15 минут и подберём удобное время.</p>
+          <p class="section__lead">Оставьте заявку — свяжемся с вами в течение суток и подберём удобное время.</p>
         </div>
 
         <div class="form-wrap">
@@ -860,7 +877,7 @@
                 <div class="field" data-field="time">
                   <label for="f-time">Время</label>
                   <select class="field__control" id="f-time" name="time" required aria-describedby="err-time hint-time"><option value="">— Выберите время —</option><option value="10:00">10:00</option><option value="11:00">11:00</option><option value="12:00">12:00</option><option value="13:00">13:00</option><option value="14:00">14:00</option><option value="15:00">15:00</option><option value="16:00">16:00</option><option value="17:00">17:00</option><option value="18:00">18:00</option><option value="19:00">19:00</option><option value="20:00">20:00</option><option value="21:00">21:00</option><option value="22:00">22:00</option><option value="23:00">23:00</option></select>
-                  <p class="field__hint" id="hint-time">Выбирайте дату — покажем доступные часы. Время означает начало визита; в последний слот визит может завершиться в полночь.</p>
+                  <p class="field__hint" id="hint-time">Время означает начало визита. В списке уже учтены занятые из таблицы слоты и переезды между районами. Если время только что заняли, заявка будет заблокирована.</p>
                   <details class="season-rates field__hint" id="seasonRates">
                     <summary>Расписание сезонных надбавок</summary>
                     <ul>
@@ -878,13 +895,6 @@
                   <label for="f-format">Формат<span class="req" aria-hidden="true">*</span></label>
                   <select class="field__control" id="f-format" name="format" required aria-describedby="err-format"></select>
                   <p class="field__error" id="err-format" aria-live="polite"></p>
-                </div>
-
-                <div class="field" data-field="price">
-                  <label for="f-price">Стоимость</label>
-                  <input class="field__control" type="text" id="f-price" name="price" readonly tabindex="-1" placeholder="Подставится автоматически" aria-describedby="hint-price">
-                  <p class="field__hint early-discount" id="earlyDiscountHint" aria-live="polite"></p>
-                  <p class="field__hint" id="hint-price">Выберите формат — стоимость подставится автоматически. При выезде за город добавляется 1 000 ₽. Итог подтверждаем по телефону.</p>
                 </div>
 
                 <div class="field field--full" data-field="child">
@@ -919,6 +929,7 @@
                   </select>
                   <p class="field__hint" id="district-hint">Нижний Тагил и ближайший пригород.</p>
                   <p class="field__error" id="err-district" aria-live="polite"></p>
+                  <p class="field__hint" id="busyHint" hidden aria-live="polite"></p>
                 </div>
                 <div class="field field--full" id="suburbField" data-field="suburb" hidden>
                   <label for="f-suburb">Населённый пункт<span class="req" aria-hidden="true">*</span></label>
@@ -934,6 +945,19 @@
                 <div class="field field--full" data-field="comment">
                   <label for="f-comment">Комментарий</label>
                   <textarea class="field__control" id="f-comment" name="comment" placeholder="Адрес, увлечения ребёнка, что подготовить, пожелания к программе"></textarea>
+                </div>
+
+                <div class="field field--full" data-field="promoCode">
+                  <label for="f-promo-code">Промокод</label>
+                  <input class="field__control" type="text" id="f-promo-code" name="promoCode" maxlength="32" autocomplete="off" spellcheck="false" autocapitalize="characters" placeholder="Введите промокод латинскими заглавными буквами" aria-describedby="promoHint">
+                  <p class="field__hint" id="promoHint" aria-live="polite">Если у вас есть промокод, введите его заглавными английскими буквами.</p>
+                </div>
+
+                <div class="field" data-field="price">
+                  <label for="f-price">Итоговая стоимость</label>
+                  <input class="field__control" type="text" id="f-price" name="price" readonly tabindex="-1" placeholder="Подставится автоматически" aria-describedby="hint-price">
+                  <p class="field__hint early-discount" id="earlyDiscountHint" aria-live="polite"></p>
+                  <p class="field__hint" id="hint-price">Выберите формат — стоимость подставится автоматически. При выезде за город добавляется 1 000 ₽. Итог подтверждаем по телефону.</p>
                 </div>
 
                 <div class="field field--full" data-field="agree">
@@ -1216,7 +1240,7 @@
 
     steps: [
       { title: 'Оставляете заявку', text: 'Заполняете форму на сайте — это занимает меньше минуты. Формат и цена уже подставлены автоматически.' },
-      { title: 'Перезваниваем в течение суток', text: 'После заявки мы свяжемся с вами в течение суток в рабочее время, подтвердим дату и уточним детали заказа. Если есть вопросы — нажмите «Согласовать / задать вопрос», обсудим детали в чате группы ВКонтакте.' },
+      { title: 'Свяжемся в течение суток', text: 'После заявки мы свяжемся с вами в течение суток в рабочее время, подтвердим дату и уточним детали заказа. Если есть вопросы — нажмите «Согласовать / задать вопрос», обсудим детали в чате группы ВКонтакте.' },
       { title: 'Передаёте подарок Деду Морозу', text: 'Незаметно отдаёте подарок Снегурочке у двери или в подъезде — ребёнок ничего не заметит.' },
       { title: 'Чудо случается!', text: 'Стук в дверь, посох, хоровод и подарок лично в руки. Эмоции ребёнка — бесценны.' }
     ],
@@ -1288,6 +1312,88 @@
      ENDPOINT ПРИЁМА ЗАЯВОК (Google Apps Script → Google Таблица)
      ===================================================================== */
   const LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbysFYfoD3gxIcdPqG3dsB8YPPAIHOY8Q9g8Cy36nhRWppJ-OgZXRBSAyPe5IZB_MH4Q/exec";
+
+  /* ===== Живое расписание и логика районов ===== */
+  // Районная матрица: пять центральных районов считаются близкими;
+  // пары, которые владелец отметил как дальние, никогда не стыкуются соседними слотами.
+  const CLOSE_GROUP = new Set(['Центр','Красный Камень','Вые','Лебяжка','ВМЗ']);
+  const FAR_PAIRS = new Set([
+    'Вагонка|ВМЗ','Вагонка|Тагилстрой','Вагонка|ГГМ','Вагонка|Старатель','Вагонка|Пригород',
+    'ГГМ|Тагилстрой','ГГМ|ВМЗ','ГГМ|Пригород','Тагилстрой|ВМЗ','Тагилстрой|Центр','Тагилстрой|Пригород'
+  ]);
+  function canonicalDistrict(v){
+    const x=String(v||'').trim();
+    const aliases={'Центральный':'Центр','Красный':'Красный Камень','Верхняя Салда':'ВМЗ','В. Салда':'ВМЗ','Тагилстройский':'Тагилстрой','Гагарский':'ГГМ'};
+    return aliases[x]||x;
+  }
+  function districtKey(date,time,district,suburb){
+    const d=canonicalDistrict(district),sub=canonicalDistrict(suburb);
+    return d==='Пригород'?(sub||'Пригород'):d;
+  }
+  function conflictDistrict(a,b){
+    a=canonicalDistrict(a);b=canonicalDistrict(b);
+    if(!a||!b)return false;
+    if(a===b)return false;
+    const cityA=CLOSE_GROUP.has(a)||['Вагонка','Тагилстрой','ГГМ','Старатель'].includes(a);
+    const cityB=CLOSE_GROUP.has(b)||['Вагонка','Тагилстрой','ГГМ','Старатель'].includes(b);
+    if(!cityA||!cityB)return true; // пригород/неизвестное место: не резервируем соседний переезд вслепую
+    if(CLOSE_GROUP.has(a)&&CLOSE_GROUP.has(b))return false;
+    return FAR_PAIRS.has(a+'|'+b)||FAR_PAIRS.has(b+'|'+a);
+  }
+  function normalizeBusyDate(v){
+    if(!v)return '';
+    const raw=String(v).trim();
+    if(/^\d{4}-\d{2}-\d{2}$/.test(raw))return raw;
+    const m=raw.match(/^(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/);
+    return m?m[3]+'-'+String(m[2]).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0'):raw;
+  }
+  function normalizeBusyItems(items){
+    return (Array.isArray(items)?items:[]).map(it=>({date:normalizeBusyDate(it.date||it.bookingDate||''),time:String(it.time||it.bookingTime||'').trim().slice(0,5),district:canonicalDistrict(it.district||it.suburb||''),suburb:canonicalDistrict(it.suburb||'')})).filter(it=>it.date&&/^\d{1,2}:\d{2}$/.test(it.time)&&it.district);
+  }
+  window.__mpBusy={loaded:false,loading:false,items:[],failed:false,promise:null,fetchedAt:0};
+  async function loadBusy(force){
+    const state=window.__mpBusy;
+    if(state.promise){
+      const pending=await state.promise;
+      if(!force)return pending;
+    }
+    if(!force&&state.loaded&&Date.now()-state.fetchedAt<15000)return {ok:true,items:state.items};
+    state.loading=true;state.failed=false;
+    state.promise=(async()=>{
+      try{
+        const r=await jsonp(LEAD_ENDPOINT+'?action=busy&_='+Date.now(),12000);
+        if(!r||r.ok!==true||!Array.isArray(r.items))throw new Error('bad busy response');
+        state.items=normalizeBusyItems(r.items);state.loaded=true;state.failed=false;state.fetchedAt=Date.now();
+        return {ok:true,items:state.items};
+      }catch(e){state.failed=true;state.loaded=false;state.items=[];return {ok:false,items:[],error:String(e&&e.message||e)};}
+      finally{state.loading=false;state.promise=null;}
+    })();
+    return state.promise;
+  }
+  function busyBlocks(date,time,district,suburb){
+    const state=window.__mpBusy;if(!date||!time||!district)return [];
+    const h=Number(String(time).slice(0,2)),cur=districtKey(date,time,district,suburb),out=[];
+    if(!Number.isFinite(h))return out;
+    for(const it of state.items||[]){
+      if(normalizeBusyDate(it.date)!==date)continue;
+      const bh=Number(String(it.time||'').slice(0,2));
+      if(!Number.isFinite(bh)||Math.abs(bh-h)>1)continue;
+      const booked=districtKey(it.date,it.time,it.district,it.suburb);
+      if(h===bh||conflictDistrict(cur,booked))out.push({...it,key:booked});
+    }
+    return out;
+  }
+  function timeAllowedByBusy(date,time,district,suburb){return busyBlocks(date,time,district,suburb).length===0;}
+  function hintBusy(date,district,suburb){
+    const el=$('#busyHint');if(!el)return;
+    const state=window.__mpBusy;
+    if(state.failed){el.hidden=false;el.textContent='Не удалось обновить расписание. Заявка не будет отправлена без проверки свободного слота.';return;}
+    if(!date||!district){el.hidden=true;el.textContent='';return;}
+    const booked=(state.items||[]).filter(x=>x.date===date);
+    if(!booked.length){el.hidden=true;el.textContent='';return;}
+    el.hidden=false;el.textContent='На эту дату уже записаны заказы в районах: '+[...new Set(booked.map(x=>x.district))].join(', ')+'. Соседние часы учитывают переезд.';
+  }
+
   const LEAD_TIMEOUT_MS  = 20000;
   const MIN_TIME_ON_PAGE = 2500;
 
@@ -1454,6 +1560,11 @@
 
   async function sendLead(data) {
     if (!LEAD_ENDPOINT) return { ok: false, verified: false, reason: 'Адрес приёма заявок не задан' };
+    // Защита от двойного бронирования: сервер проверяет конфликт по районам и соседним часам.
+    try {
+      const check = await jsonp(LEAD_ENDPOINT + '?action=checkbusy&date=' + encodeURIComponent(data.date) + '&time=' + encodeURIComponent(data.time) + '&district=' + encodeURIComponent(data.district) + '&suburb=' + encodeURIComponent(data.suburb || ''), 15000);
+      if (check && check.ok === false && check.reason === 'busy') return { ok: false, verified: false, reason: 'busy', channel: 'precheck' };
+    } catch (e) { debugLog('busy pre-check failed: ' + String(e && e.message || e)); return {ok:false,verified:false,reason:'busy-check-unavailable',channel:'precheck'}; }
 
     /* Apps Script принимает тело запроса как JSON-строку (e.postData.contents).
        Отправляем только так: простой POST text/plain не вызывает CORS-preflight. */
@@ -1921,13 +2032,15 @@
     return byType.year+'-'+byType.month+'-'+byType.day;
   }
   function discountForFormat(base) { return bookingTodayTagil()<DISCOUNT_DEADLINE?Math.round(base*.1):0; }
-  function priceBreakdown(formatId, date, time, district, count, adults, corpKids) {
+  function priceBreakdown(formatId, date, time, district, count, adults, corpKids, promoCode) {
     const item=C.services.find(x=>x.formatId===formatId);
     if(!item) return null;
     const adultN=Number(adults)||0, kidN=Number(corpKids)||0;
     const guests=formatId==='corp'?(adultN>0&&kidN>0?Math.max(0,adultN+kidN-12)*500:adultN>0?Math.max(0,adultN-12)*300:Math.max(0,kidN-12)*200):Math.max(0,(Number(count)||1)-3)*500;
     const travel=district==='Пригород'?1000:0, season=getSeasonSurcharge(date,time), discount=discountForFormat(item.price);
-    return {base:item.price,guests,travel,season,discount,beforeDiscount:item.price+guests+travel+season,total:item.price+guests+travel+season-discount};
+    const gross=item.price+guests+travel+season;
+    const promoDiscount=promoCode==='GODNAZAD'?Math.round(gross*0.1):0;
+    return {base:item.price,guests,travel,season,discount,promoDiscount,beforeDiscount:gross,total:gross-discount-promoDiscount};
   }
 
   function availableHours(dateISO) {
@@ -1968,7 +2081,7 @@
       name: $('#f-name'), phone: $('#f-phone'), date: $('#f-date'), time: $('#f-time'),
       format: $('#f-format'), price: $('#f-price'), child: $('#f-child'), childCount: $('#f-child-count'), corpAdults: $('#f-corp-adults'), corpChildren: $('#f-corp-children'),
       district: $('#f-district'), suburb: $('#f-suburb'),
-      comment: $('#f-comment'), agree: $('#f-agree'), honey: $('#f-company-fax')
+      promoCode: $('#f-promo-code'), comment: $('#f-comment'), agree: $('#f-agree'), honey: $('#f-company-fax')
     };
     const SUBMIT_LABEL = 'Отправить заявку';
     function applyBookingWindow() {
@@ -2011,7 +2124,7 @@
     });
 
     /* --- Черновик --- */
-    const DRAFT_FIELDS = ['name','phone','date','time','format','price','child','childCount','corpAdults','corpChildren','district','suburb','comment'];
+    const DRAFT_FIELDS = ['name','phone','date','time','format','price','child','childCount','corpAdults','corpChildren','district','suburb','promoCode','comment'];
     try {
       const saved = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null');
       if (saved) {
@@ -2048,7 +2161,7 @@
         return '';
       },
       format: v => v ? '' : 'Выберите формат поздравления.',
-      time: v => !v ? 'Выберите время начала визита (целый час).' : (availableHours(f.date.value).includes(v) ? '' : 'Для выбранной даты это время недоступно.'),
+      time: v => !v ? 'Выберите свободное время.' : (!availableHours(f.date.value).includes(v) ? 'Для выбранной даты это время недоступно.' : (window.__mpBusy.failed ? 'Не удалось проверить занятость. Обновите страницу.' : (timeAllowedByBusy(f.date.value,v,f.district.value,f.suburb.value) ? '' : 'Слот занят или район несовместим с соседним заказом.'))),
       district: v => v ? '' : 'Выберите район поздравления.',
       childCount: v => f.format.value === 'corp' || (/^\d+$/.test(v) && Number(v) >= 1 && Number(v) <= 50) ? '' : 'Укажите от 1 до 50 детей.',
       corpAdults: v => f.format.value !== 'corp' || (/^\d+$/.test(v) && Number(v)>=0 && Number(v)<=30) ? '' : 'Укажите количество взрослых от 0 до 30.',
@@ -2096,8 +2209,10 @@
       else {setError('corpAdults','');setError('corpChildren','');}
       const totalGuests=Number(f.corpAdults.value)+Number(f.corpChildren.value);
       const guestsValid=!corporate||(Number.isInteger(totalGuests)&&totalGuests>=8&&totalGuests<=30&&f.corpAdults.value!==''&&f.corpChildren.value!=='');
-      const quote=guestsValid?priceBreakdown(f.format.value,f.date.value,f.time.value,f.district.value,f.childCount.value,f.corpAdults.value,f.corpChildren.value):null;
+      const quote=guestsValid?priceBreakdown(f.format.value,f.date.value,f.time.value,f.district.value,f.childCount.value,f.corpAdults.value,f.corpChildren.value,f.promoCode.value):null;
       f.price.value=quote?priceLabel(quote.total):'';
+      const promo=f.promoCode.value, promoHint=$('#promoHint');
+      promoHint.textContent=promo==='GODNAZAD'?(quote?'Промокод применён: −'+priceFmt(quote.promoDiscount)+' ₽ (10% от суммы с надбавками, дополнительно к другим скидкам).':'Промокод принят. Выберите формат, чтобы увидеть скидку.'):promo?'Промокод не подходит: скидка по нему не применена. Проверьте заглавные английские буквы.':'Если у вас есть промокод, введите его заглавными английскими буквами.';
       const discountEl=$('#earlyDiscountHint');
       discountEl.textContent=quote?(quote.discount?'Скидка за заказ до 1 декабря 2026 года: −'+priceFmt(quote.discount)+' ₽ (10% от '+priceFmt(quote.base)+' ₽). Она уже вычтена из конечной стоимости.':'Акционная скидка 10% действовала на заявки до 1 декабря 2026 года; доплаты рассчитываются отдельно.'):'Скидка 10% от базовой цены формата действует при заказе до 1 декабря 2026 года.';
       const seasonHint=$('#seasonPriceHint');
@@ -2112,26 +2227,30 @@
       if (!suburb) { f.suburb.value = ''; setError('suburb', ''); }
       setPrice();
     }
-    function refreshTimeOptions() {
-      const previous = f.time.value;
-      const allowed = availableHours(f.date.value);
-      f.time.disabled = allowed.length === 0;
-      const emptyLabel = allowed.length ? '— Выберите время —' : '— Сначала выберите дату —';
-      f.time.innerHTML = '<option value="">' + emptyLabel + '</option>' + allowed.map(h => '<option value="' + h + '">' + h + '</option>').join('');
-      if (allowed.includes(previous)) f.time.value = previous;
-      else if (previous) f.time.value = '';
+    async function refreshTimeOptions() {
+      const previous=f.time.value;
+      const result=await loadBusy();
+      const base=availableHours(f.date.value);
+      const allowed=result.ok?base.filter(h=>timeAllowedByBusy(f.date.value,h,f.district.value,f.suburb.value)):[];
+      f.time.disabled=!f.date.value||allowed.length===0;
+      const label=!f.date.value?'— Сначала выберите дату —':(!result.ok?'— Не удалось проверить расписание —':(allowed.length?'— Выберите время —':'— Нет свободных часов —'));
+      f.time.innerHTML='<option value="">'+label+'</option>'+allowed.map(h=>'<option value="'+h+'">'+h+'</option>').join('');
+      f.time.value=allowed.includes(previous)?previous:'';
+      hintBusy(f.date.value,f.district.value,f.suburb.value);
+      if(!result.ok)$('#busyHint').hidden=false;
       setPrice();
     }
     f.format.addEventListener('change', setPrice);
     f.childCount.addEventListener('input', setPrice);
     f.corpAdults.addEventListener('input',()=>{validateField('corpChildren',true);setPrice();});
     f.corpChildren.addEventListener('input',()=>{validateField('corpChildren',true);setPrice();});
+    f.promoCode.addEventListener('input',setPrice);
     document.addEventListener('visibilitychange',()=>{if(!document.hidden){setPrice();$('#heroBadge').hidden=bookingTodayTagil()>=DISCOUNT_DEADLINE;}});
     f.time.addEventListener('change', setPrice);
     f.date.addEventListener('change', refreshTimeOptions);
     refreshTimeOptions();
-    f.district.addEventListener('change', updateDistrict);
-    f.suburb.addEventListener('change', saveDraft);
+    f.district.addEventListener('change', () => { updateDistrict(); refreshTimeOptions(); });
+    f.suburb.addEventListener('change', () => { saveDraft(); refreshTimeOptions(); });
     updateDistrict();
 
     /* --- 152-ФЗ --- */
@@ -2192,7 +2311,7 @@
         '\nРайон: ' + d.district + (d.suburb ? ', ' + d.suburb : '') +
         '\nДоплата за выезд: ' + (d.travelFee || 0) + ' ₽' +
         '\nНадбавка по дате/времени: ' + (d.dateTimeSurcharge || 0) + ' ₽' +
-        '\nКомментарий: ' + (d.comment || '—');
+        '\nПромокод: ' + (d.promoCode || '—') + '\nСкидка по промокоду: ' + (d.promoDiscount || 0) + ' ₽' + '\nКомментарий: ' + (d.comment || '—');
     }
 
     /* --- Отправка --- */
@@ -2209,13 +2328,25 @@
         debugLog('Очень быстрая отправка — помечаем, но НЕ отбрасываем.');
       }
       if (!f.agree.checked) { setError('agree', rules.agree(false)); f.agree.focus(); return; }
+      const latestBusy=await loadBusy(true);
+      if(!latestBusy.ok){showAlert('error','<strong>Не удалось проверить расписание.</strong><br>Для защиты от двойного бронирования заявка не отправлена. Обновите страницу или свяжитесь с нами.');return;}
+      if(!timeAllowedByBusy(f.date.value,f.time.value,f.district.value,f.suburb.value)){
+        setError('time','Слот только что заняли или он конфликтует с переездом. Выберите другой час.');
+        await refreshTimeOptions();
+        showAlert('info','<strong>Это время уже занято.</strong><br>Список доступных часов обновлён. Выберите другой слот.');
+        return;
+      }
       if (!validateAll()) {
         const firstErr = form.querySelector('.field.has-error .field__control');
         if (firstErr) firstErr.focus();
         return;
       }
 
-      const quote = priceBreakdown(f.format.value,f.date.value,f.time.value,f.district.value,f.childCount.value,f.corpAdults.value,f.corpChildren.value);
+      if(!timeAllowedByBusy(f.date.value,f.time.value,f.district.value,f.suburb.value)){
+        setError('time','Это время уже занято или конфликтует с соседним районом. Выберите другой слот.');
+        return;
+      }
+      const quote = priceBreakdown(f.format.value,f.date.value,f.time.value,f.district.value,f.childCount.value,f.corpAdults.value,f.corpChildren.value,f.promoCode.value);
       const data = {
         leadId: 'mp-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8),
         name: f.name.value.trim().slice(0, 80),
@@ -2231,6 +2362,8 @@
         corpChildren: f.format.value === 'corp' ? Number(f.corpChildren.value) : 0,
         guestFee: quote?.guests || 0,
         formatDiscount: quote?.discount || 0,
+        promoCode: f.promoCode.value,
+        promoDiscount: quote?.promoDiscount || 0,
         beforeDiscount: quote?.beforeDiscount || 0,
         basePrice: quote?.base || 0,
         childFee: f.format.value==='corp'?0:(quote?.guests || 0),
@@ -2263,6 +2396,14 @@
         } else {
           resetBtn();
           const leadText = leadAsText(data).replace(/"/g, '&quot;');
+          if (result && result.reason === 'busy') {
+            showAlert('info','<strong>Это время уже занято.</strong><br>Выберите другую дату/время или район.');
+            return;
+          }
+          if (result && result.reason === 'busy-check-unavailable') {
+            showAlert('error','<strong>Не удалось проверить занятость.</strong><br>Заявка не отправлена, чтобы не допустить двойного бронирования. Повторите попытку.');
+            return;
+          }
           showAlert('info',
             '<strong>Не удалось подтвердить запись заявки в таблицу.</strong><br>' +
             'Чтобы заказ не потерялся, сделайте одно из двух:<br>' +
@@ -2354,8 +2495,10 @@
       refreshQuizInfo();
     }
     function setError(message){error.textContent=message||'';error.hidden=!message;}
-    function apply(rec){
-      if(!rec||!availableHours(rec.date).includes(rec.time)){setError('Это время уже недоступно. Измените ответы и попробуйте снова.');return;}
+    async function apply(rec){
+      const current=await loadBusy(true);
+      if(!current.ok){setError('Не удалось обновить занятость. Повторите подбор.');return;}
+      if(!rec||!availableHours(rec.date).includes(rec.time)||!timeAllowedByBusy(rec.date,rec.time,rec.district,rec.suburb)){setError('Этот вариант уже занят или конфликтует с соседним районом. Повторите подбор.');return;}
       const fdate=$('#f-date'),ftime=$('#f-time'),fformat=$('#f-format'),fdistrict=$('#f-district'),fsuburb=$('#f-suburb'),fchild=$('#f-child-count'),fadults=$('#f-corp-adults'),fcorpkids=$('#f-corp-children'),fcomment=$('#f-comment');
       close();fdate.value=rec.date;fdate.dispatchEvent(new Event('change',{bubbles:true}));
       fformat.value=rec.format;fformat.dispatchEvent(new Event('change',{bubbles:true}));
@@ -2373,14 +2516,17 @@
     }
     function buildMatches(services,hours,corporate,count,travel){
       const cap=budget.value==='any'?Infinity:Number(budget.value),matches=[];
-      services.forEach(service=>hours.forEach(time=>{
+      const usable=hours.filter(h=>timeAllowedByBusy(date.value,h,district.value,suburb.value));
+      services.forEach(service=>usable.forEach(time=>{
         const quote=priceBreakdown(service.formatId,date.value,time,district.value,count,corporate?adults.value:0,corporate?corpKids.value:0);
         matches.push({format:service.formatId,name:service.title,date:date.value,time,children:count,adults:corporate?Number(adults.value):0,corpKids:corporate?Number(corpKids.value):0,district:district.value,suburb:district.value==='Пригород'?suburb.value:'',price:quote.total,childExtra:quote.guests,seasonal:quote.season,travel:quote.travel,discount:quote.discount,within:quote.total<=cap,budgetLabel:budget.options[budget.selectedIndex].text,periodLabel:period.options[period.selectedIndex].text});
       }));
       return matches;
     }
-    function findMatches(){
+    async function findMatches(){
       setError('');
+      const busyResult=await loadBusy(true);
+      if(!busyResult.ok){setError('Не удалось проверить занятость из таблицы. Повторите попытку.');return;}
       const w=bookingWindow();
       if(!date.value||date.value<w.min||date.value>w.max){setError('Выберите дату с 20 по 31 декабря.');return;}
       if(district.value==='Пригород'&&!suburb.value){setError('Выберите населённый пункт.');return;}
@@ -2396,7 +2542,9 @@
       const hours=availableHours(date.value).filter(h=>period.value==='day'?Number(h.slice(0,2))<16:period.value==='evening'?Number(h.slice(0,2))>=16:true);
       if(!hours.length){setError('На эту дату нет времени в выбранном интервале. Попробуйте другой период дня.');return;}
       const travel=district.value==='Пригород'?1000:0;
-      const allMatches=buildMatches(selectedServices,hours,corporate,count,travel);
+      const freeHours=hours.filter(h=>timeAllowedByBusy(date.value,h,district.value,suburb.value));
+      if(!freeHours.length){setError('В выбранном районе нет подходящих часов: ближайшие слоты заняты или требуют переезда. Выберите другой район, дату или период.');}
+      const allMatches=buildMatches(selectedServices,freeHours,corporate,count,travel);
       const matches=budget.value==='any'?allMatches:allMatches.filter(x=>x.within);
       // No silent switch to another package: show only the selected format, or clearly report no match.
       matches.sort((a,b)=>(a.price-b.price)||a.time.localeCompare(b.time));
@@ -2406,7 +2554,7 @@
       let note;
       if(matches.length&&budget.value==='any') note='Показаны все доступные часы для формата «'+formatLabel+'» на выбранную дату и период дня.';
       else if(matches.length) note='Показаны все часы формата «'+formatLabel+'» в пределах вашего бюджета ('+matches.length+' вариантов).';
-      else note='Для формата «'+formatLabel+'» на выбранную дату и время нет вариантов в этом бюджете. Измените бюджет, дату или период дня либо сами выберите другой формат.';
+      else note=!freeHours.length?'Для выбранного района и периода все часы заняты или не подходят по времени переезда. Выберите другой район, дату или период.':'Для формата «'+formatLabel+'» на выбранную дату и время нет вариантов в этом бюджете. Измените бюджет, дату или период дня либо сами выберите другой формат.';
       results.innerHTML='<h3>Варианты праздника ('+matches.length+')</h3><p class="quiz-intro">'+note+'</p>'+(options?'<div class="quiz-results__list">'+options+'</div>':'')+'<button class="btn btn--ghost btn--sm" type="button" id="quizEdit">Изменить ответы</button>';
       results.hidden=false;
       results.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'nearest'});
@@ -2415,8 +2563,8 @@
     overlay.addEventListener('click',e=>{if(e.target===overlay)close();});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!overlay.hidden)close();});
     audience.addEventListener('change',refreshFormats);pref.addEventListener('change',refreshQuizInfo);district.addEventListener('change',()=>{byId('quizSuburbWrap').hidden=district.value!=='Пригород';});
-    form.addEventListener('submit',e=>{e.preventDefault();findMatches();});
-    results.addEventListener('click',e=>{if(e.target.closest('#quizEdit')){results.hidden=true;return;}const btn=e.target.closest('[data-quiz-pick]');if(btn)apply(recommendations[Number(btn.dataset.quizPick)]);});
+    form.addEventListener('submit',async e=>{e.preventDefault();try{await findMatches();}catch(err){setError('Не удалось получить занятость из таблицы. Попробуйте ещё раз.');}});
+    results.addEventListener('click',e=>{if(e.target.closest('#quizEdit')){results.hidden=true;return;}const btn=e.target.closest('[data-quiz-pick]');if(btn)apply(recommendations[Number(btn.dataset.quizPick)]).catch(()=>setError('Не удалось проверить выбранный слот. Повторите подбор.'));});
   }
 
   function safeRun(name, fn) {
