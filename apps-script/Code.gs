@@ -122,7 +122,8 @@ function busyBlocks_(date,time,district,suburb){
   var it=items[i];if(it.date!==busyDate_(date))continue;
   var busyHour=parseInt(String(it.time||'').slice(0,2),10);if(!isFinite(busyHour)||Math.abs(busyHour-hour)>1)continue;
   var booked=districtKey_(it.date,it.time,it.district,it.suburb);
-  if(conflictDistrict_(cur,booked))out.push({date:it.date,time:it.time,district:it.district,suburb:it.suburb,key:booked});
+  // Точный занятый час запрещён всем; соседний час — только если районы далеко.
+  if(busyHour===hour||(Math.abs(busyHour-hour)===1&&conflictDistrict_(cur,booked)))out.push({date:it.date,time:it.time,district:it.district,suburb:it.suburb,key:booked});
  }
  return out;
 }

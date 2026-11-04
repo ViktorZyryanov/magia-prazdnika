@@ -1379,7 +1379,8 @@
       const bh=Number(String(it.time||'').slice(0,2));
       if(!Number.isFinite(bh)||Math.abs(bh-h)>1)continue;
       const booked=districtKey(it.date,it.time,it.district,it.suburb);
-      if(h===bh||conflictDistrict(cur,booked))out.push({...it,key:booked});
+      // The exact hour is reserved globally. Only adjacent hours depend on travel distance.
+      if(h===bh||Math.abs(bh-h)===1&&conflictDistrict(cur,booked))out.push({...it,key:booked});
     }
     return out;
   }
