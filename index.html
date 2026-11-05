@@ -2419,6 +2419,9 @@
         debugLog('Результат: ' + JSON.stringify(result));
 
         if (result.ok && result.verified) {
+	  if (typeof ym === 'function') {
+  ym(114081628, 'reachGoal', 'lead_sent');
+}
           console.log('%c[Магия праздника] Заявка записана в таблицу (подтверждено)', 'color:#F0B24A;font-weight:bold', data);
           showSuccess();
 
