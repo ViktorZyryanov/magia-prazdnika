@@ -1347,8 +1347,18 @@
     const m=raw.match(/^(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/);
     return m?m[3]+'-'+String(m[2]).padStart(2,'0')+'-'+String(m[1]).padStart(2,'0'):raw;
   }
+  function normalizeBusyTime(v){
+    // Appointment times are wall-clock values. Never parse them as Date()/UTC.
+    const raw=String(v??'').trim();
+    const m=raw.match(/(?:^|\s)(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)?\s*$/i);
+    if(!m)return '';
+    let hour=Number(m[1]); const minute=Number(m[2]); const ap=String(m[3]||'').toUpperCase();
+    if(ap){if(hour<1||hour>12)return '';hour=ap==='AM'?(hour===12?0:hour):(hour===12?12:hour+12);}
+    if(hour<0||hour>23||minute<0||minute>59)return '';
+    return String(hour).padStart(2,'0')+':'+String(minute).padStart(2,'0');
+  }
   function normalizeBusyItems(items){
-    return (Array.isArray(items)?items:[]).map(it=>({date:normalizeBusyDate(it.date||it.bookingDate||''),time:String(it.time||it.bookingTime||'').trim().slice(0,5),district:canonicalDistrict(it.district||it.suburb||''),suburb:canonicalDistrict(it.suburb||'')})).filter(it=>it.date&&/^\d{1,2}:\d{2}$/.test(it.time)&&it.district);
+    return (Array.isArray(items)?items:[]).map(it=>({date:normalizeBusyDate(it.date||it.bookingDate||''),time:normalizeBusyTime(it.time||it.bookingTime||''),district:canonicalDistrict(it.district||it.suburb||''),suburb:canonicalDistrict(it.suburb||'')})).filter(it=>it.date&&/^\d{2}:\d{2}$/.test(it.time)&&it.district);
   }
   window.__mpBusy={loaded:false,loading:false,items:[],failed:false,promise:null,fetchedAt:0};
   async function loadBusy(force){
@@ -1372,15 +1382,19 @@
   }
   function busyBlocks(date,time,district,suburb){
     const state=window.__mpBusy;if(!date||!time||!district)return [];
-    const h=Number(String(time).slice(0,2)),cur=districtKey(date,time,district,suburb),out=[];
-    if(!Number.isFinite(h))return out;
+    const normalizedTime=normalizeBusyTime(time),cur=districtKey(date,normalizedTime,district,suburb),out=[];
+    const minutes=hm=>{const m=normalizeBusyTime(hm).match(/^(\d{2}):(\d{2})$/);return m?Number(m[1])*60+Number(m[2]):NaN;};
+    const currentMinutes=minutes(normalizedTime);
+    if(!Number.isFinite(currentMinutes))return out;
     for(const it of state.items||[]){
       if(normalizeBusyDate(it.date)!==date)continue;
-      const bh=Number(String(it.time||'').slice(0,2));
-      if(!Number.isFinite(bh)||Math.abs(bh-h)>1)continue;
-      const booked=districtKey(it.date,it.time,it.district,it.suburb);
-      // The exact hour is reserved globally. Only adjacent hours depend on travel distance.
-      if(h===bh||Math.abs(bh-h)===1&&conflictDistrict(cur,booked))out.push({...it,key:booked});
+      const bookedTime=normalizeBusyTime(it.time),bookedMinutes=minutes(bookedTime);
+      if(!Number.isFinite(bookedMinutes))continue;
+      const delta=Math.abs(bookedMinutes-currentMinutes);
+      if(delta>60)continue;
+      const booked=districtKey(it.date,bookedTime,it.district,it.suburb);
+      // Same exact slot is globally occupied; one-hour turnover depends on district distance.
+      if(delta===0||(delta===60&&conflictDistrict(cur,booked)))out.push({...it,time:bookedTime,key:booked});
     }
     return out;
   }

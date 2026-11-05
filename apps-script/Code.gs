@@ -99,15 +99,23 @@ function busyDate_(v){
  return m?m[3]+'-'+('0'+m[2]).slice(-2)+'-'+('0'+m[1]).slice(-2):s;
 }
 function busyTime_(v){
- if(v instanceof Date)return Utilities.formatDate(v,'Asia/Yekaterinburg','HH:mm');
- if(typeof v==='number'&&isFinite(v)){var minutes=Math.round(v*24*60);return ('0'+Math.floor(minutes/60)).slice(-2)+':'+('0'+(minutes%60)).slice(-2);}
- var s=String(v||'').trim();var m=s.match(/(\d{1,2}):(\d{2})/);return m?('0'+m[1]).slice(-2)+':'+m[2]:s;
+ // Always treat booking time as a wall-clock string, never convert a Sheets Date through a timezone.
+ var s=String(v===null||v===undefined?'':v).trim();
+ if(!s)return '';
+ var m=s.match(/(?:^|\s)(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)?\s*$/i);
+ if(!m)return '';
+ var h=Number(m[1]), minute=Number(m[2]), ampm=String(m[3]||'').toUpperCase();
+ if(ampm){if(h<1||h>12)return '';if(ampm==='AM')h=h===12?0:h;else h=h===12?12:h+12;}
+ if(h<0||h>23||minute<0||minute>59)return '';
+ return ('0'+h).slice(-2)+':'+('0'+minute).slice(-2);
 }
+function busyMinutes_(v){var t=busyTime_(v),m=t.match(/^(\d{2}):(\d{2})$/);return m?Number(m[1])*60+Number(m[2]):NaN;}
+
 function busyItems_(){
  var sh=sheet_(SHEET_NAME,HEADERS),last=sh.getLastRow();if(last<2)return [];
  var dc=HEADERS.indexOf('Дата праздника')+1,tc=HEADERS.indexOf('Время')+1,rc=HEADERS.indexOf('Район')+1,sc=HEADERS.indexOf('Населённый пункт')+1;
  var first=Math.min(dc,tc,rc,sc),width=Math.max(dc,tc,rc,sc)-first+1;
- var values=sh.getRange(2,first,last-1,width).getValues(),out=[];
+ var values=sh.getRange(2,first,last-1,width).getDisplayValues(),out=[];
  for(var i=0;i<values.length;i++){
   var date=busyDate_(values[i][dc-first]),time=busyTime_(values[i][tc-first]),district=canonicalDistrict_(values[i][rc-first]),suburb=canonicalDistrict_(values[i][sc-first]);
   if(date&&time&&district)out.push({date:date,time:time,district:district,suburb:suburb});
@@ -115,15 +123,17 @@ function busyItems_(){
  return out;
 }
 function busyBlocks_(date,time,district,suburb){
- var cur=districtKey_(date,time,district,suburb),out=[],hour=parseInt(String(time||'').slice(0,2),10);
- if(!date||!time||!district||!isFinite(hour))return out;
+ var currentTime=busyTime_(time),cur=districtKey_(date,currentTime,district,suburb),out=[];
+ if(!date||!currentTime||!district)return out;
+ var cm=busyMinutes_(currentTime);if(!isFinite(cm))return out;
  var items=busyItems_();
  for(var i=0;i<items.length;i++){
   var it=items[i];if(it.date!==busyDate_(date))continue;
-  var busyHour=parseInt(String(it.time||'').slice(0,2),10);if(!isFinite(busyHour)||Math.abs(busyHour-hour)>1)continue;
-  var booked=districtKey_(it.date,it.time,it.district,it.suburb);
-  // Точный занятый час запрещён всем; соседний час — только если районы далеко.
-  if(busyHour===hour||(Math.abs(busyHour-hour)===1&&conflictDistrict_(cur,booked)))out.push({date:it.date,time:it.time,district:it.district,suburb:it.suburb,key:booked});
+  var bookedTime=busyTime_(it.time),bm=busyMinutes_(bookedTime);if(!isFinite(bm))continue;
+  var delta=Math.abs(bm-cm);if(delta>60)continue;
+  var booked=districtKey_(it.date,bookedTime,it.district,it.suburb);
+  // Same exact slot is globally occupied; one-hour turnover depends on district distance.
+  if(delta===0||(delta===60&&conflictDistrict_(cur,booked)))out.push({date:it.date,time:bookedTime,district:it.district,suburb:it.suburb,key:booked});
  }
  return out;
 }
